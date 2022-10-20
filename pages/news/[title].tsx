@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { InferGetStaticPropsType, NextPage } from 'next'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import ipfsContect from '../../components/setting'
 import styles from '../../styles/Post.module.css'
@@ -21,12 +21,13 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
 import { title } from 'process';
-import { ReactElement, JSXElementConstructor, ReactFragment } from 'react';
+import { ReactElement, JSXElementConstructor, ReactFragment, useState } from 'react';
 import React from 'react'
 import ReactDom from 'react-dom'
 import ReactMarkdown from 'react-markdown';
 var urlCate = '../category/'
 
+const [state, setstate] = useState([] as any[]);
 
 export async function getStaticPaths() {
   return {
@@ -77,9 +78,8 @@ export async function getStaticProps(context: { params: any; }) {
 
 
 
-const Post: NextPage = (props) => {
+function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   let router = useRouter()
-  console.log(props)
   if (router.isFallback) {
     return <div>Loading...</div>
   }
@@ -97,7 +97,7 @@ const Post: NextPage = (props) => {
           <script async src="https://platform.twitter.com/widgets.js" />
           </Head>
           <Nav />
-          {props.posts.downvotesCount <= 3 &&
+          {posts.downvotesCount <= 3 &&
           <article className={styles.article}>
               <Center mt={10}>
                   <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
@@ -106,24 +106,24 @@ const Post: NextPage = (props) => {
                           boxSize='870px'
                           h={'350px'}
                           objectFit='cover'
-                          src={ipfsContect.ipfsURL+props.posts.image}
+                          src={ipfsContect.ipfsURL+posts.image}
                           layout={'fill'}
                           alt='image'
                           />
                       </Box>
                       <HStack px={{base: 1, md: 6}}>
-                      {props.posts.tagsOriginal.split(",").map((tag: any) => (
-                          <Link href={urlCate+tag} key={props.posts.id}>
+                      {posts.tagsOriginal.split(",").map((tag: any) => (
+                          <Link href={urlCate+tag} key={posts.id}>
                               <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                           </Link>
                       ))}
                       </HStack>
                       <Stack px={{base: 1, md: 6}} py={{base: 4, md: 0}}>
                           <header>
-                              <Heading as='h1'>{props.posts.title}</Heading>
+                              <Heading as='h1'>{posts.title}</Heading>
                           </header>
                           <section>
-                            <ReactMarkdown>{props.posts.body}</ReactMarkdown>
+                            <ReactMarkdown>{posts.body}</ReactMarkdown>
                           </section>
                       </Stack>
                   </Box>

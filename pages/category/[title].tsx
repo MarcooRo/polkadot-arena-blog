@@ -8,6 +8,16 @@ import CardComponent, { ITcard } from '../../components/Card';
 import Sidebar from '../../components/Sidebar';
 import { useRouter } from 'next/router'
 
+export interface post {
+  id: string;
+  createdAtTime:number;
+  image: string;
+  title: string;
+  downvotesCount: number;
+  summary: string;
+  tagsOriginal: string;
+}
+
 export async function getStaticPaths() {
   return {
     paths: [{ params: { title } }],
@@ -53,6 +63,7 @@ export async function getStaticProps(context: { params: any; }) {
 }
 
 
+
 function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   let router = useRouter()
   let titleURL = router.asPath
@@ -83,7 +94,7 @@ function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
           <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
           {posts &&
-            posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+            (posts as post[]).map((post: JSX.IntrinsicAttributes & ITcard) => 
             <CardComponent {...post} key={post.id}/>                       
           )}
           </SimpleGrid>

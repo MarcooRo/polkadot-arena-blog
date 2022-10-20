@@ -1,14 +1,22 @@
-import type { InferGetStaticPropsType, NextPage } from 'next'
+import type { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { title } from 'process';
 import CardComponent, { ITcard } from '../../components/Card';
-import { AdvSidebar } from '../../components/Adv';
-import { CollectionsTag, Projects } from '../../components/Alltags';
 import Sidebar from '../../components/Sidebar';
 import { useRouter } from 'next/router'
+
+export interface post {
+  id: string;
+  createdAtTime:number;
+  image: string;
+  title: string;
+  downvotesCount: number;
+  summary: string;
+  tagsOriginal: string;
+}
 
 export async function getStaticPaths() {
   return {
@@ -83,7 +91,7 @@ function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
           <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
             {posts &&
-              posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+              (posts as post[]).map((post: JSX.IntrinsicAttributes & ITcard) => 
               <CardComponent {...post} key={post.id}/>                       
             )}
           </SimpleGrid>
