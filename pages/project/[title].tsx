@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
+import type { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { title } from 'process';
-import CardComponent from '../../components/Card';
+import CardComponent, { ITcard } from '../../components/Card';
 import { AdvSidebar } from '../../components/Adv';
 import { CollectionsTag, Projects } from '../../components/Alltags';
 import Sidebar from '../../components/Sidebar';
@@ -33,8 +33,15 @@ export async function getStaticProps(context: { params: any; }) {
           createdAtTime
           image
           title
-          canonical
           downvotesCount
+          summary
+          tagsOriginal
+          ownedByAccount {
+            id
+            profileSpace {
+              name
+            }
+          }
         }
       }
     `
@@ -48,7 +55,7 @@ export async function getStaticProps(context: { params: any; }) {
 }
 
 
-const Post: NextPage = (props) => {
+function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   let router = useRouter()
   let titleURL = router.asPath
   let NameH1 = titleURL.split(('/')).pop()
@@ -75,8 +82,9 @@ const Post: NextPage = (props) => {
       <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
           <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-            {props.posts.map((post: { id: string; title: string; image: string; tags: string[]; }) => 
-              <CardComponent id={post.id} title={post.title} cover={post.image} tags={[]} nolike={0} likes={0} body={''} />                    
+            {posts &&
+              posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+              <CardComponent {...post} key={post.id}/>                       
             )}
           </SimpleGrid>
       </GridItem>

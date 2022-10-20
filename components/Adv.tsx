@@ -6,7 +6,7 @@ export function AdvSidebar(){
 
   return (
     <Box>
-          <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' />
+          <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
     </Box>
   )
 }

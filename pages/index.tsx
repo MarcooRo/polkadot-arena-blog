@@ -95,7 +95,7 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
             <Box p={4}>
                 <SimpleGrid columns={{base: 1, md: 2}} spacing={6}>
                     {posts.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
-                      <CardComponent {...post} />                       
+                      <CardComponent {...post} key={post.id}/>                       
                     )}
                 </SimpleGrid>
             </Box>
@@ -121,11 +121,11 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
           <GridItem colSpan={{base: 6, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
-              <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' />
+              <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
           <GridItem colSpan={{base: 6, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
-            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' />
+            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
         </Grid>
 

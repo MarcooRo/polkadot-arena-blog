@@ -9,7 +9,7 @@ export function ParachainPolkadot() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri le parachain di Polkadot</Heading>
             {parachainListP.map((parachain) => (
-                <Link href={`/parachain-polkadot/${parachain}`}>
+                <Link href={`/parachain-polkadot/${parachain}`} key={parachain}>
                     <a><Tag size='md' m={1} key={parachain} variant='solid' colorScheme='teal'>
                         {parachain}
                     </Tag></a>
@@ -28,7 +28,7 @@ export function ParachainKusama() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri le parachain di Kusama</Heading>
             {parachainListK.map((parachain) => (
-                <Link href={`/parachain-kusama/${parachain}`}>
+                <Link href={`/parachain-kusama/${parachain}`} key={parachain}>
                     <a><Tag size='md' m={1} key={parachain} variant='solid' colorScheme='teal'>
                         {parachain}
                     </Tag></a>
@@ -45,7 +45,7 @@ export function Projects() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri i progetti del mondo Dotasama</Heading>
             {projects.map((project) => (
-                <Link href={`/project/${project}`}>
+                <Link href={`/project/${project}`} key={project}>
                     <a><Tag size='md' m={1} key={project} variant='solid' colorScheme='teal'>
                         {project}
                     </Tag></a>
@@ -62,7 +62,7 @@ export function CollectionsTag() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Raccolte di articoli</Heading>
             {collectionsTag.map((tag) => (
-                <Link href={`/category/${tag}`}>
+                <Link href={`/category/${tag}`} key={tag}>
                     <a>
                     <Tag size='md' m={1} key={tag} variant='solid' colorScheme='teal'>
                         {tag}

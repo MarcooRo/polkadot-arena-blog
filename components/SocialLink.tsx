@@ -13,12 +13,9 @@ export default function SocialLink(){
         <Box gap={6}>
             {Links.map((link) => (
                 <Link
+                    key={link.name}
                     style={{
                         textTransform: 'capitalize',
-                    }}
-                    _hover={{
-                        textDecoration: 'none',
-                        bg: useColorModeValue('gray.200', 'gray.700'),
                     }}
                     target='_blank'
                     href={link.url}

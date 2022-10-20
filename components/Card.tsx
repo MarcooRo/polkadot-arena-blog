@@ -39,13 +39,14 @@ const CardComponent: React.FC<ITcard> = props => {
                     <Image
                     src={ipfsContect.ipfsURL+props.image}
                     layout={'fill'}
+                    alt={props.title}
                     />
                     </a>
                 </Link>
             </Box>
             <HStack mb={3} spacing={1}>
                 {props.tagsOriginal.split(",").slice(-2).map((tag) => (
-                    <Link href={`/category/${tag}`}>
+                    <Link href={`/category/${tag}`} key={tag}>
                         <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                     </Link>
                 ))}

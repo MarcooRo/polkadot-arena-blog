@@ -83,7 +83,7 @@ function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>){
           <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
           {posts &&
             posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
-            <CardComponent {...post} />                       
+            <CardComponent {...post} key={post.id}/>                       
           )}
           </SimpleGrid>
       </GridItem>

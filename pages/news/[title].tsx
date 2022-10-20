@@ -108,11 +108,12 @@ const Post: NextPage = (props) => {
                           objectFit='cover'
                           src={ipfsContect.ipfsURL+props.posts.image}
                           layout={'fill'}
+                          alt='image'
                           />
                       </Box>
                       <HStack px={{base: 1, md: 6}}>
                       {props.posts.tagsOriginal.split(",").map((tag: any) => (
-                          <Link href={urlCate+tag}>
+                          <Link href={urlCate+tag} key={props.posts.id}>
                               <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                           </Link>
                       ))}

@@ -85,14 +85,14 @@ function Kusama({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Highlight</Heading>
             <Text>Coming soon</Text>
-            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' />
+            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
             <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
               {posts &&
                 posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
-                <CardComponent {...post} />                       
+                <CardComponent {...post} key={post.id}/>                       
               )}
             </SimpleGrid>
           </GridItem>
