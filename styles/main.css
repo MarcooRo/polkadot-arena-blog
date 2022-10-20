@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Unbounded-Black";
+  src: url('../font/Unbounded-Black.woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Unbounded-Bold";
+  src: url('../font/Unbounded-Bold.woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Unbounded-Medium";
+  src: url('../font/Unbounded-Medium.woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Unbounded-Regular";
+  src: url('../font/Unbounded-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Unbounded-Light";
+  src: url('../font/Unbounded-Light.woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Unbounded-ExtraLight";
+  src: url('../font/Unbounded-ExtraLight.woff2');
+  font-weight: 200;
+  font-style: normal;
+}
