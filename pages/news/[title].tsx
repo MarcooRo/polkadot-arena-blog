@@ -1,7 +1,5 @@
 import type { InferGetStaticPropsType, NextPage } from 'next'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import ipfsContect from '../../components/setting'
-import styles from '../../styles/Post.module.css'
 import {
   Box,
   SimpleGrid,
@@ -21,13 +19,7 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
 import { title } from 'process';
-import { ReactElement, JSXElementConstructor, ReactFragment, useState } from 'react';
-import React from 'react'
-import ReactDom from 'react-dom'
-import ReactMarkdown from 'react-markdown';
-var urlCate = '../category/'
-
-const [state, setstate] = useState([] as any[]);
+import SingleComponent from '../../components/SinglePost';
 
 export async function getStaticPaths() {
   return {
@@ -76,13 +68,12 @@ export async function getStaticProps(context: { params: any; }) {
   }
 }
 
+function Post(this: any, { posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+    let router = useRouter()
 
-
-function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
-  let router = useRouter()
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
+    if (router.isFallback) {
+      return <div>Loading...</div>
+    }
 
     return(
       <>
@@ -97,39 +88,7 @@ function Post({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           <script async src="https://platform.twitter.com/widgets.js" />
           </Head>
           <Nav />
-          {posts.downvotesCount <= 3 &&
-          <article className={styles.article}>
-              <Center mt={10}>
-                  <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
-                      <Box h={'350px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-                          <Image
-                          boxSize='870px'
-                          h={'350px'}
-                          objectFit='cover'
-                          src={ipfsContect.ipfsURL+posts.image}
-                          layout={'fill'}
-                          alt='image'
-                          />
-                      </Box>
-                      <HStack px={{base: 1, md: 6}}>
-                      {posts.tagsOriginal.split(",").map((tag: any) => (
-                          <Link href={urlCate+tag} key={posts.id}>
-                              <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
-                          </Link>
-                      ))}
-                      </HStack>
-                      <Stack px={{base: 1, md: 6}} py={{base: 4, md: 0}}>
-                          <header>
-                              <Heading as='h1'>{posts.title}</Heading>
-                          </header>
-                          <section>
-                            <ReactMarkdown>{posts.body}</ReactMarkdown>
-                          </section>
-                      </Stack>
-                  </Box>
-              </Center>
-          </article>
-          }
+          <SingleComponent  {...this.posts}/>    
           <Footer />
       </>
   )
