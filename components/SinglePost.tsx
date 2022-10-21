@@ -19,7 +19,7 @@ import styles from '../styles/Post.module.css'
 var urlCate = '../category/'
 
 export interface ITcard {
-    posts: IntrinsicAttributes & ITcard;
+    posts: ITcard;
     id: string;
     createdAtTime:number;
     image: string;
