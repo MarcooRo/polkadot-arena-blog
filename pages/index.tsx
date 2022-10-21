@@ -118,6 +118,8 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
+            <Heading as='h2' fontSize='l' pb={6}>Coming soon</Heading>
+            <Text w='75%'>From Wag Media and Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sapiente voluptate nesciunt voluptates debitis dolores officia vitae, repellendus, quos ullam eaque facilis temporibus! Molestiae laboriosam a aut suscipit modi. Voluptates.</Text>
           </GridItem>
           <GridItem colSpan={{base: 6, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>

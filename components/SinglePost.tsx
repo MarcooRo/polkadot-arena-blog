@@ -16,6 +16,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import ReactMarkdown from 'react-markdown';
 import styles from '../styles/Post.module.css'
+import GoBack from './GoBack';
 var urlCate = '../category/'
 
 export interface ITcard {
@@ -38,6 +39,9 @@ const SingleComponent: React.FC<ITcard> = props => {
           <article className={styles.article}>
               <Center mt={10}>
                   <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
+                        <Box h={'70px'} mt={-6} mx={-6}>
+                            <GoBack />
+                        </Box>
                       <Box h={'400px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image
                           src={ipfsContect.ipfsURL+props.posts.image}

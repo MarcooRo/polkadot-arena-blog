@@ -21,6 +21,9 @@ export default function Sidebar(){
         <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
             <Projects />
         </Box>
+        <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
+            <AdvSidebar />
+        </Box>
         </>
     )
 }
