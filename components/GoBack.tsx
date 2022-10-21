@@ -2,10 +2,11 @@ import { ArrowBackIcon } from '@chakra-ui/icons'
 import { Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-export default function goBack() {
+export default function GoBack() {
   const router = useRouter()
 
-  return <Link
+  return (
+  <Link
     _hover={{
       textDecoration: 'none'
     }}>
@@ -13,4 +14,5 @@ export default function goBack() {
       <a><ArrowBackIcon w={6} /> Torna indietro</a>
     </span>
   </Link>
+  )
 }
