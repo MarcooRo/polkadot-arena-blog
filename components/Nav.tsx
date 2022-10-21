@@ -2,23 +2,16 @@ import { ReactNode } from 'react';
 import {
   Box,
   Flex,
-  Avatar,
   Link,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
-  Center,
   IconButton,
   HStack,
+  Image,
 } from '@chakra-ui/react';
-import Image from 'next/image'
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'about']
