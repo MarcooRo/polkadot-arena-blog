@@ -1,4 +1,4 @@
-import type { InferGetStaticPropsType, NextPage } from 'next'
+import type { GetServerSideProps, GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import {
   Box,
@@ -19,20 +19,12 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
 import { title } from 'process';
-import SingleComponent from '../../components/SinglePost';
+import SingleComponent, { ITcard } from '../../components/SinglePost';
 
-export async function getStaticPaths() {
-  return {
-    paths: [{ params: { title } }],
-    fallback: true,
-  }
-}
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const id = query.id
+  console.log('id', id)
 
-export async function getStaticProps(context: { params: any; }) {
-  const { params } = context
-  const idpost = params.title
-  let output = idpost.split(('&')).pop()
-  let id = output.replace(/\D/g, "")
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
@@ -68,7 +60,7 @@ export async function getStaticProps(context: { params: any; }) {
   }
 }
 
-function Post(this: any, { posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+const Post: React.FC<ITcard> = props => {
     let router = useRouter()
 
     if (router.isFallback) {
@@ -88,7 +80,7 @@ function Post(this: any, { posts }: InferGetStaticPropsType<typeof getStaticProp
           <script async src="https://platform.twitter.com/widgets.js" />
           </Head>
           <Nav />
-          <SingleComponent  {...this.posts}/>    
+            <SingleComponent {...props}/>                     
           <Footer />
       </>
   )

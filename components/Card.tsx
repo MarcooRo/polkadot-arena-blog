@@ -25,11 +25,10 @@ export interface ITcard {
 
 const CardComponent: React.FC<ITcard> = props => {
     let linkname = props.title
-    //let titleURL = "/news/"+linkname+"&id="+props.id
     if(linkname != undefined){
-        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"&id="+props.id
+        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id
     } else {
-        var titleURL = "/news/"+linkname+"&id="+props.id
+        var titleURL = "/news/"+linkname+"?id="+props.id
     }
     return(
         <Box boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'} id={props.id}>
@@ -37,15 +36,15 @@ const CardComponent: React.FC<ITcard> = props => {
                 <Link key={titleURL} as={titleURL} href={titleURL}>
                     <a>
                     <Image
-                    src={ipfsContect.ipfsURL+props.image}
+                    src={ipfsContect.ipfsURL+props?.image}
                     layout={'fill'}
-                    alt={props.title}
+                    alt={props?.title}
                     />
                     </a>
                 </Link>
             </Box>
             <HStack mb={3} spacing={1}>
-                {props.tagsOriginal.split(",").slice(-2).map((tag) => (
+                {props?.tagsOriginal.split(",").slice(-2).map((tag) => (
                     <Link href={`/category/${tag}`} key={tag}>
                         <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                     </Link>
@@ -55,12 +54,12 @@ const CardComponent: React.FC<ITcard> = props => {
                 <Link key={titleURL} as={titleURL} href={titleURL}>
                     <a>
                     <Heading as='h3' fontSize='xl'>
-                        {props.title}
+                        {props?.title}
                     </Heading>
                     </a>
                 </Link>
                 {<Text>
-                    {props.summary.substring(0,150)}
+                    {props?.summary.substring(0,150)}
                 </Text>}
             </Stack>
         </Box>

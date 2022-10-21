@@ -26,7 +26,8 @@ export interface ITcard {
     downvotesCount: number;
     summary: string;
     tagsOriginal: string;
-    body: string
+    body: string;
+    canonical: string;
 }
 
 const SingleComponent: React.FC<ITcard> = props => {
