@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 }
 
-const Post: React.FC<ITcard> = props => {
+const Post: React.FC<ITcard> = (props) => {
     let router = useRouter()
 
     if (router.isFallback) {
