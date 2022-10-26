@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Nav from '../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import CardComponent, { ITcard } from '../components/Card';
+import CardComponent, { ITcard } from '../components/CardBlog';
 import { useRouter } from 'next/router';
 
 export interface post {

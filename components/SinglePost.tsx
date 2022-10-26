@@ -11,7 +11,7 @@ import {
   Tag,
   HStack,
 } from '@chakra-ui/react';
-import ipfsContect from './setting';
+import ipfsContect from './ipfsURL';
 import React from 'react'
 import ReactDom from 'react-dom'
 import ReactMarkdown from 'react-markdown';

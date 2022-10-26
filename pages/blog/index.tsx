@@ -1,13 +1,12 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Nav from '../../components/Nav'
 import { Box, Grid, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import Sidebar from '../../components/Sidebar';
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
-import CardComponent, { ITcard } from '../../components/CardNews'
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import CardComponent, { ITcard } from '../../components/CardBlog'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
-import {OnlyPersonal} from '../../components/Space';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -18,36 +17,35 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { data } = await client.query({
     query: gql`
     query MyQuery {
-      spaces(where: ${OnlyPersonal()}) {
-        posts(where: {kind_eq: RegularPost}) {
-          title
-          summary
-          canonical
-          image
-          downvotesCount
-          tagsOriginal
-          createdAtTime
-          ownedByAccount {
-            profileSpace {
-              name
-              image
-            }
+      posts(where: {space: {id_eq: "7218"}}) {
+        id
+        createdAtTime
+        image
+        title
+        downvotesCount
+        summary
+        tagsOriginal
+        ownedByAccount {
+          id
+          profileSpace {
+            name
           }
         }
       }
-    }    
+    }
     `
   });
 
   return {
     props: {
-      spaces: data.spaces
+      posts: data.posts
     }
   }
 
 }
 
-function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
+function AllPost({ posts }: InferGetStaticPropsType<typeof getStaticProps>){
+  let router = useRouter()
   return (
     <>
       <Head>
@@ -59,7 +57,7 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
 
       <SimpleGrid px={30} py={20}>
           <Box>
-            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Articoli di Polkadot Arena</Heading>
+            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Dal blog di Polkadto</Heading>
               <Box pt={3}>
                 <Text>
                   Qui trovi tutte le news in ordine cronologico, contenuti in italiano ma anche in inglese.
@@ -76,13 +74,11 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
         <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
             <Box p={4}>
-                <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>               
-                  {spaces.map((element:any, index: string | number) => {
-                      return spaces[index].posts.map((post:JSX.IntrinsicAttributes & ITcard) => 
-                      <CardComponent {...post} key={post.id}/>
-                      // console.log(post)
-                    )}
-                  )}
+                <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                  {posts &&
+                  posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+                  <CardComponent {...post} key={post.id}/>                       
+                )}
                 </SimpleGrid>
             </Box>
         </GridItem>

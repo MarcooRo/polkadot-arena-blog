@@ -8,7 +8,8 @@ import Nav from '../components/Nav'
 import {Twitter, TwitterWM} from '../components/Twitter'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
-import CardComponent, { ITcard } from '../components/Card'
+import CardComponent, { ITcard } from '../components/CardNews'
+import { WMitalia, OnlyPersonal } from '../components/Space'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -16,10 +17,32 @@ export const getStaticProps: GetStaticProps = async (context) => {
     cache: new InMemoryCache()
   });
 
-  const { data } = await client.query({
+  const { data: wmitalia } = await client.query({
     query: gql`
     query MyQuery {
-      posts(where: {space: {id_eq: "7218"}}) {
+      posts(where: {space: ${WMitalia()}}) {
+        id
+        createdAtTime
+        image
+        title
+        downvotesCount
+        summary
+        tagsOriginal
+        ownedByAccount {
+          id
+          profileSpace {
+            name
+          }
+        }
+      }
+    }
+    `
+  });
+
+  const { data: onlyPersonal } = await client.query({
+    query: gql`
+    query MyQuery {
+      posts(where: {space: ${OnlyPersonal()}}) {
         id
         createdAtTime
         image
@@ -40,12 +63,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      posts: data.posts
+      wmitalia: wmitalia.posts,
+      onlyPersonal: onlyPersonal.posts
     }
   }
 }
 
-function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
   let router = useRouter()
 
     if (router.isFallback) {
@@ -91,10 +115,10 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
 
           <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Gli ultimi post</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>Dal team di Polkador Arena</Heading>
             <Box p={4}>
                 <SimpleGrid columns={{base: 1, md: 2}} spacing={6}>
-                    {posts.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
+                    {props.onlyPersonal.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
                       <CardComponent {...post} key={post.id}/>                       
                     )}
                 </SimpleGrid>
@@ -103,7 +127,7 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
               <Button colorScheme='teal' variant='solid'>
                 <Link href="/news">
                   <a>
-                  <h2>Leggi tutti gli articoli</h2>
+                  <h2>Tutti gli articoli</h2>
                   </a>
                 </Link>
               </Button>
@@ -117,17 +141,30 @@ function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
         </Grid>
 
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
-          <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Coming soon</Heading>
-            <Text w='75%'>From Wag Media and Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sapiente voluptate nesciunt voluptates debitis dolores officia vitae, repellendus, quos ullam eaque facilis temporibus! Molestiae laboriosam a aut suscipit modi. Voluptates.</Text>
+          <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
+            <Heading as='h2' fontSize='l' pb={6}>Dal blog di Polkadot tradotto in italiano</Heading>
+              <Box p={4}>
+                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                      {props.wmitalia.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
+                        <CardComponent {...post} key={post.id}/>                       
+                      )}
+                  </SimpleGrid>
+              </Box>
+              <Center py={6}>
+                <Button colorScheme='teal' variant='solid'>
+                  <Link href="/blog">
+                    <a>
+                    <h2>Tutti gli articoli del blog</h2>
+                    </a>
+                  </Link>
+                </Button>
+              </Center>
           </GridItem>
-          <GridItem colSpan={{base: 6, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
+          <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
               <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
-          </GridItem>
-          <GridItem colSpan={{base: 6, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
-            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
+              <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
         </Grid>
 

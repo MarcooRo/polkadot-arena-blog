@@ -11,7 +11,7 @@ import {
   Tag,
   HStack,
 } from '@chakra-ui/react';
-import ipfsContect from './setting';
+import ipfsContect from './ipfsURL';
 
 export interface ITcard {
     id: string;
@@ -26,9 +26,9 @@ export interface ITcard {
 const CardComponent: React.FC<ITcard> = props => {
     let linkname = props.title
     if(linkname != undefined){
-        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id
+        var titleURL = "/blog/"+linkname.replaceAll(' ', '-')+"?id="+props.id
     } else {
-        var titleURL = "/news/"+linkname+"?id="+props.id
+        var titleURL = "/blog/"+linkname+"?id="+props.id
     }
     return(
         <Box boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'} id={props.id}>
