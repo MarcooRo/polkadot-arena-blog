@@ -27,6 +27,11 @@ export interface ITcard {
             image: string
         }
     }
+    space:{
+        id: string
+        name: string
+        image: string
+    }
 }
 
 
@@ -34,9 +39,9 @@ const CardComponent: React.FC<ITcard> = props => {
     const date = new Date(props?.createdAtTime);
     let linkname = props.title
     if(linkname != undefined){
-        var titleURL = "/blog/"+linkname.replaceAll(' ', '-')+"?id="+props.id
+        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id
     } else {
-        var titleURL = "/blog/"+linkname+"?id="+props.id
+        var titleURL = "/news/"+linkname+"?id="+props.id
     }
     return(
         <Box boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'} id={props.id}>
@@ -53,7 +58,7 @@ const CardComponent: React.FC<ITcard> = props => {
             </Box>
             <HStack mb={3} spacing={1}>
                 {props?.tagsOriginal.split(",").slice(-2).map((tag) => (
-                    <Link href={`/category/${tag}`} key={tag}>
+                    <Link href={`/categoria/${tag}`} key={tag}>
                         <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                     </Link>
                 ))}
@@ -71,11 +76,9 @@ const CardComponent: React.FC<ITcard> = props => {
                 </Text>}
             </Stack>
             <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-                <Avatar
-                    src={ipfsContect.ipfsURL+props.ownedByAccount.profileSpace?.image}
-                />
+                {props.space.id == '7218' ? <Avatar src={ipfsContect.ipfsURL+props.space?.image}/> : <Avatar src={ipfsContect.ipfsURL+props.ownedByAccount.profileSpace?.image}/>}
                 <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                    {<Text fontWeight={600}>{props.ownedByAccount.profileSpace?.name}</Text>}
+                    {props.space.id == '7218' ? <Text>WagMedia Italia</Text> : <Text fontWeight={600}>{props.ownedByAccount.profileSpace?.name}</Text>}
                     <Text color={'gray.500'}>{date.toLocaleDateString()}</Text>
                 </Stack>
             </Stack>

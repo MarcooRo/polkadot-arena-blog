@@ -6,13 +6,13 @@ export default function GoBack() {
   const router = useRouter()
 
   return (
-  <Link
-    _hover={{
-      textDecoration: 'none'
-    }}>
-    <span onClick={() => router.back()}>
-      <a><ArrowBackIcon w={6} /> Torna indietro</a>
-    </span>
-  </Link>
+    <>
+      <Link
+        _hover={{
+          textDecoration: 'none'
+        }}>
+          <a onClick={() => router.back()}>Torna indietro</a>
+      </Link>
+    </>
   )
 }

@@ -9,7 +9,7 @@ import {Twitter, TwitterWM} from '../components/Twitter'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
-import { WMitalia, OnlyPersonal } from '../components/Space'
+import { WMitalia, OnlyPersonal, SpaceData } from '../components/Space'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -21,19 +21,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query: gql`
     query MyQuery {
       posts(where: {space: ${WMitalia()}}) {
-        id
-        createdAtTime
-        image
-        title
-        downvotesCount
-        summary
-        tagsOriginal
-        ownedByAccount {
-          id
-          profileSpace {
-            name
-          }
-        }
+        ${SpaceData()}
       }
     }
     `
@@ -43,19 +31,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query: gql`
     query MyQuery {
       posts(where: {space: ${OnlyPersonal()}}) {
-        id
-        createdAtTime
-        image
-        title
-        downvotesCount
-        summary
-        tagsOriginal
-        ownedByAccount {
-          id
-          profileSpace {
-            name
-          }
-        }
+        ${SpaceData()}
       }
     }
     `

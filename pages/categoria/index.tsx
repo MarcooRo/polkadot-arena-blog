@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../../components/CardNews'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
-import {OnlyPersonal, SpaceData} from '../../components/Space';
+import {AllSapces, OnlyPersonal, SpaceData} from '../../components/Space';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { data } = await client.query({
     query: gql`
     query MyQuery {
-      spaces(where: ${OnlyPersonal()}) {
+      spaces(where: ${AllSapces()}) {
         posts(where: {kind_eq: RegularPost}) {
           ${SpaceData()}
         }
@@ -47,7 +47,7 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
 
       <SimpleGrid px={30} py={20}>
           <Box>
-            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Articoli di Polkadot Arena</Heading>
+            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Articoli tutti gli articoli</Heading>
               <Box pt={3}>
                 <Text>
                   Qui trovi tutte le news in ordine cronologico, contenuti in italiano ma anche in inglese.

@@ -16,8 +16,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import ReactMarkdown from 'react-markdown';
 import styles from '../styles/Post.module.css'
-import GoBack from './GoBack';
-var urlCate = '../category/'
+import router from 'next/router';
+var urlCate = '../categoria/'
 
 export interface ITcard {
     posts: ITcard;
@@ -40,16 +40,18 @@ const SingleComponent: React.FC<ITcard> = props => {
               <Center mt={10}>
                   <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
                         <Box h={'70px'} mt={-6} mx={-6}>
-                            <GoBack />
+                            <Link href={'#'}>
+                                <a onClick={() => router.back()}>Torna indietro</a>
+                            </Link>
                         </Box>
-                      <Box h={'400px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+                      <Box h={'450px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image
                           src={ipfsContect.ipfsURL+props.posts.image}
                           layout={'fill'}
                           alt='image'
                           />
                       </Box>
-                      <HStack px={{base: 1, md: 6}}>
+                      <HStack p={{base: 1, md: 6}}>
                       {props.posts.tagsOriginal.split(",").map((tag: any) => (
                           <Link href={urlCate+tag} key={props.posts.id}>
                               <a><Tag size='sm' variant='solid'>{tag}</Tag></a>

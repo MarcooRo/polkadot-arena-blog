@@ -1,22 +1,15 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Nav from '../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../components/CardBlog';
 import { useRouter } from 'next/router';
+import { AllSapces, SpaceData } from '../components/Space';
+import { getStaticProps } from '.';
 
-export interface post {
-  id: string;
-  createdAtTime:number;
-  image: string;
-  title: string;
-  downvotesCount: number;
-  summary: string;
-  tagsOriginal: string;
-}
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
-export async function getStaticProps(context: { params: any; }) {
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
@@ -25,20 +18,8 @@ export async function getStaticProps(context: { params: any; }) {
   const { data } = await client.query({
     query: gql`
       query MyQuery {
-        posts(where: {tagsOriginal_contains: "Kusama", AND: {space: {id_eq: "7218"}}}) {
-          id
-          createdAtTime
-          image
-          title
-          downvotesCount
-          summary
-          tagsOriginal
-          ownedByAccount {
-            id
-            profileSpace {
-              name
-            }
-          }
+        posts(where: {tagsOriginal_contains: "Kusama", AND: {space: ${AllSapces()}}}) {
+          ${SpaceData()}    
         }
       }
     `
@@ -51,13 +32,13 @@ export async function getStaticProps(context: { params: any; }) {
   }
 }
 
-function Kusama({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
   let router = useRouter()
 
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
   return (
     <div>
       <Head>
@@ -98,16 +79,16 @@ function Kusama({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
-            <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-              {posts &&
-                (posts as post[]).map((post: JSX.IntrinsicAttributes & ITcard) => 
-                <CardComponent {...post} key={post.id}/>                       
-              )}
-            </SimpleGrid>
+          <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+            {posts &&
+              posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+              <CardComponent {...post} key={post.id}/>                       
+            )}
+          </SimpleGrid>
           </GridItem>
         </Grid>
     </div>
   )
 }
 
-export default Kusama
+export default Page

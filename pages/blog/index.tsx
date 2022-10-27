@@ -7,6 +7,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../../components/CardBlog'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
+import { SpaceData } from '../../components/Space';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -18,19 +19,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query: gql`
     query MyQuery {
       posts(where: {space: {id_eq: "7218"}}) {
-        id
-        createdAtTime
-        image
-        title
-        downvotesCount
-        summary
-        tagsOriginal
-        ownedByAccount {
-          id
-          profileSpace {
-            name
-          }
-        }
+        ${SpaceData()}
       }
     }
     `

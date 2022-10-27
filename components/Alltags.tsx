@@ -9,7 +9,7 @@ export function ParachainPolkadot() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri le parachain di Polkadot</Heading>
             {parachainListP.map((parachain) => (
-                <Link href={`/parachain-polkadot/${parachain}`} key={parachain}>
+                <Link href={`/categoria/${parachain}`} key={parachain}>
                     <a><Tag size='md' m={1} key={parachain} variant='solid' colorScheme='teal'>
                         {parachain}
                     </Tag></a>
@@ -28,7 +28,7 @@ export function ParachainKusama() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri le parachain di Kusama</Heading>
             {parachainListK.map((parachain) => (
-                <Link href={`/parachain-kusama/${parachain}`} key={parachain}>
+                <Link href={`/categoria/${parachain}`} key={parachain}>
                     <a><Tag size='md' m={1} key={parachain} variant='solid' colorScheme='teal'>
                         {parachain}
                     </Tag></a>
@@ -45,7 +45,7 @@ export function Projects() {
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Scopri i progetti del mondo Dotasama</Heading>
             {projects.map((project) => (
-                <Link href={`/project/${project}`} key={project}>
+                <Link href={`/categoria/${project}`} key={project}>
                     <a><Tag size='md' m={1} key={project} variant='solid' colorScheme='teal'>
                         {project}
                     </Tag></a>
@@ -55,14 +55,14 @@ export function Projects() {
     )
 }
 
-const collectionsTag = ['XCVM', 'governance', 'Parachain', 'Action', 'Cross-chain', 'Consenso', 'Staking', 'Base', 'Grandpa', 'Crowdloans'] 
+const collectionsTag = ['XCVM', 'DeFi', 'Parachain', 'NFT', 'Cross-chain', 'Consenso', 'Staking', 'Base', 'Grandpa', 'Crowdloans'] 
 
 export function CollectionsTag() {
     return (
         <div>
             <Heading as='h2' fontSize='l' pb={6}>Raccolte di articoli</Heading>
             {collectionsTag.map((tag) => (
-                <Link href={`/category/${tag}`} key={tag}>
+                <Link href={`/categoria/${tag}`} key={tag}>
                     <a>
                     <Tag size='md' m={1} key={tag} variant='solid' colorScheme='teal'>
                         {tag}
