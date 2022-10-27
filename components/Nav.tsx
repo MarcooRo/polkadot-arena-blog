@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
-const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'area dev', 'about']
+const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'area-dev', 'about']
 let url = '../';
 
 const NavLink = ({ children }: { children: ReactNode }) => (
