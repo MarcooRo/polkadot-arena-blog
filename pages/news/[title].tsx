@@ -6,10 +6,11 @@ import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
 import SingleComponent, { ITcard } from '../../components/SinglePost';
 import { ArticleData } from '../../components/Space';
+import SEO from '../../components/SEO';
+import ipfsContect from '../../components/ipfsURL';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const id = query.id
-  console.log('id', id)
 
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
@@ -43,14 +44,17 @@ const Post: React.FC<ITcard> = (props) => {
     return(
       <>
           <Head>
-          <title>Polkadot Arena blog</title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-          <meta itemProp="name" content='Polkadot Arena blog' />
-          <meta itemProp="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-          <meta itemProp="image" content='' />
-          <script async src="https://platform.twitter.com/widgets.js" />
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <title>{props.posts.title}</title>
+            <meta name="description" content={props.posts.summary} />
+            <meta itemProp="name" content={props.posts.title} />
+            <meta itemProp="description" content={props.posts.summary} />
+            <meta itemProp="image" content={ipfsContect.ipfsURL+props.posts.image} />
+            <meta property="og:title" content={props.posts.title} />
+            <meta property="og:type" content="website" />
+            {/* <meta property="og:url" content="" /> */}
+            <meta property="og:image" content={ipfsContect.ipfsURL+props.posts.image} />
           </Head>
           <Nav />
             <SingleComponent {...props}/>                     

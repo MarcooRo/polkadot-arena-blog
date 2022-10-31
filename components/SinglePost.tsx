@@ -10,6 +10,9 @@ import {
   useColorModeValue,
   Tag,
   HStack,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from '@chakra-ui/react';
 import ipfsContect from './ipfsURL';
 import React from 'react'
@@ -17,6 +20,7 @@ import ReactDom from 'react-dom'
 import ReactMarkdown from 'react-markdown';
 import styles from '../styles/Post.module.css'
 import router from 'next/router';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 var urlCate = '../categoria/'
 
 export interface ITcard {
@@ -40,9 +44,13 @@ const SingleComponent: React.FC<ITcard> = props => {
               <Center mt={10}>
                   <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
                         <Box h={'70px'} mt={-6} mx={-6}>
-                            <Link href={'#'}>
-                                <a onClick={() => router.back()}>Torna indietro</a>
-                            </Link>
+                            <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href='#' onClick={() => router.back()}>
+                                        Torna indietro
+                                    </BreadcrumbLink>
+                                </BreadcrumbItem>
+                            </Breadcrumb>
                         </Box>
                       <Box h={'450px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image

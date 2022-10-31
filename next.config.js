@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ['gateway.ipfs.io'],
   },
+  i18n: {
+    locales: ["it-IT"],
+    defaultLocale: "it-IT"
+  },
 }
 
 module.exports = nextConfig

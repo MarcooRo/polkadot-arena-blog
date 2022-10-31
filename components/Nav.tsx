@@ -11,28 +11,40 @@ import {
   IconButton,
   HStack,
   Image,
+  Tooltip,
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
-const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'area-dev', 'about']
+//const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'area-dev', 'about']
 let url = '../';
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={3}
-    py={1}
-    rounded={'md'}
-    style={{
-      textTransform: 'capitalize'
-    }}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={url+children}>
-    {children}
-  </Link>
-);
+const Links = [
+  { name: 'News', url:'news', status: '' },
+  { name: 'Polkadot', url:'polkadot', status: '',},
+  { name: 'Kusama', url:'kusama', status: ''},
+  // { name: 'DeFi', url:'DeFi', status: ''},
+  // { name: 'NFT', url:'NFT', status: ''},
+  // { name: 'Area Dev', url:'area-dev', status: ''},
+  { name: 'About', url:'about', status: ''},
+];
+
+// const NavLink = ({ children }: { children: ReactNode }) => (
+//   <Link
+//     px={3}
+//     py={1}
+//     rounded={'md'}
+//     style={{
+//       textTransform: 'capitalize'
+//     }}
+//     _hover={{
+//       textDecoration: 'none',
+//       bg: useColorModeValue('gray.200', 'gray.700'),
+//     }}
+    
+//     href={url+children}>
+//     {children}
+//   </Link>
+// );
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -59,8 +71,50 @@ export default function Nav() {
               spacing={0}
               display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                  <Link
+                      px={3}
+                      py={1}
+                      rounded={'md'}
+                      key={link.name}
+                      style={{
+                          textTransform: 'capitalize',
+                      }}
+                      _hover={{
+                        textDecoration: 'none',
+                        bg: 'gray.700'
+                      }}
+                      href={url+link.url}
+                  >
+                    {link.name}
+                  </Link>
               ))}
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  DeFi
+                  </Tooltip>
+              </Link>
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  NFT
+                  </Tooltip>
+              </Link>
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  Area Dev
+                  </Tooltip>
+              </Link>
             </HStack>
           </HStack>
 
@@ -76,9 +130,51 @@ export default function Nav() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={5}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+            {Links.map((link) => (
+                  <Link
+                      px={3}
+                      py={1}
+                      rounded={'md'}
+                      key={link.name}
+                      style={{
+                          textTransform: 'capitalize',
+                      }}
+                      _hover={{
+                        textDecoration: 'none',
+                        bg: 'gray.700',
+                      }}
+                      href={url+link.url}
+                  >
+                    {link.name}
+                  </Link>
               ))}
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  DeFi
+                  </Tooltip>
+              </Link>
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  NFT
+                  </Tooltip>
+              </Link>
+              <Link 
+                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
+                style={{textTransform: 'capitalize'}}
+                _hover={{textDecoration: 'none'}}
+                href='#'>
+                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
+                  Area Dev
+                  </Tooltip>
+              </Link>
             </Stack>
           </Box>
         ) : null}

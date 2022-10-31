@@ -8,6 +8,7 @@ import CardComponent, { ITcard } from '../../components/CardNews'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
 import {OnlyPersonal, SpaceData} from '../../components/Space';
+import Footer from '../../components/Footer';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -53,7 +54,7 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
                   Qui trovi tutte le news in ordine cronologico, contenuti in italiano ma anche in inglese.
                 </Text>
                 <Text>
-                  Se sei interessanto ad un tops in particolare controlla la sidebare, sicuramente troverei quello che cerchi
+                  Se sei interessanto ad un argomento in particolare controlla la sidebare, sicuramente troverei quello che cerchi
                 </Text>
               </Box>
           </Box>
@@ -79,7 +80,7 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
         </GridItem>
         
       </Grid>
-
+      <Footer />
     </>
   )
 }

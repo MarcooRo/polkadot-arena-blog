@@ -64,11 +64,10 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
         <title>Polkadot Arena blog</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
+        <meta name="description" content='Polkadto Arena: dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
         <meta itemProp="name" content='Polkadot Arena blog' />
-        <meta itemProp="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
+        <meta itemProp="description" content='Polkadto Arena:  dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
         <meta itemProp="image" content='' />
-        <script async src="https://platform.twitter.com/widgets.js" />
       </Head>
       <Nav />
       <main>
@@ -92,7 +91,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
           <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Dal team di Polkador Arena</Heading>
-            <Box p={4}>
+            <Box>
                 <SimpleGrid columns={{base: 1, md: 2}} spacing={6}>
                     {props.onlyPersonal.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
                       <CardComponent {...post} key={post.id}/>                       
@@ -139,7 +138,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
               <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
-            <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
+            <Heading as='h2' fontSize='l' py={6}>Spotlight on</Heading>
               <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
         </Grid>

@@ -1,7 +1,7 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Nav from '../components/Nav'
-import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image } from '@chakra-ui/react'
+import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image, Divider } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../components/CardBlog';
 import { useRouter } from 'next/router';
@@ -63,8 +63,15 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
         >
           <GridItem colSpan={{base: 12, md: 3}} rowSpan={{base: 1, md: 2}} borderTop='1px' borderColor='gray.200' pt={6}>
               <Box pb={6}>
-                <Heading as='h2' fontSize='l' pb={6}>Link Ufficiali</Heading>
-                <Text>Coming soon</Text>            
+                <Heading as='h2' fontSize='l' pb={6}>Progetti DeFi su Polkadot e Kusama</Heading>
+                <Text fontWeight='bold'>Name</Text>
+                <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus facilis accusamus corporis saepe a.</Text>           
+                  <Divider orientation='horizontal' my={6}/>
+                <Text fontWeight='bold'>Name</Text>
+                <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus facilis accusamus corporis saepe a.</Text>   
+                  <Divider orientation='horizontal' my={6}/>
+                <Text fontWeight='bold'>Name</Text>
+                <Text>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus facilis accusamus corporis saepe a.</Text>   
               </Box>
           </GridItem>
           <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
@@ -74,7 +81,6 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
           </GridItem>
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Highlight</Heading>
-            <Text>Coming soon</Text>
             <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>

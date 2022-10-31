@@ -49,6 +49,7 @@ export function ArticleData(){
         title
         tagsOriginal
         body
+        summary
         ownedByAccount {
           profileSpace {
             name

@@ -63,7 +63,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
         >
           <GridItem colSpan={{base: 12, md: 3}} rowSpan={{base: 1, md: 2}} borderTop='1px' borderColor='gray.200' pt={6}>
               <Box pb={6}>
-                <Heading as='h2' fontSize='l' pb={6}>Link Ufficiali</Heading>
+                <Heading as='h2' fontSize='l' pb={6}>Progetti NFT in Dotsama</Heading>
                 <Text>Coming soon</Text>            
               </Box>
           </GridItem>
@@ -74,7 +74,6 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
           </GridItem>
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Highlight</Heading>
-            <Text>Coming soon</Text>
             <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>

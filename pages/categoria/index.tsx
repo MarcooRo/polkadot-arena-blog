@@ -8,6 +8,7 @@ import CardComponent, { ITcard } from '../../components/CardNews'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
 import {AllSapces, OnlyPersonal, SpaceData} from '../../components/Space';
+import Footer from '../../components/Footer';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -79,7 +80,7 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
         </GridItem>
         
       </Grid>
-
+      <Footer />
     </>
   )
 }

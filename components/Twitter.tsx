@@ -10,7 +10,7 @@ export function Twitter(){
         }}
         options={{
             height: '1550',
-            theme: 'dark',        
+            theme: 'dark', 
         }}
     />
     )
@@ -25,6 +25,35 @@ export function TwitterWM(){
         }}
         options={{
             height: '1100',
+            theme: 'dark',        
+        }}
+    />
+    )
+}
+
+export function TwitterPolkadot(){
+    return(
+        <Timeline
+        dataSource={{
+            sourceType: 'profile',
+            screenName: 'Polkadot'
+        }}
+        options={{
+            height: '2500',
+            theme: 'dark',        
+        }}
+    />
+    )
+}
+export function TwitterKusama(){
+    return(
+        <Timeline
+        dataSource={{
+            sourceType: 'profile',
+            screenName: 'kusamanetwork'
+        }}
+        options={{
+            height: '2500',
             theme: 'dark',        
         }}
     />

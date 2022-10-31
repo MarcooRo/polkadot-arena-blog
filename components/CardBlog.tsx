@@ -86,4 +86,3 @@ const CardComponent: React.FC<ITcard> = props => {
 }
 
 export default CardComponent;
-
