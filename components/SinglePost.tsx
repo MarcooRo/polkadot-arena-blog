@@ -37,6 +37,9 @@ export interface ITcard {
 }
 
 const SingleComponent: React.FC<ITcard> = props => {
+    const overflowA = {
+        overflow:'auto'
+    }
     return(
         <>
         {props.posts.downvotesCount <= 3 &&
@@ -52,19 +55,19 @@ const SingleComponent: React.FC<ITcard> = props => {
                                 </BreadcrumbItem>
                             </Breadcrumb>
                         </Box>
-                      <Box h={'450px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+                      <Box h={{base: '230px', md: '450px'}} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image
                           src={ipfsContect.ipfsURL+props.posts.image}
                           layout={'fill'}
                           alt='image'
                           />
                       </Box>
-                      <HStack p={{base: 1, md: 6}}>
-                      {props.posts.tagsOriginal.split(",").map((tag: any) => (
-                          <Link href={urlCate+tag} key={props.posts.id}>
-                              <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
-                          </Link>
-                      ))}
+                      <HStack p={{base: 1, md: 6}} sx={overflowA}>
+                        {props.posts.tagsOriginal.split(",").map((tag: any) => (
+                            <Link href={urlCate+tag} key={props.posts.id}>
+                                <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
+                            </Link>
+                        ))}
                       </HStack>
                       <Stack px={{base: 1, md: 6}} py={{base: 4, md: 0}}>
                           <header>

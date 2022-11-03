@@ -1,15 +1,14 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 import { Box, Button, Center, Grid, GridItem, Heading, HStack, SimpleGrid, Tag, Text, Image } from '@chakra-ui/react'
 import Nav from '../components/Nav'
 import {Twitter, TwitterWM} from '../components/Twitter'
-import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
 import { WMitalia, OnlyPersonal, SpaceData } from '../components/Space'
+import HeadSEO from '../components/HeadSEOPage'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -20,7 +19,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { data: wmitalia } = await client.query({
     query: gql`
     query MyQuery {
-      posts(where: {space: ${WMitalia()}}) {
+      posts(where: {space: ${WMitalia()}, hidden_eq: false}) {
         ${SpaceData()}
       }
     }
@@ -30,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { data: onlyPersonal } = await client.query({
     query: gql`
     query MyQuery {
-      posts(where: {space: ${OnlyPersonal()}}) {
+      posts(where: {space: ${OnlyPersonal()}, hidden_eq: false}) {
         ${SpaceData()}
       }
     }
@@ -60,15 +59,11 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <>
-      <Head>
-        <title>Polkadot Arena blog</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content='Polkadto Arena: dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-        <meta itemProp="name" content='Polkadot Arena blog' />
-        <meta itemProp="description" content='Polkadto Arena:  dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-        <meta itemProp="image" content='' />
-      </Head>
+      <HeadSEO 
+        titlePage={'Polkadot Arena, benvenuti!'} 
+        imagePage={'orizzontale.png'} 
+        summaryPage={'Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni'} 
+      />
       <Nav />
       <main>
         <SimpleGrid px={30} py={20}>
@@ -159,7 +154,6 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
         </Grid>
       </main>
-      <Footer />
     </>
   )
 }

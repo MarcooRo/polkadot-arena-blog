@@ -38,12 +38,12 @@ export function ParachainKusama() {
     )
 }
 
-const projects = ['Remark', 'Squid', 'DPS', 'Neon Crisis', 'YoudleDAO', 'GitArch']
+const projects = ['RMRK', 'Squid', 'DPS', 'Neon Crisis', 'YoudleDAO', 'GitArch']
 
 export function Projects() {
     return (
         <div>
-            <Heading as='h2' fontSize='l' pb={6}>Scopri i progetti del mondo Dotasama</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>Scopri i progetti del mondo Dotsama</Heading>
             {projects.map((project) => (
                 <Link href={`/categoria/${project}`} key={project}>
                     <a><Tag size='md' m={1} key={project} variant='solid' colorScheme='teal'>
@@ -55,7 +55,7 @@ export function Projects() {
     )
 }
 
-const collectionsTag = ['XCVM', 'DeFi', 'Parachain', 'NFT', 'Cross-chain', 'Consenso', 'Staking', 'Base', 'Grandpa', 'Crowdloans'] 
+const collectionsTag = ['XCVM', 'DeFi', 'Parachain', 'NFT', 'Cross-chain', 'Consenso', 'Staking', 'Dotsama', 'Substrate', 'Liquid Staking', 'Governance', 'DEX', 'Parachain'] 
 
 export function CollectionsTag() {
     return (

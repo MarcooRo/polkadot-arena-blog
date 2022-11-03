@@ -1,11 +1,10 @@
 import type { GetServerSideProps} from 'next'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import Head from 'next/head'
 import Nav from '../../components/Nav'
-import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
 import SingleComponent, { ITcard } from '../../components/SinglePost';
 import { ArticleData } from '../../components/Space';
+import HeadSEOArticle from '../../components/HeadSEOArticle';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const id = query.id
@@ -42,19 +41,9 @@ const Post: React.FC<ITcard> = (props) => {
 
     return(
       <>
-          <Head>
-          <title>Polkadot Arena blog</title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-          <meta itemProp="name" content='Polkadot Arena blog' />
-          <meta itemProp="description" content='dal mondo Polkadot e Kusama in italiano: News, aggiornamenti, alpha, rumors e traduzioni' />
-          <meta itemProp="image" content='' />
-          <script async src="https://platform.twitter.com/widgets.js" />
-          </Head>
-          <Nav />
-            <SingleComponent {...props}/>                     
-          <Footer />
+        <HeadSEOArticle {...props} />
+        <Nav />
+        <SingleComponent {...props}/>                     
       </>
   )
 }

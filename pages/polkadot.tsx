@@ -1,5 +1,4 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
 import Nav from '../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image, ListItem, UnorderedList } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
@@ -8,7 +7,7 @@ import { useRouter } from 'next/router';
 import { AllSapces, SpaceData } from '../components/Space';
 import { getStaticProps } from '.';
 import { TwitterPolkadot } from '../components/Twitter';
-import Footer from '../components/Footer';
+import HeadSEO from '../components/HeadSEOPage';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
@@ -20,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await client.query({
     query: gql`
       query MyQuery {
-        posts(where: {tagsOriginal_contains: "Polkadot", AND: {space: ${AllSapces()}}}) {
+        posts(where: {tagsOriginal_contains: "Polkadot", AND: {space: ${AllSapces()}}, hidden_eq: false}) {
           ${SpaceData()}    
         }
       }
@@ -43,13 +42,13 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
   }
   return (
     <>
-      <Head>
-        <title>Polkadot Network</title>
-        <meta name="description" content="Polkadot consentirà un Web completamente decentralizzato in cui gli utenti hanno il controllo. " />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadSEO 
+        imagePage={'orizzontale.png'} 
+        titlePage={'Polkadot'} 
+        summaryPage={'Polkadot consentirà un Web completamente decentralizzato in cui gli utenti hanno il controllo. Polkadot è costruito per connettere private and consortium chains, networks pubbliche e senza permissionless, oracles e tecnologie future che devono ancora essere create. '} 
+      />
       <Nav />
-
+      <main>
       <SimpleGrid px={30} py={20}>
           <Box>
             <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Polkadot</Heading>
@@ -106,7 +105,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
 
 
         </Grid>
-        <Footer />
+      </main>
     </>
   )
 }

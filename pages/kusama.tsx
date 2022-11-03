@@ -1,5 +1,4 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
 import Nav from '../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image, ListItem, UnorderedList } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
@@ -7,8 +6,8 @@ import CardComponent, { ITcard } from '../components/CardBlog';
 import { useRouter } from 'next/router';
 import { AllSapces, SpaceData } from '../components/Space';
 import { getStaticProps } from '.';
-import { TwitterKusama, TwitterPolkadot } from '../components/Twitter';
-import Footer from '../components/Footer';
+import { TwitterKusama } from '../components/Twitter';
+import HeadSEO from '../components/HeadSEOPage';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
@@ -20,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await client.query({
     query: gql`
       query MyQuery {
-        posts(where: {tagsOriginal_contains: "Kusama", AND: {space: ${AllSapces()}}}) {
+        posts(where: {tagsOriginal_contains: "Kusama", AND: {space: ${AllSapces()}}, hidden_eq: false}) {
           ${SpaceData()}    
         }
       }
@@ -43,14 +42,14 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
   }
   return (
     <>
-      <Head>
-        <title>Kusama Network</title>
-        <meta name="description" content="Kusama è canary network di Polkadot; una versione di Polkadot che è disponibile per prima e ha un valore economico reale. Per gli sviluppatori, Kusama è un banco di prova per aggiornamenti di runtime, on-chain governance e parachain." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadSEO 
+        imagePage={'orizzontale.png'} 
+        titlePage={'Kusama'} 
+        summaryPage={'Kusama è canary network di Polkadot; una versione di Polkadot che è disponibile per prima e ha un valore economico reale. Per gli sviluppatori, Kusama è un banco di prova per aggiornamenti di runtime, on-chain governance e parachain.'} 
+      />
       <Nav />
-
-      <SimpleGrid px={30} py={20}>
+      <main>
+        <SimpleGrid px={30} py={20}>
           <Box>
             <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Kusama</Heading>
             <Text>Page in working in progres</Text>
@@ -103,7 +102,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
 
 
         </Grid>
-        <Footer />
+      </main>
     </>
   )
 }
