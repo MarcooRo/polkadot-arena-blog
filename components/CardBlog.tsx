@@ -56,7 +56,7 @@ const CardComponent: React.FC<ITcard> = props => {
                 </Link>
             </Box>
             <HStack mb={3} spacing={1}>
-                {props?.tagsOriginal.split(",").slice(-2).map((tag) => (
+                {props?.tagsOriginal.split(",").reverse().slice(-2).map((tag) => (
                     <Link href={`/categoria/${tag}`} key={tag}>
                         <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                     </Link>

@@ -5,7 +5,7 @@ import Script from 'next/script'
 
 let sito = 'https://polkadot-arena-blog.vercel.app'
 let logo = 'https://polkadot-arena-blog.vercel.app/orizzontale.png'
-
+let favicon = 'https://polkadot-arena-blog.vercel.app/favicon.ico'
 
 export interface SeoTag {
     imagePage: string;
@@ -43,7 +43,7 @@ const HeadSEO: React.FC<SeoTag> = props => {
 
             {/*General tags */}
             <title>{props.titlePage}</title>
-            <link rel='shortcut icon' type='image/ico' href='/favicon.ico' />
+            <link rel="icon" type="image/x-icon" href={favicon} />
             <meta name="author" content="Polkadot Arena" />
             <meta name="description" content={props.summaryPage} />
             <meta name="robots" content="index, follow" />
