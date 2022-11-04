@@ -34,7 +34,7 @@ export interface ITcard {
     }
 }
 
-const CardComponent: React.FC<ITcard> = props => {
+const CardComponentBlog: React.FC<ITcard> = props => {
     const date = new Date(props?.createdAtTime);
     let linkname = props.title
     if(linkname != undefined){
@@ -85,4 +85,4 @@ const CardComponent: React.FC<ITcard> = props => {
   )
 }
 
-export default CardComponent;
+export default CardComponentBlog;

@@ -7,7 +7,6 @@ import Sidebar from '../../components/Sidebar';
 import { useRouter } from 'next/router'
 import { AllSapces, SpaceData } from '../../components/Space';
 import { getStaticProps } from '..'
-import Footer from '../../components/Footer'
 import HeadSEO from '../../components/HeadSEOPage'
 
 
@@ -21,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await client.query({
     query: gql`
       query MyQuery {
-        posts(where: {tagsOriginal_contains: "${id}", AND: {space: ${AllSapces()}}, hidden_eq: false}) {
+        posts(where: {tagsOriginal_contains: "${id}", AND: {space: ${AllSapces()}}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
           ${SpaceData()}    
         }
       }

@@ -1,6 +1,7 @@
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem } from '@chakra-ui/react'
 import { AdvSidebar } from './Adv'
 import { CollectionsTag, ParachainPolkadot, ParachainKusama, Projects } from './Alltags'
+import { SpotlightHome1, TWInEvidenza } from './Twitter'
 
 
 export default function Sidebar(){
@@ -10,7 +11,8 @@ export default function Sidebar(){
             <CollectionsTag />
         </Box>
         <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
-            <AdvSidebar />
+            <Heading as='h2' fontSize='l' pb={6}>Twitter in evidenza</Heading> 
+            {TWInEvidenza()}
         </Box>
         <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
             <ParachainPolkadot />
@@ -18,9 +20,9 @@ export default function Sidebar(){
         <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
             <ParachainKusama />
         </Box>
-        <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
+        {/* <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
             <Projects />
-        </Box>
+        </Box> */}
         <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
             <AdvSidebar />
         </Box>

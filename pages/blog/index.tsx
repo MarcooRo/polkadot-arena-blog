@@ -1,14 +1,14 @@
 import type { InferGetStaticPropsType, NextPage } from 'next'
-import Head from 'next/head'
 import Nav from '../../components/Nav'
 import { Box, Grid, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import Sidebar from '../../components/Sidebar';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import CardComponent, { ITcard } from '../../components/CardBlog'
+import { ITcard } from '../../components/CardBlog'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
-import { SpaceData } from '../../components/Space';
+import { ShowWMitalia } from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage';
+import CardComponentBlog from '../../components/CardBlog';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -18,11 +18,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const { data } = await client.query({
     query: gql`
-    query MyQuery {
-      posts(where: {space: {id_eq: "7218"}}) {
-        ${SpaceData()}
-      }
-    }
+      ${ShowWMitalia()}
     `
   });
 
@@ -67,7 +63,7 @@ function AllPost({ posts }: InferGetStaticPropsType<typeof getStaticProps>){
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
                     {posts &&
                     posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
-                    <CardComponent {...post} key={post.id}/>                       
+                    <CardComponentBlog {...post} key={post.id}/>                       
                   )}
                   </SimpleGrid>
               </Box>

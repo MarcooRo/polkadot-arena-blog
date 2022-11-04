@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query: gql`
     query MyQuery {
       spaces(where: ${AllSapces()}) {
-        posts(where: {kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        posts(where: {kind_eq: RegularPost, , hidden_eq: false}, orderBy: createdAtTime_DESC) {
           ${SpaceData()}
         }
       }

@@ -1,5 +1,5 @@
 import { border } from '@chakra-ui/react'
-import { Timeline } from 'react-twitter-widgets'
+import { Timeline, Tweet } from 'react-twitter-widgets'
 
 export function Twitter(){
     return(
@@ -9,7 +9,7 @@ export function Twitter(){
             screenName: 'PolkadotArena'
         }}
         options={{
-            height: '1550',
+            height: '1600',
             theme: 'dark', 
         }}
     />
@@ -24,7 +24,7 @@ export function TwitterWM(){
             screenName: 'thatMediaWag'
         }}
         options={{
-            height: '1100',
+            height: '1200',
             theme: 'dark',        
         }}
     />
@@ -57,5 +57,28 @@ export function TwitterKusama(){
             theme: 'dark',        
         }}
     />
+    )
+}
+
+export function TWInEvidenza(){
+    return(
+        <Tweet 
+        tweetId="1587383243610914816" 
+        options={{
+            theme: 'dark',
+            height: '350',        
+        }}
+        />
+    )
+}
+export function SpotlightHome1(){
+    return(
+        <Tweet 
+        tweetId="1585522557876330499" 
+        options={{
+            theme: 'dark',
+            height: '350',        
+        }}
+        />
     )
 }

@@ -4,7 +4,7 @@ import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image, ListItem, Unorde
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../components/CardBlog';
 import { useRouter } from 'next/router';
-import { AllSapces, SpaceData } from '../components/Space';
+import { ShowPolkadotFeed } from '../components/Space';
 import { getStaticProps } from '.';
 import { TwitterPolkadot } from '../components/Twitter';
 import HeadSEO from '../components/HeadSEOPage';
@@ -18,11 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const { data } = await client.query({
     query: gql`
-      query MyQuery {
-        posts(where: {tagsOriginal_contains: "Polkadot", AND: {space: ${AllSapces()}}, hidden_eq: false}) {
-          ${SpaceData()}    
-        }
-      }
+      ${ShowPolkadotFeed()}
     `
   });
 

@@ -5,7 +5,7 @@ import Sidebar from '../../components/Sidebar';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../../components/CardNews'
 import { GetStaticProps } from 'next'
-import {OnlyPersonal, SpaceData} from '../../components/Space';
+import {ShowOnlyPersonal, SpaceData} from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -16,19 +16,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const { data } = await client.query({
     query: gql`
-    query MyQuery {
-      spaces(where: ${OnlyPersonal()}) {
-        posts(where: {kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
-          ${SpaceData()}
-        }
-      }
-    }    
+      ${ShowOnlyPersonal()}   
     `
   });
 
   return {
     props: {
-      spaces: data.spaces
+      spaces: data.posts
     }
   }
 
@@ -63,13 +57,18 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
               <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
               <Box p={4}>
-                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>               
+                  {/* <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>               
                     {spaces.map((element:any, index: string | number) => {
                         return spaces[index].posts.map((post:JSX.IntrinsicAttributes & ITcard) => 
                         <CardComponent {...post} key={post.id}/>
                       )}
                     )}
-                  </SimpleGrid>
+                  </SimpleGrid> */}
+                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                    {spaces.map((post: JSX.IntrinsicAttributes & ITcard) => 
+                      <CardComponent {...post} key={post.id}/>                       
+                  )}
+                </SimpleGrid>
               </Box>
           </GridItem>
 

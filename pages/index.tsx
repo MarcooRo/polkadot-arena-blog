@@ -4,11 +4,12 @@ import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 import { Box, Button, Center, Grid, GridItem, Heading, HStack, SimpleGrid, Tag, Text, Image } from '@chakra-ui/react'
 import Nav from '../components/Nav'
-import {Twitter, TwitterWM} from '../components/Twitter'
+import {SpotlightHome1, Twitter, TwitterWM} from '../components/Twitter'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
-import { WMitalia, OnlyPersonal, SpaceData } from '../components/Space'
+import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia } from '../components/Space'
 import HeadSEO from '../components/HeadSEOPage'
+import CardComponentBlog from '../components/CardBlog'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -18,28 +19,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const { data: wmitalia } = await client.query({
     query: gql`
-    query MyQuery {
-      posts(where: {space: ${WMitalia()}, hidden_eq: false}) {
-        ${SpaceData()}
-      }
-    }
+      ${ShowWMitalia()}
     `
   });
 
   const { data: onlyPersonal } = await client.query({
     query: gql`
-    query MyQuery {
-      posts(where: {space: ${OnlyPersonal()}, hidden_eq: false}) {
-        ${SpaceData()}
-      }
-    }
+      ${ShowOnlyPersonal()}
+    `
+  });
+
+  const { data: wagmedia } = await client.query({
+    query: gql`
+      ${ShowWagMedia()}
     `
   });
 
   return {
     props: {
       wmitalia: wmitalia.posts,
-      onlyPersonal: onlyPersonal.posts
+      onlyPersonal: onlyPersonal.posts,
+      wagMedia: wagmedia.posts
     }
   }
 }
@@ -88,7 +88,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
             <Heading as='h2' fontSize='l' pb={6}>Dal team di Polkador Arena</Heading>
             <Box>
                 <SimpleGrid columns={{base: 1, md: 2}} spacing={6}>
-                    {props.onlyPersonal.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
+                    {props.onlyPersonal.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
                       <CardComponent {...post} key={post.id}/>                       
                     )}
                 </SimpleGrid>
@@ -113,10 +113,10 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Dal blog di Polkadot tradotto in italiano</Heading>
-              <Box p={4}>
+              <Box>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                      {props.wmitalia.slice(-6).reverse().map((post: JSX.IntrinsicAttributes & ITcard) => 
-                        <CardComponent {...post} key={post.id}/>                       
+                      {props.wmitalia.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
+                        <CardComponentBlog {...post} key={post.id}/>                       
                       )}
                   </SimpleGrid>
               </Box>
@@ -132,7 +132,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
-              <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
+              {SpotlightHome1()}
             <Heading as='h2' fontSize='l' py={6}>Spotlight on</Heading>
               <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
@@ -141,11 +141,18 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Box mb={6}>
-            <Heading as='h4'>English content</Heading>
-            <Text w='75%'>From Wag Media and Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sapiente voluptate nesciunt voluptates debitis dolores officia vitae, repellendus, quos ullam eaque facilis temporibus! Molestiae laboriosam a aut suscipit modi. Voluptates.</Text>
+            <Heading as='h2' mb={6}>English content</Heading>
+            <Heading as='h3' fontSize='xl' mb={3}>WagMedia Weekly News</Heading>
+            <Text>News you need to know to stay on top of significant DotSama developments. Courtesy of WagMedia and Polka Häus</Text>
+            <Box pt={6}>
+                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                      {props.wagMedia.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
+                        <CardComponent {...post} key={post.id}/>                       
+                      )}
+                  </SimpleGrid>
+              </Box>
           </Box>
-            <Heading as='h2' fontSize='l' pb={6}>From Youtube</Heading>
-            <Text>Coming soon</Text>
+
           </GridItem>
           
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6} display={{base: 'none', md: 'inline-block' }}>
@@ -160,3 +167,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
 
 export default Home
+function ShowAllSpace(): any {
+  throw new Error('Function not implemented.')
+}
+
