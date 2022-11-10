@@ -4,7 +4,6 @@ import { useColorModeValue, Box } from "@chakra-ui/react";
 import Link from "next/link";
 const Links = [
     { name: 'Twitter', url: 'https://twitter.com/PolkadotArena', icon: '<FaTwitter />' },
-    { name: 'Telegram', url: '#', icon: '<FaTwitter />' },
     { name: 'SubSocial', url: 'https://app.subsocial.network/7218', icon: '<FaTwitter />' },
   ];
 

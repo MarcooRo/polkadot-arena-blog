@@ -2,14 +2,14 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
-import { Box, Button, Center, Grid, GridItem, Heading, HStack, SimpleGrid, Tag, Text, Image } from '@chakra-ui/react'
+import { Box, Button, Center, Grid, GridItem, Heading, HStack, SimpleGrid, Tag, Text, Image, useColorModeValue, } from '@chakra-ui/react'
 import Nav from '../components/Nav'
 import {SpotlightHome1, Twitter, TwitterWM} from '../components/Twitter'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
-import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia } from '../components/Space'
+import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome } from '../components/Space'
 import HeadSEO from '../components/HeadSEOPage'
-import CardComponentBlog from '../components/CardBlog'
+import { CollectionsTag } from '../components/Alltags'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -35,11 +35,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `
   });
 
+  const { data:highPost } = await client.query({
+    query: gql`
+      ${HighPostHome()}
+    `
+  })
+
   return {
     props: {
       wmitalia: wmitalia.posts,
       onlyPersonal: onlyPersonal.posts,
-      wagMedia: wagmedia.posts
+      wagMedia: wagmedia.posts,
+      highPostHome: highPost.postById
     }
   }
 }
@@ -96,15 +103,20 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
             <Center py={6}>
               <Button colorScheme='teal' variant='solid'>
                 <Link href="/news">
-                  <a>
-                  <h2>Tutti gli articoli</h2>
-                  </a>
+                  <a>Tutti gli articoli</a>
                 </Link>
               </Button>
             </Center>
           </GridItem>
 
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
+            <Box pb={6}>
+              <CollectionsTag />
+            </Box>
+            <Box borderTop='1px' borderColor='gray.200' p={6} bg={useColorModeValue('gray.100', 'gray.900')}>
+              <Heading as='h2' fontSize='l' pb={6}>In evidenza</Heading> 
+              <CardComponent {...props.highPostHome} key={props.highPostHome.id}/>
+            </Box>
             <Sidebar />
           </GridItem>
 
@@ -112,20 +124,18 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Dal blog di Polkadot tradotto in italiano</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>Le traduzioni di WagMedia Italia</Heading>
               <Box>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
                       {props.wmitalia.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
-                        <CardComponentBlog {...post} key={post.id}/>                       
+                        <CardComponent {...post} key={post.id}/>                       
                       )}
                   </SimpleGrid>
               </Box>
               <Center py={6}>
                 <Button colorScheme='teal' variant='solid'>
-                  <Link href="/blog">
-                    <a>
-                    <h2>Tutti gli articoli del blog</h2>
-                    </a>
+                  <Link href="/news">
+                    <a>Tutti gli articoli del blog</a>
                   </Link>
                 </Button>
               </Center>
@@ -167,7 +177,4 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
 
 export default Home
-function ShowAllSpace(): any {
-  throw new Error('Function not implemented.')
-}
 

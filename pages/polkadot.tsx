@@ -2,7 +2,7 @@ import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Nav from '../components/Nav'
 import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image, ListItem, UnorderedList } from '@chakra-ui/react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import CardComponent, { ITcard } from '../components/CardBlog';
+import CardComponent, { ITcard } from '../components/CardNews';
 import { useRouter } from 'next/router';
 import { ShowPolkadotFeed } from '../components/Space';
 import { getStaticProps } from '.';

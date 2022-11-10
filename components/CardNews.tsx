@@ -51,6 +51,7 @@ const CardComponent: React.FC<ITcard> = props => {
                     <Image
                     src={ipfsContect.ipfsURL+props?.image}
                     layout={'fill'}
+                    objectFit="cover"
                     alt={props?.title}
                     />
                     </a>

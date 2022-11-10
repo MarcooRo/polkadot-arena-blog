@@ -8,15 +8,28 @@ export default function Footer(){
                 <Grid templateColumns='repeat(12, 1fr)' gap={4} py={30} borderTop='1px' borderColor='gray.200'>
                     <GridItem colSpan={{base: 12, md: 6}} p={6}>
                         <GridItem>
-                            <Heading as='h3' fontSize='xl' mb={3}>Polkadto Arena</Heading>
-                            <Text>Siamo un gruppo di Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nemo consequuntur id ipsum impedit. Consequatur ipsam corporis alias magnam modi adipisci, cumque nihil, quae aperiam, nisi repudiandae cupiditate. Numquam, consectetur!</Text>
+                            <Heading as='h3' fontSize='xl' mb={3}>Polkadot Arena</Heading>
+                            <Text>Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.</Text>
+                            <br />
+                            <Text>Il progetto è stato lanciato dei membri italiani di WM, rendendoci conto di produrre una notevole quantità di contenuti abbiamo pensato che unendo le forze e parlando con una unica voce avremmo potuto dare più risalto e poter portare un&apos;informazione più completa alla community italiana.
+                    L&apos;obbiettivo è diventare il canale d&apos;informazione più popolare in italiano. Attraverso il merito dei propri contenuti.</Text>
                         </GridItem>
                     </GridItem>
                     <GridItem colSpan={{base: 12, md: 6}} p={6}>
-                    <Heading as='h3' fontSize='xl' mb={3}>Seguici sui social</Heading>
-                        <HStack gap={6}>
-                            <SocialLink />
-                        </HStack>
+                        <Box>
+                            <Heading as='h3' fontSize='xl' mb={3}>Seguici sui social</Heading>
+                            <HStack gap={6}>
+                                <SocialLink />
+                            </HStack>
+                        </Box>
+                        <Box mt={6}>
+                            <Heading as='h3' fontSize='xl' mb={3}>For Tips</Heading>
+                            <Text>Polkadot Arena non è un progetto a scopo di lucro, tutti i creatori di contenuti e i dev lavorano per passione raccogliendo qualche tips di tanto in tanto. Se volete sostenere il nostro lavoro ve ne saremo grati!</Text>
+                            <br />
+                            <code>KSM: HtGyGQUdXmxymLTmN1x9VHxztRfTDRSo45U4SaQQKB17E8u</code>
+                            <br />
+                            <code>DOT: 16JxTHKfrx2WfeXXxJFuPgm7hv95LrAQRAyCq5HoUbz2YZQL</code>
+                        </Box>
                     </GridItem>
                 </Grid>
             </footer>

@@ -1,8 +1,32 @@
-import { Box, Center, Heading, SimpleGrid, Text, ListItem, UnorderedList } from '@chakra-ui/react'
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { Box, Heading, SimpleGrid, Text, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react'
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import HeadSEO from '../components/HeadSEOPage';
 import Nav from "../components/Nav";
+import { TeamToShow } from '../components/Space';
+import CardTeam, { ITteam } from '../components/Team';
+import { Twitter } from '../components/Twitter';
 
-export default function about(){
+export const getStaticProps: GetStaticProps = async (context) => {
+  const client = new ApolloClient({
+    uri: 'https://squid.subsquid.io/subsocial/graphql',
+    cache: new InMemoryCache()
+  });
+
+  const { data } = await client.query({
+    query: gql`
+      ${TeamToShow()}   
+    `
+  });
+
+  return {
+    props: {
+      accounts: data.accounts
+    }
+  }
+}
+
+function About({ accounts }: InferGetStaticPropsType<typeof getStaticProps>){
     return(
       <>
         <HeadSEO 
@@ -13,16 +37,16 @@ export default function about(){
         <Nav />
         <main>
           <SimpleGrid px={30} py={20}>
-            <Box borderBottom='1px' borderColor='gray.200' pb={6}>
+            <Box>
               <Heading as='h1' size='4xl'>Polkadot Arena</Heading>
                 <Box pt={3}>
                   <Text>Working Progress</Text>
                 </Box>
             </Box>
           </SimpleGrid>
-          <SimpleGrid>
+          <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+            <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
             <article>
-              <Center mb={10}>
                 <Box maxW={{base: '100%', md: '870px'}} p={6}>
 
                   <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
@@ -68,10 +92,25 @@ export default function about(){
                     Siete i ben venuti! 
                   </Text>          
                 </Box>
-              </Center>
             </article>
-          </SimpleGrid>
+
+            </GridItem>
+            <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
+              <Twitter />
+            </GridItem>
+          </Grid>
+
+          <Box borderTop='1px' borderColor='gray.200' p={30}>
+            <Heading as='h2' fontSize='xl' pb={6}>Il team</Heading>
+            <SimpleGrid columns={{base: 1, md: 4}} spacing={6}>
+              {accounts.map((profile: JSX.IntrinsicAttributes & ITteam) => 
+                <CardTeam {...profile} key={profile.profileSpace?.id}/>                       
+              )}
+            </SimpleGrid>
+          </Box>
         </main>
       </>
     )
 }
+
+export default About

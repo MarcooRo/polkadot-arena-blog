@@ -5,8 +5,10 @@ import Sidebar from '../../components/Sidebar';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../../components/CardNews'
 import { GetStaticProps } from 'next'
-import {ShowOnlyPersonal, SpaceData} from '../../components/Space';
+import {ShowOnlyPersonal, SpaceData, ShowAllSapces, HighPostHome} from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage';
+import { CollectionsTag } from '../../components/Alltags';
+import { Twitter } from '../../components/Twitter';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = new ApolloClient({
@@ -14,21 +16,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
     cache: new InMemoryCache()
   });
 
-  const { data } = await client.query({
+  const { data:spaces } = await client.query({
     query: gql`
-      ${ShowOnlyPersonal()}   
+      ${ShowAllSapces()}   
     `
   });
 
+  const { data:highPost } = await client.query({
+    query: gql`
+      ${HighPostHome()}
+    `
+  })
+
   return {
     props: {
-      spaces: data.posts
+      spaces: spaces.posts,
+      highPostHome: highPost.postById
     }
   }
 
 }
 
-function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
+function AllPost(props: InferGetStaticPropsType<typeof getStaticProps>){
   return (
     <>
       <HeadSEO 
@@ -57,15 +66,8 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
               <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
               <Box p={4}>
-                  {/* <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>               
-                    {spaces.map((element:any, index: string | number) => {
-                        return spaces[index].posts.map((post:JSX.IntrinsicAttributes & ITcard) => 
-                        <CardComponent {...post} key={post.id}/>
-                      )}
-                    )}
-                  </SimpleGrid> */}
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                    {spaces.map((post: JSX.IntrinsicAttributes & ITcard) => 
+                    {props.spaces.map((post: JSX.IntrinsicAttributes & ITcard) => 
                       <CardComponent {...post} key={post.id}/>                       
                   )}
                 </SimpleGrid>
@@ -73,7 +75,15 @@ function AllPost({ spaces }: InferGetStaticPropsType<typeof getStaticProps>){
           </GridItem>
 
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
-              <Sidebar />
+            <Box pb={6}>
+                  <CollectionsTag />
+              </Box>
+              <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
+                <Heading as='h2' fontSize='l' pb={6}>In evidenza</Heading> 
+                <CardComponent {...props.highPostHome} key={props.highPostHome?.id}/>
+            </Box>
+            <Sidebar />
+            <Twitter />
           </GridItem>
           
         </Grid>

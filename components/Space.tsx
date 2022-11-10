@@ -1,12 +1,27 @@
-// 6943 MarcoRo
-// 7183 Yamne
-// 10173 Manne
-// 7222 Paull
-// 8488 Mark889
-// ZeroxSapo
-// 7250 capgallico
-// 7218 WM Italia
-// 6111 WM weeky recap
+// MarcoRo
+//    6943
+//    3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d
+// Yamne
+//    7183
+//    3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs
+// Manne
+//    10173
+//    3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK
+// Paull
+//    7222
+//    3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj
+// Mark889
+//    8488
+//    3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F
+// ZeroxSapo 
+//    3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ
+// capgallico
+//    3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq
+//    7250
+// WM Italia
+//    7218
+// WM weeky recap
+//    6111
 
 export function SpaceData(){
   return(
@@ -73,6 +88,18 @@ export function WagMedia() {
       '{id_eq: "6111"}'
   )
 }
+export function HighPost1(){
+  return(
+    'id: "36310"'
+  )
+}
+
+export function TeamList(){
+  return(
+    '{id_eq: "3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d", OR: {id_eq: "3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ", OR: {id_eq: "3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F", OR: {id_eq: "3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj", OR: {id_eq: "3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK", OR: {id_eq: "", OR: {id_eq: "3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs", OR: {id_eq: "3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq"}}}}}}}}, orderBy: id_ASC'
+    )
+}
+
 
 
 export function ShowWMitalia(){
@@ -125,6 +152,33 @@ export function ShowKusamaFeed(){
     `query MyQuery {
       posts(where: {tagsOriginal_contains: "Kusama", AND: {space: ${AllSapces()}}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
         ${SpaceData()}    
+      }
+    }`
+  )
+}
+
+export function TeamToShow(){
+  return(
+    `query MyQuery {
+      accounts(where: ${TeamList()}) {
+        profileSpace {
+          id
+          about
+          image
+          name
+          email
+          linksOriginal
+        }
+      }
+    }`
+  )
+}
+
+export function HighPostHome(){
+  return(
+    `query MyQuery {
+      postById(${HighPost1()}) {
+        ${SpaceData()}
       }
     }`
   )
