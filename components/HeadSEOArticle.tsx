@@ -44,8 +44,7 @@ const HeadSEO: React.FC<SeoTag> = props => {
             <meta property="og:image" content={sito+props.posts.image} />
             <meta property="og:url" content={sito+router.asPath} />
 
-            {/* Google stuff and Analityc */}
-            {/* <meta name="google-site-verification" content="=" /> */}
+            <meta name="google-site-verification" content="#" />
 
             {/* Schema Org */}
             <script type="application/ld+json">

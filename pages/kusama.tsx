@@ -5,7 +5,6 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../components/CardNews';
 import { useRouter } from 'next/router';
 import { ShowKusamaFeed } from '../components/Space';
-import { getStaticProps } from '.';
 import { TwitterKusama } from '../components/Twitter';
 import HeadSEO from '../components/HeadSEOPage';
 
@@ -30,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 }
 
 
-function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
+function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
   let router = useRouter()
 
   if (router.isFallback) {
@@ -39,7 +38,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
   return (
     <>
       <HeadSEO 
-        imagePage={'orizzontale.png'} 
+        imagePage={'poster.png'} 
         titlePage={'Kusama'} 
         summaryPage={'Kusama è canary network di Polkadot; una versione di Polkadot che è disponibile per prima e ha un valore economico reale. Per gli sviluppatori, Kusama è un banco di prova per aggiornamenti di runtime, on-chain governance e parachain.'} 
       />
@@ -86,7 +85,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
             <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
             <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
               {posts &&
-                posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+                (posts as ITcard[]).map((post) => 
                 <CardComponent {...post} key={post.id}/>                       
               )}
             </SimpleGrid>

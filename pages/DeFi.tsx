@@ -5,7 +5,6 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import CardComponent, { ITcard } from '../components/CardNews';
 import { useRouter } from 'next/router';
 import { AllSapces, SpaceData } from '../components/Space';
-import { getStaticProps } from '.';
 import HeadSEO from '../components/HeadSEOPage';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -33,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 }
 
 
-function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
+function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
   let router = useRouter()
 
   if (router.isFallback) {
@@ -87,7 +86,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
           <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
           <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
             {posts &&
-              posts.map((post: JSX.IntrinsicAttributes & ITcard) => 
+              (posts as ITcard[]).map((post) => 
               <CardComponent {...post} key={post.id}/>                       
             )}
           </SimpleGrid>

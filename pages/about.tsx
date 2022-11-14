@@ -1,13 +1,13 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { Box, Heading, SimpleGrid, Text, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react'
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import HeadSEO from '../components/HeadSEOPage';
 import Nav from "../components/Nav";
 import { TeamToShow } from '../components/Space';
 import CardTeam, { ITteam } from '../components/Team';
 import { Twitter } from '../components/Twitter';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
@@ -26,11 +26,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-function About({ accounts }: InferGetStaticPropsType<typeof getStaticProps>){
+function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>){
     return(
       <>
         <HeadSEO 
-          imagePage={'orizzontale.png'} 
+          imagePage={'poster.png'} 
           titlePage={'Polkadot Arena'} 
           summaryPage={'Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.'} 
         />
@@ -39,17 +39,12 @@ function About({ accounts }: InferGetStaticPropsType<typeof getStaticProps>){
           <SimpleGrid px={30} py={20}>
             <Box>
               <Heading as='h1' size='4xl'>Polkadot Arena</Heading>
-                <Box pt={3}>
-                  <Text>Working Progress</Text>
-                </Box>
             </Box>
           </SimpleGrid>
-          <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
-            <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
+          <Grid templateColumns='repeat(12, 1fr)' gap={20} p={30}>
+            <GridItem colSpan={{base: 12, md: 8}} borderTop='1px' borderColor='gray.200' p={6}>
             <article>
-                <Box maxW={{base: '100%', md: '870px'}} p={6}>
-
-                  <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
+              <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
                   <Text>
                     Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo. 
                   </Text>
@@ -91,19 +86,26 @@ function About({ accounts }: InferGetStaticPropsType<typeof getStaticProps>){
                     <br />
                     Siete i ben venuti! 
                   </Text>          
-                </Box>
             </article>
 
             </GridItem>
-            <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
-              <Twitter />
+            <GridItem colSpan={{base: 12, md: 4}} borderTop='1px' borderColor='gray.200' p={6}>
+              <article>
+              <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
+              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di Subsocial, parachain di Kusama.</Text>
+              <br />
+              <Text>Quello che facciamo, in fase di lettura, è leggere i dati grazie alle chiamate <b>GraphQl di Subquery</b>. SubQuery è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
+              <br />
+              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul web3. Di questa cosa andiamo particolarmente fieri!</Text>
+              </article>
             </GridItem>
           </Grid>
 
           <Box borderTop='1px' borderColor='gray.200' p={30}>
             <Heading as='h2' fontSize='xl' pb={6}>Il team</Heading>
             <SimpleGrid columns={{base: 1, md: 4}} spacing={6}>
-              {accounts.map((profile: JSX.IntrinsicAttributes & ITteam) => 
+              {accounts &&
+              (accounts as ITteam[]).map((profile) => 
                 <CardTeam {...profile} key={profile.profileSpace?.id}/>                       
               )}
             </SimpleGrid>

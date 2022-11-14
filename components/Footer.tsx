@@ -1,4 +1,5 @@
 import {Grid, GridItem, Heading, Text, Box, HStack } from "@chakra-ui/react";
+import Script from "next/script";
 import SocialLink from "./SocialLink";
 
 export default function Footer(){
@@ -33,6 +34,19 @@ export default function Footer(){
                     </GridItem>
                 </Grid>
             </footer>
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-JX4B732Y5X"></Script>
+            <script
+                dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-JX4B732Y5X', {
+                page_path: window.location.pathname,
+                });
+            `,
+            }}
+            />
         </>
     )
 }

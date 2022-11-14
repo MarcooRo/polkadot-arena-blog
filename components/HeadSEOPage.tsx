@@ -1,7 +1,6 @@
 import Head from "next/head"
 import ipfsContect from "./ipfsURL";
 import { useRouter } from 'next/router'
-import Script from 'next/script'
 
 let sito = 'https://polkadot-arena-blog.vercel.app'
 let logo = 'https://polkadot-arena-blog.vercel.app/orizzontale.png'
@@ -59,8 +58,7 @@ const HeadSEO: React.FC<SeoTag> = props => {
             <meta property="og:image" content={sito+props.imagePage} />
             <meta property="og:url" content={sito+router.asPath} />
 
-            {/* Google stuff and Analityc */}
-            {/* <meta name="google-site-verification" content="=" /> */}
+            <meta name="google-site-verification" content="#" />
 
             {/* Schema Org */}
             <script type="application/ld+json">

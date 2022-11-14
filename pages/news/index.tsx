@@ -1,16 +1,15 @@
-import type { InferGetStaticPropsType } from 'next'
+import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Nav from '../../components/Nav'
 import { Box, Grid, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import Sidebar from '../../components/Sidebar';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../../components/CardNews'
-import { GetStaticProps } from 'next'
-import {ShowOnlyPersonal, SpaceData, ShowAllSapces, HighPostHome} from '../../components/Space';
+import { ShowAllSapces, HighPostHome} from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage';
 import { CollectionsTag } from '../../components/Alltags';
 import { Twitter } from '../../components/Twitter';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
@@ -37,12 +36,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 }
 
-function AllPost(props: InferGetStaticPropsType<typeof getStaticProps>){
+function AllPost({spaces, highPostHome}: InferGetStaticPropsType<typeof getServerSideProps>){
   return (
     <>
       <HeadSEO 
         titlePage={'Articoli di Polkadot Arena'} 
-        imagePage={'orizzontale.png'} 
+        imagePage={'poster.png'} 
         summaryPage={'Qui trovi tutte le news dal team di Polkadot Arena.'} 
       />
       <Nav />
@@ -67,9 +66,9 @@ function AllPost(props: InferGetStaticPropsType<typeof getStaticProps>){
               <Heading as='h2' fontSize='l' pb={6}>Tutte le news</Heading>
               <Box p={4}>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                    {props.spaces.map((post: JSX.IntrinsicAttributes & ITcard) => 
+                    {(spaces as ITcard[]).map((post) => 
                       <CardComponent {...post} key={post.id}/>                       
-                  )}
+                    )}
                 </SimpleGrid>
               </Box>
           </GridItem>
@@ -80,7 +79,7 @@ function AllPost(props: InferGetStaticPropsType<typeof getStaticProps>){
               </Box>
               <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
                 <Heading as='h2' fontSize='l' pb={6}>In evidenza</Heading> 
-                <CardComponent {...props.highPostHome} key={props.highPostHome?.id}/>
+                <CardComponent {...highPostHome as ITcard} key={(highPostHome as ITcard).id}/>
             </Box>
             <Sidebar />
             <Twitter />

@@ -4,7 +4,6 @@ import { SimpleGrid, Heading, Box, Text, Grid, GridItem, Image } from '@chakra-u
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { AllSapces, SpaceData } from '../components/Space';
-import { getStaticProps } from '.';
 import HeadSEO from '../components/HeadSEOPage';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -32,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 }
 
 
-function Page({ posts }: InferGetStaticPropsType<typeof getStaticProps>)  {
+function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
   let router = useRouter()
 
   if (router.isFallback) {

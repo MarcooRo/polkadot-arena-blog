@@ -1,4 +1,4 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
@@ -11,7 +11,8 @@ import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome } from '../c
 import HeadSEO from '../components/HeadSEOPage'
 import { CollectionsTag } from '../components/Alltags'
 
-export const getStaticProps: GetStaticProps = async (context) => {
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
@@ -51,7 +52,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
+
+function Home({wmitalia, onlyPersonal, wagMedia, highPostHome}: InferGetStaticPropsType<typeof getServerSideProps>) {
   let router = useRouter()
 
     if (router.isFallback) {
@@ -68,7 +70,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
     <>
       <HeadSEO 
         titlePage={'Polkadot Arena, benvenuti!'} 
-        imagePage={'orizzontale.png'} 
+        imagePage={'poster.png'} 
         summaryPage={'Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni'} 
       />
       <Nav />
@@ -92,12 +94,12 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
           </GridItem>
 
           <GridItem colSpan={{base: 12, md: 6}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Dal team di Polkador Arena</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>Le news di Polkadot in italiano</Heading>
             <Box>
                 <SimpleGrid columns={{base: 1, md: 2}} spacing={6}>
-                    {props.onlyPersonal.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
-                      <CardComponent {...post} key={post.id}/>                       
-                    )}
+                {(wmitalia as ITcard[]).slice(0, 6).map((post) => 
+                  <CardComponent {...post} key={post.id}/>                       
+                )}
                 </SimpleGrid>
             </Box>
             <Center py={6}>
@@ -115,7 +117,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
             </Box>
             <Box borderTop='1px' borderColor='gray.200' p={6} bg={useColorModeValue('gray.100', 'gray.900')}>
               <Heading as='h2' fontSize='l' pb={6}>In evidenza</Heading> 
-              <CardComponent {...props.highPostHome} key={props.highPostHome.id}/>
+              <CardComponent {...highPostHome as ITcard} key={(highPostHome as ITcard).id}/>
             </Box>
             <Sidebar />
           </GridItem>
@@ -124,12 +126,12 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
 
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Le traduzioni di WagMedia Italia</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>Dall&apos;ecosistema Dotsama</Heading>
               <Box>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                      {props.wmitalia.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
-                        <CardComponent {...post} key={post.id}/>                       
-                      )}
+                    {(onlyPersonal as ITcard[]).slice(0, 6).map((post) => 
+                      <CardComponent {...post} key={post.id}/>                       
+                    )}
                   </SimpleGrid>
               </Box>
               <Center py={6}>
@@ -156,7 +158,7 @@ function Home(props : InferGetStaticPropsType<typeof getStaticProps>) {
             <Text>News you need to know to stay on top of significant DotSama developments. Courtesy of WagMedia and Polka Häus</Text>
             <Box pt={6}>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                      {props.wagMedia.slice(0, 6).map((post: JSX.IntrinsicAttributes & ITcard) => 
+                      {(wagMedia as ITcard[]).slice(0, 6).map((post) => 
                         <CardComponent {...post} key={post.id}/>                       
                       )}
                   </SimpleGrid>
