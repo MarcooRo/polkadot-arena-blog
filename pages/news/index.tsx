@@ -48,13 +48,10 @@ function AllPost({spaces, highPostHome}: InferGetStaticPropsType<typeof getServe
       <main>
         <SimpleGrid px={30} py={20}>
             <Box>
-              <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Articoli di Polkadot Arena</Heading>
+              <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Polkadot Arena Blog</Heading>
                 <Box pt={3}>
                   <Text>
-                    Qui trovi tutte le news dal team di Polkadot Arena. 
-                  </Text>
-                  <Text>
-                    Se sei interessanto ad un argomento in particolare controlla la sidebare, sicuramente troverei quello che cerchi
+                    Qui trovi tutte le news dal team di Polkadot Arena, contenuti originali, traduzioni del blog ufficiale di Polkadot, traduzioni degli articoli ufficiali dei vari progetti. 
                   </Text>
                 </Box>
             </Box>

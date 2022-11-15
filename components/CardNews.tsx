@@ -79,7 +79,7 @@ const CardComponent: React.FC<ITcard> = props => {
             <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
                 {props.space.id == '7218' ? <Avatar src={ipfsContect.ipfsURL+props.space?.image}/> : <Avatar src={ipfsContect.ipfsURL+props.ownedByAccount.profileSpace?.image}/>}
                 <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                    {props.space.id == '7218' ? <Text>WagMedia Italia</Text> : <Text fontWeight={600}>{props.ownedByAccount.profileSpace?.name}</Text>}
+                    {props.space.id == '7218' ? <Text>Polkadot Arena</Text> : <Text fontWeight={600}>{props.ownedByAccount.profileSpace?.name}</Text>}
                     <Text color={'gray.500'}>{date.toLocaleDateString()}</Text>
                 </Stack>
             </Stack>

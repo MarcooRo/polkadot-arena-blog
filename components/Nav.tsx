@@ -63,7 +63,7 @@ export default function Nav() {
           <HStack spacing={10} alignItems={'center'}>
             <Box>
               <Link href='/'>
-                <Image src='/logo.svg' alt='logo'/>
+                <Image src={useColorModeValue('/logo-bk.svg', '/logo.svg')} alt='logo'/>
               </Link>
             </Box>
             <HStack

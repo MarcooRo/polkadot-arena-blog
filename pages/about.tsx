@@ -73,10 +73,10 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                   <Heading as='h3' fontSize='l' pb={6}>Dare spazio a tutti</Heading>
                   <Text>
                     Siamo un collettivo e ci esprimiamo attraverso un brand, ma questo non vuol dire che le nostre singolarità spariranno. Anzi, daremo spazio alle individualità attraverso la pubblicazioni dei contenuti firmati dai loro autori.
-                    Nello specifico tutti i contenuti in inglese verranno solo riproposti sui canali di Polkadto Arena dai canali dei singoli autori. Questi contenuti potranno essere tradotti e veicolati successivamente come Polkado Arena.
-                    I contenti in italiano verranno in grande parte proposti come Polkadto Arena, ma possono essere riproposti dai canali personali. 
+                    Nello specifico tutti i contenuti in inglese verranno solo riproposti sui canali di Polkadot Arena dai canali dei singoli autori. Questi contenuti potranno essere tradotti e veicolati successivamente come Polkado Arena.
+                    I contenti in italiano verranno in grande parte proposti come Polkadot Arena, ma possono essere riproposti dai canali personali. 
                     <br /><br />
-                    Non vogliamo porre una regola precisa, ogni persona del collettivo può fare come preferisce, basta che contribuisca, come può e con il tempo che ha, a far crescere il canale e il brand, al fine di far conoscere l’ecosistema Polkadto e Kusama. 
+                    Non vogliamo porre una regola precisa, ogni persona del collettivo può fare come preferisce, basta che contribuisca, come può e con il tempo che ha, a far crescere il canale e il brand, al fine di far conoscere l’ecosistema Polkadot e Kusama. 
                   </Text>
                   <br />
                   <Heading as='h3' fontSize='l' pb={6}>Tutti invitati</Heading>
@@ -92,18 +92,18 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
             <GridItem colSpan={{base: 12, md: 4}} borderTop='1px' borderColor='gray.200' p={6}>
               <article>
               <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
-              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di Subsocial, parachain di Kusama.</Text>
+              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>, parachain di Kusama.</Text>
               <br />
-              <Text>Quello che facciamo, in fase di lettura, è leggere i dati grazie alle chiamate <b>GraphQl di Subquery</b>. SubQuery è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
+              <Text>Quello che facciamo, in fase di lettura, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. SubQuery è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
               <br />
-              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul web3. Di questa cosa andiamo particolarmente fieri!</Text>
+              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul web3. Di questo andiamo particolarmente fieri!</Text>
               </article>
             </GridItem>
           </Grid>
 
           <Box borderTop='1px' borderColor='gray.200' p={30}>
             <Heading as='h2' fontSize='xl' pb={6}>Il team</Heading>
-            <SimpleGrid columns={{base: 1, md: 4}} spacing={6}>
+            <SimpleGrid columns={{base: 1, md: 5}}>
               {accounts &&
               (accounts as ITteam[]).map((profile) => 
                 <CardTeam {...profile} key={profile.profileSpace?.id}/>                       

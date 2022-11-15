@@ -68,6 +68,15 @@ export function ArticleData(){
   )
 }
 
+export function SiteMap(){
+  return(
+    `id
+    createdAtTime
+    title
+    `
+  )
+}
+
 export function AllSapces() {
     return(
         '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7218", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488"}}}}}}}'
@@ -173,12 +182,20 @@ export function TeamToShow(){
     }`
   )
 }
-
 export function HighPostHome(){
   return(
     `query MyQuery {
       postById(${HighPost1()}) {
         ${SpaceData()}
+      }
+    }`
+  )
+}
+export function ShowSitemap(){
+  return(
+    `query MyQuery {
+      posts(where: {space: ${AllSapces()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        ${SiteMap()}
       }
     }`
   )

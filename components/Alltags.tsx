@@ -1,8 +1,8 @@
 import { Heading, Tag } from "@chakra-ui/react"
 import Link from "next/link"
 
-const parachainListP = ['Statemint', 'Astar', 'acala', 'MoonRiver', 'MoonBeam', 'Bifrost Polkadot', 'Centrifuge',
-'Composable Finance', 'Darwinia', 'Efinity', 'Equilibrium', 'HydraDX', 'Kilt', 'Parallel Finance', 'Phala Network']
+const parachainListP = ['Astar', 'Acala', 'MoonRiver', 'MoonBeam', 'Bifrost Polkadot', 'Centrifuge',
+'Parallel Finance', 'Phala Network']
 
 export function ParachainPolkadot() {
     return (
@@ -20,8 +20,7 @@ export function ParachainPolkadot() {
 }
 
 const parachainListK = [
-    'Statemine', 'Karura', 'MoonRiver', 'Subsocial', 'Zeitgeist', 'Bit.Country Pioneer','Calamari Network',
-'Crab Network', 'Crust Shadow', 'Heiko Finance', 'Integritee Kusama']
+    'Karura', 'Moonriver', 'Subsocial', 'Zeitgeist', 'Bit.Country Pioneer', 'Calamari Network']
 
 export function ParachainKusama() {
     return (
@@ -38,7 +37,8 @@ export function ParachainKusama() {
     )
 }
 
-const projects = ['RMRK', 'Squid', 'DPS', 'Neon Crisis', 'YoudleDAO', 'GitArch']
+const projects = ['RMRK', 'Astar', 'Acala', 'Karura', 'Bifrost', 'Subsocial', 
+'Subsquid', 'Mangata X', 'Zeitgeist', 'Robonomics', 'Parallel', 'Moonbeam', 'Moonriver']
 
 export function Projects() {
     return (
@@ -55,7 +55,7 @@ export function Projects() {
     )
 }
 
-const collectionsTag = ['XCVM', 'DeFi', 'Parachain', 'NFT', 'Cross-chain', 'Consenso', 'Staking', 'Dotsama', 'Substrate', 'Liquid Staking', 'Governance', 'DEX', 'Parachain'] 
+const collectionsTag = ['XCVM', 'DeFi', 'Parachain', 'NFT', 'Cross-chain', 'Consenso', 'Staking', 'Dotsama', 'Substrate', 'Liquid Staking', 'Governance', 'DEX', 'Parachain', 'Parity'] 
 
 export function CollectionsTag() {
     return (

@@ -11,10 +11,22 @@ export const theme = extendTheme({
       h1:{
         fontFamily: "Unbounded-Regular!important"
       },
+      h2:{
+        fontFamily: "Unbounded-Light!important"
+      },
+      h3:{
+        fontFamily: "Unbounded-ExtraLight!important"
+      },
       components: {
         Heading:{
             h1:{
                 fontFamily: "Unbounded-Regular"  
+            },
+            h2:{
+              fontFamily: "Unbounded-Light"  
+            },
+            h3:{
+              fontFamily: "Unbounded-ExtraLight"  
             }
         }
       }

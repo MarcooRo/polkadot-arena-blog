@@ -24,7 +24,7 @@ export default function Footer(){
                             </HStack>
                         </Box>
                         <Box mt={6}>
-                            <Heading as='h3' fontSize='xl' mb={3}>For Tips</Heading>
+                            <Heading as='h3' fontSize='l' mb={3}>For Tips</Heading>
                             <Text>Polkadot Arena non è un progetto a scopo di lucro, tutti i creatori di contenuti e i dev lavorano per passione raccogliendo qualche tips di tanto in tanto. Se volete sostenere il nostro lavoro ve ne saremo grati!</Text>
                             <br />
                             <code>KSM: HtGyGQUdXmxymLTmN1x9VHxztRfTDRSo45U4SaQQKB17E8u</code>

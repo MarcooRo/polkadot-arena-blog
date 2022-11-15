@@ -7,6 +7,7 @@ import Sidebar from '../../components/Sidebar';
 import { useRouter } from 'next/router'
 import { AllSapces, SpaceData } from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage'
+import { CollectionsTag } from '../../components/Alltags';
 
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -70,6 +71,9 @@ function Post({ posts }: InferGetStaticPropsType<typeof getServerSideProps>) {
             </SimpleGrid>
         </GridItem>
         <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
+            <Box pb={6}>
+              <CollectionsTag />
+            </Box>
           <Sidebar />
         </GridItem>
         

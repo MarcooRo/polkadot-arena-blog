@@ -42,7 +42,7 @@ function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
       <HeadSEO 
         imagePage={'orizzontale.png'} 
         titlePage={'Area per developer e sviluppatori'} 
-        summaryPage={'Area per developer e sviluppatori interessati alla blockchain, rust, substrate, Polkadto e Kusama'} 
+        summaryPage={'Area per developer e sviluppatori interessati alla blockchain, rust, substrate, Polkadot e Kusama'} 
       />
       <Nav />
     <main>
