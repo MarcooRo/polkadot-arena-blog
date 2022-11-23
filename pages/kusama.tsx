@@ -47,11 +47,10 @@ function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
         <SimpleGrid px={30} py={20}>
           <Box>
             <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Kusama</Heading>
-            <Text>Page in working in progres</Text>
           </Box>
         </SimpleGrid>
 
-        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30} >
+        <Grid templateColumns='repeat(12, 1fr)' gap={{base: 3, md: 4, lg:6}} p={30} >
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Box pb={6}>
               <Heading as='h2' fontSize='l' pb={6}>Link Ufficiali</Heading>
@@ -77,7 +76,9 @@ function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
           </GridItem>
 
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
+            <a href="https://guide.kusama.network/" target="_blank" rel="noopener noreferrer">
+              <Image boxSize='350px' objectFit='cover' src='/guida-kusama.jpg' alt='guida kusama' rounded={6}/>
+            </a>
           </GridItem>
 
 

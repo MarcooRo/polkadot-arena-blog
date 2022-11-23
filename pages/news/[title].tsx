@@ -1,23 +1,23 @@
 import type { GetServerSideProps } from 'next'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import Head from 'next/head'
 import Nav from '../../components/Nav'
-import Footer from '../../components/Footer'
 import { useRouter } from 'next/router';
-import SingleComponent, { ITcard } from '../../components/SinglePost';
-import { ArticleData } from '../../components/Space';
-import ipfsContect from '../../components/ipfsURL';
+import SingleComponent, { ITpost } from '../../components/SinglePost';
+import { AllSapces, ArticleData, SpaceData } from '../../components/Space';
 import HeadSEOArticle from '../../components/HeadSEOArticle';
+import { SimpleGrid, Box } from '@chakra-ui/react';
+import CardComponent, { ITcard } from '../../components/CardNews';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const id = query.id
+  const cat = query.cat
 
   const client = new ApolloClient({
     uri: 'https://squid.subsquid.io/subsocial/graphql',
     cache: new InMemoryCache()
   });
 
-  const { data } = await client.query({
+  const { data:posts } = await client.query({
     query: gql`
     query MyQuery {
       postById(id: "${id}") {
@@ -27,14 +27,25 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `
   });
 
+  const { data:morepost } = await client.query({
+    query: gql`
+      query MyQuery {
+        posts(where: {tagsOriginal_contains: "${cat}", AND: {space: ${AllSapces()}}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+          ${SpaceData()}    
+        }
+      }
+    `
+  });
+
   return {
     props: {
-      posts: data.postById
+      posts: posts.postById,
+      morepost: morepost.posts,
     }
   }
 }
 
-const Post: React.FC<ITcard> = (props) => {
+function Post({posts, morepost}:ITpost) {
     let router = useRouter()
 
     if (router.isFallback) {
@@ -43,9 +54,18 @@ const Post: React.FC<ITcard> = (props) => {
 
     return(
       <>
-        <HeadSEOArticle {...props} />
+        <HeadSEOArticle {...posts} />
         <Nav />
-        <SingleComponent {...props}/>                     
+        <SingleComponent {...posts}/> 
+        <SimpleGrid px={30} py={20}>
+          <Box>
+            <SimpleGrid columns={{base: 1, md: 4}} spacing={6}>
+              {(morepost as unknown as ITpost[]).slice(0, 4).map((post) => 
+                <CardComponent {...post} key={post.id}/>                       
+              )}
+            </SimpleGrid>
+          </Box>      
+        </SimpleGrid>              
       </>
   )
 }

@@ -84,7 +84,7 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome}: InferGetStaticPr
           </Box>
         </SimpleGrid>
 
-        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+        <Grid templateColumns='repeat(12, 1fr)' gap={{base: 3, md: 4, lg:6}} p={30}>
 
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6} display={{base: 'none', md: 'inline-block' }}>
             <Heading as='h2' fontSize='l' pb={6}>Da Twitter</Heading>
@@ -145,8 +145,6 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome}: InferGetStaticPr
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6}>
             <Heading as='h2' fontSize='l' pb={6}>Spotlight on</Heading>
               {SpotlightHome1()}
-            <Heading as='h2' fontSize='l' py={6}>Spotlight on</Heading>
-              <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
           </GridItem>
         </Grid>
 

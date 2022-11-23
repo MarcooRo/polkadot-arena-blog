@@ -23,8 +23,9 @@ import router from 'next/router';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 var urlCate = '../categoria/'
 
-export interface ITcard {
-    posts: ITcard;
+export interface ITpost {
+    posts: ITpost;
+    morepost: ITpost;
     id: string;
     createdAtTime:number;
     image: string;
@@ -34,15 +35,27 @@ export interface ITcard {
     tagsOriginal: string;
     body: string;
     canonical: string;
+    ownedByAccount: {
+        profileSpace: {
+            name: string;
+            image: string
+        }
+    }
+    space:{
+        id: string
+        name: string
+        image: string
+    }
+    
 }
 
-const SingleComponent: React.FC<ITcard> = props => {
+const SingleComponent: React.FC<ITpost> = props => {
     const overflowA = {
         overflow:'auto'
     }
     return(
         <>
-        {props.posts.downvotesCount <= 3 &&
+        {props.downvotesCount <= 3 &&
           <article className={styles.article}>
               <Center mt={10}>
                   <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
@@ -57,24 +70,24 @@ const SingleComponent: React.FC<ITcard> = props => {
                         </Box>
                       <Box h={{base: '230px', md: '450px'}} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image
-                          src={ipfsContect.ipfsURL+props.posts.image}
+                          src={ipfsContect.ipfsURL+props.image}
                           layout={'fill'}
                           alt='image'
                           />
                       </Box>
                       <HStack p={{base: 1, md: 6}} sx={overflowA}>
-                        {props.posts.tagsOriginal.split(",").map((tag: any) => (
-                            <Link href={urlCate+tag} key={props.posts.id}>
+                        {props.tagsOriginal.split(",").map((tag: any) => (
+                            <Link href={urlCate+tag} key={props.id}>
                                 <a><Tag size='sm' variant='solid'>{tag}</Tag></a>
                             </Link>
                         ))}
                       </HStack>
                       <Stack px={{base: 1, md: 6}} py={{base: 4, md: 0}}>
                           <header>
-                              <Heading as='h1'>{props.posts.title}</Heading>
+                              <Heading as='h1'>{props.title}</Heading>
                           </header>
                           <section>
-                            <ReactMarkdown>{props.posts.body}</ReactMarkdown>
+                            <ReactMarkdown>{props.body}</ReactMarkdown>
                           </section>
                       </Stack>
                   </Box>

@@ -59,7 +59,7 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                     Al momento il collettivo gestisce:
                   </Text>
                     <UnorderedList>
-                      <ListItem>Canale Twitter: <a href="https://twitter.com/PolkadotArena">@PolkadotArena</a></ListItem>
+                      <ListItem>Canale Twitter: <a href="https://twitter.com/PolkadotArena" target="_blank" rel="noopener noreferrer">@PolkadotArena</a></ListItem>
                       <ListItem>Blog: questo</ListItem>
                     </UnorderedList>
                     <br />
@@ -92,11 +92,11 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
             <GridItem colSpan={{base: 12, md: 4}} borderTop='1px' borderColor='gray.200' p={6}>
               <article>
               <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
-              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>, parachain di Kusama.</Text>
+              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a>, progetto della parachain di Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>.</Text>
               <br />
-              <Text>Quello che facciamo, in fase di lettura, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. SubQuery è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
+              <Text>Quello che facciamo, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
               <br />
-              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul web3. Di questo andiamo particolarmente fieri!</Text>
+              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul <b>Web3</b>. Di questo andiamo particolarmente fieri!</Text>
               </article>
             </GridItem>
           </Grid>

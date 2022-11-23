@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import NevItems from './Nav-items';
 
 //const Links = ['news', 'polkadot', 'kusama', 'DeFi', 'NFT', 'area-dev', 'about']
 let url = '../';
@@ -26,6 +27,7 @@ const Links = [
   // { name: 'NFT', url:'NFT', status: ''},
   // { name: 'Area Dev', url:'area-dev', status: ''},
   { name: 'About', url:'about', status: ''},
+  // { name: 'Community ITA', url: 'community-italiana'}
 ];
 
 // const NavLink = ({ children }: { children: ReactNode }) => (
@@ -70,51 +72,7 @@ export default function Nav() {
               as={'nav'}
               spacing={0}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                  <Link
-                      px={3}
-                      py={1}
-                      rounded={'md'}
-                      key={link.name}
-                      style={{
-                          textTransform: 'capitalize',
-                      }}
-                      _hover={{
-                        textDecoration: 'none',
-                        bg: 'gray.700'
-                      }}
-                      href={url+link.url}
-                  >
-                    {link.name}
-                  </Link>
-              ))}
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  DeFi
-                  </Tooltip>
-              </Link>
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  NFT
-                  </Tooltip>
-              </Link>
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  Area Dev
-                  </Tooltip>
-              </Link>
+              <NevItems />
             </HStack>
           </HStack>
 
@@ -130,51 +88,7 @@ export default function Nav() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={5}>
-            {Links.map((link) => (
-                  <Link
-                      px={3}
-                      py={1}
-                      rounded={'md'}
-                      key={link.name}
-                      style={{
-                          textTransform: 'capitalize',
-                      }}
-                      _hover={{
-                        textDecoration: 'none',
-                        bg: 'gray.700',
-                      }}
-                      href={url+link.url}
-                  >
-                    {link.name}
-                  </Link>
-              ))}
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  DeFi
-                  </Tooltip>
-              </Link>
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  NFT
-                  </Tooltip>
-              </Link>
-              <Link 
-                px={3} py={1} rounded={'md'} key='NFT' textColor='gray.700'
-                style={{textTransform: 'capitalize'}}
-                _hover={{textDecoration: 'none'}}
-                href='#'>
-                  <Tooltip label="Coming Soon" aria-label='A tooltip'>
-                  Area Dev
-                  </Tooltip>
-              </Link>
+            <NevItems />
             </Stack>
           </Box>
         ) : null}

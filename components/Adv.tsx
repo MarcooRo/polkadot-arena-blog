@@ -1,4 +1,4 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, Text, Link, Heading } from '@chakra-ui/react'
 import React from 'react'
 
 export function AdvSidebar(){
@@ -6,7 +6,13 @@ export function AdvSidebar(){
 
   return (
     <Box>
-          <Image boxSize='350px' objectFit='cover' src='/adv_placeholder.jpg' alt='adv'/>
+      <Link>
+        <a href="https://iiv.dev/" target="_blank" rel="noopener noreferrer">
+          <Heading as='h2' fontSize='l' mb={1} textAlign='center'>Polkadot/Kusama<br />professional validator</Heading>
+          <Text mb={3} textAlign='center'><i>Sponsor By ONDIN</i></Text>
+          <Image boxSize='250px' objectFit='cover' src='/ondin.svg' alt='adv' mx="auto"/>
+        </a>
+      </Link>
     </Box>
   )
 }

@@ -77,7 +77,7 @@ export function SpotlightHome1(){
         tweetId="1585522557876330499" 
         options={{
             theme: 'dark',
-            height: '350',        
+            height: '450',        
         }}
         />
     )

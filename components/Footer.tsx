@@ -1,5 +1,6 @@
-import {Grid, GridItem, Heading, Text, Box, HStack } from "@chakra-ui/react";
+import {Grid, GridItem, Heading, Text, Box, Stack, HStack } from "@chakra-ui/react";
 import Script from "next/script";
+import NevItems from "./Nav-items";
 import SocialLink from "./SocialLink";
 
 export default function Footer(){
@@ -14,6 +15,16 @@ export default function Footer(){
                             <br />
                             <Text>Il progetto è stato lanciato dei membri italiani di WM, rendendoci conto di produrre una notevole quantità di contenuti abbiamo pensato che unendo le forze e parlando con una unica voce avremmo potuto dare più risalto e poter portare un&apos;informazione più completa alla community italiana.
                     L&apos;obbiettivo è diventare il canale d&apos;informazione più popolare in italiano. Attraverso il merito dei propri contenuti.</Text>
+                            <Box display={{ base: 'none', md: 'flex' }} mt={6}>
+                                <HStack as={'nav'} spacing={0}>
+                                    <NevItems />
+                                </HStack>
+                            </Box>
+                            <Box pb={4} display={{ md: 'none' }} mt={6}>
+                                <Stack as={'nav'} spacing={5}>
+                                <NevItems />
+                                </Stack>
+                            </Box>
                         </GridItem>
                     </GridItem>
                     <GridItem colSpan={{base: 12, md: 6}} p={6}>

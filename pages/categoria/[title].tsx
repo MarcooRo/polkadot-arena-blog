@@ -55,7 +55,7 @@ function Post({ posts }: InferGetStaticPropsType<typeof getServerSideProps>) {
       <main>
         <SimpleGrid px={30} py={20}>
           <Box>
-            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>{NameH1}</Heading>
+            <Heading as='h1' size={{base: '2xl', md: '4xl'}}>{NameH1?.replace("%20", " ")}</Heading>
           </Box>
         </SimpleGrid>
 

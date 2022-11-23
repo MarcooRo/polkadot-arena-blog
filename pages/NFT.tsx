@@ -54,11 +54,10 @@ function Page({ posts }: InferGetStaticPropsType<typeof getServerSideProps>)  {
           </Box>
         </SimpleGrid>
 
-        <Grid
-         h='200px'
+        <Grid h='200px'
           templateRows='repeat(2, 1fr)'
           templateColumns='repeat(12, 1fr)'
-          gap={4} p={30}
+          gap={{base: 3, md: 4, lg:6}} p={30}
         >
           <GridItem colSpan={{base: 12, md: 3}} rowSpan={{base: 1, md: 2}} borderTop='1px' borderColor='gray.200' pt={6}>
               <Box pb={6}>

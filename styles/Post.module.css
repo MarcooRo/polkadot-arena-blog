@@ -5,7 +5,7 @@
   font-size: 18px;
   margin-bottom: 15px;
 }
-.article a{
+.article section a{
   text-decoration: underline;
 }
 .article ol, 

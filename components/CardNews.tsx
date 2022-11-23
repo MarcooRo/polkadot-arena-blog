@@ -38,10 +38,11 @@ export interface ITcard {
 const CardComponent: React.FC<ITcard> = props => {
     const date = new Date(props?.createdAtTime);
     let linkname = props.title
+    let cate = props.tagsOriginal?.split(",").reverse().slice(-1)
     if(linkname != undefined){
-        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id
+        var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id+"&cat="+cate
     } else {
-        var titleURL = "/news/"+linkname+"?id="+props.id
+        var titleURL = "/news/"+linkname+"?id="+props.id+"?cat="+cate
     }
     return(
         <Box boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'} id={props.id}>
