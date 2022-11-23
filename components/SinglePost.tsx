@@ -56,18 +56,19 @@ const SingleComponent: React.FC<ITpost> = props => {
     return(
         <>
         {props.downvotesCount <= 3 &&
+        
           <article className={styles.article}>
+                <Box maxW={{base: '100%', md: '870px'}} m={3}>
+                    <Breadcrumb separator={<ChevronRightIcon color='gray.500' />}>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href='#' onClick={() => router.back()}>
+                                &#8592; Torna indietro
+                            </BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </Breadcrumb>
+                </Box>
               <Center mt={10}>
-                  <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
-                        <Box h={'70px'} mt={-6} mx={-6}>
-                            <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href='#' onClick={() => router.back()}>
-                                        Torna indietro
-                                    </BreadcrumbLink>
-                                </BreadcrumbItem>
-                            </Breadcrumb>
-                        </Box>
+                <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
                       <Box h={{base: '230px', md: '450px'}} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                           <Image
                           src={ipfsContect.ipfsURL+props.image}
