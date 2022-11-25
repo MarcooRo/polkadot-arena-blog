@@ -35,6 +35,7 @@ export interface ITpost {
     tagsOriginal: string;
     body: string;
     canonical: string;
+    link: string;
     ownedByAccount: {
         profileSpace: {
             name: string;
@@ -69,12 +70,8 @@ const SingleComponent: React.FC<ITpost> = props => {
                 </Box>
               <Center mt={10}>
                 <Box maxW={{base: '100%', md: '870px'}} boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
-                      <Box h={{base: '230px', md: '450px'}} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-                          <Image
-                          src={ipfsContect.ipfsURL+props.image}
-                          layout={'fill'}
-                          alt='image'
-                          />
+                      <Box h={{base: '230px', md: '450px'}} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>   
+                        {props.image != null ? <Image src={ipfsContect.ipfsURL+props.image} layout={'fill'} objectFit="cover" alt={props?.title}/> : <Image src='/adv_placeholder.jpg' layout={'fill'} objectFit="cover" alt={props?.title}/>}
                       </Box>
                       <HStack p={{base: 1, md: 6}} sx={overflowA}>
                         {props.tagsOriginal.split(",").map((tag: any) => (

@@ -1,27 +1,44 @@
-// MarcoRo
-//    6943
-//    3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d
-// Yamne
-//    7183
-//    3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs
-// Manne
-//    10173
-//    3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK
-// Paull
-//    7222
-//    3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj
-// Mark889
-//    8488
-//    3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F
-// ZeroxSapo 
-//    3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ
-// capgallico
-//    3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq
-//    7250
-// WM Italia
-//    7218
-// WM weeky recap
-//    6111
+/*
+MarcoRo
+   6943
+   3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d
+Yamne
+   7183
+   3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs
+Manne
+   10173
+   3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK
+Paull
+   7222
+   3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj
+Mark889
+   8488
+   3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F
+ZeroxSapo 
+   3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ
+capgallico
+   3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq
+   7250
+WM Italia
+   7218
+WM weeky recap
+   6111
+-----
+@rmrkapp --> 2425
+Astar 5598
+@neoncrisis.nft --> 6302
+@bifrost --> 1013
+5857
+@sora-xor --> 1162
+@polkaswap --> 1141
+zeitgeist 4306
+uniquenetwork-nft 4864
+bitcountry
+Kusamarin 4809 
+dotleap 1040
+crane 5874
+*/
+
 
 export function SpaceData(){
   return(
@@ -33,6 +50,7 @@ export function SpaceData(){
       summary
       tagsOriginal
       canonical
+      link
       ownedByAccount {
         id
         profileSpace {
@@ -59,6 +77,7 @@ export function ArticleData(){
       tagsOriginal
       body
       summary
+      link
       ownedByAccount {
         profileSpace {
           name
@@ -97,9 +116,25 @@ export function WagMedia() {
       '{id_eq: "6111"}'
   )
 }
+export function Kusamarin() {
+  return(
+      '{id_eq: "4809"}'
+  )
+}
+export function Dotleap() {
+  return(
+      '{id_eq: "1040"}'
+  )
+}
 export function HighPost1(){
   return(
     'id: "36310"'
+  )
+}
+
+export function OtherSpace() {
+  return(
+    '{id_eq: "2425", OR: {id_eq: "5598", OR: {id_eq: "6302", OR: {id_eq: "1013", OR: {id_eq: "1162", OR: {id_eq: "5874", OR: {id_eq: "4864", OR: {id_eq: "4306", OR: {id_eq: "1141"}}}}}}}}}'
   )
 }
 
@@ -133,6 +168,24 @@ export function ShowWagMedia(){
   return(
     `query MyQuery {
       posts(where: {space: ${WagMedia()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        ${SpaceData()}
+      }
+    }`
+  )
+}
+export function ShowKusamarin(){
+  return(
+    `query MyQuery {
+      posts(where: {space: ${Kusamarin()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        ${SpaceData()}
+      }
+    }`
+  )
+}
+export function ShowDotleap(){
+  return(
+    `query MyQuery {
+      posts(where: {space: ${Dotleap()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
         ${SpaceData()}
       }
     }`
@@ -191,11 +244,22 @@ export function HighPostHome(){
     }`
   )
 }
+
+
 export function ShowSitemap(){
   return(
     `query MyQuery {
       posts(where: {space: ${AllSapces()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
         ${SiteMap()}
+      }
+    }`
+  )
+}
+export function ShowOtherSpace(){
+  return(
+    `query MyQuery {
+      posts(where: {space: ${OtherSpace()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        ${SpaceData()}
       }
     }`
   )

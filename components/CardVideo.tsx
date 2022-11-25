@@ -14,7 +14,7 @@ import {
 import ipfsContect from './ipfsURL';
 import { link } from 'fs';
 
-export interface ITcard {
+export interface ITcardVideo {
     id: string;
     createdAtTime:number;
     image: string;
@@ -22,6 +22,7 @@ export interface ITcard {
     downvotesCount: number;
     summary: string;
     tagsOriginal: string;
+    link: string;
     ownedByAccount: {
         profileSpace: {
             name: string;
@@ -36,10 +37,13 @@ export interface ITcard {
 }
 
 
-const CardComponent: React.FC<ITcard> = props => {
+const CardComponentVideo: React.FC<ITcardVideo> = props => {
     const date = new Date(props?.createdAtTime);
     let linkname = props.title
     let cate = props.tagsOriginal?.split(",").reverse().slice(-1)
+    let youtube = props.link?.substring(props.link?.lastIndexOf('/') + 1)
+    let linkYT = 'https://www.youtube.com/embed/'+youtube
+
     if(linkname != undefined){
         var titleURL = "/news/"+linkname.replaceAll(' ', '-')+"?id="+props.id+"&cat="+cate
     } else {
@@ -47,26 +51,8 @@ const CardComponent: React.FC<ITcard> = props => {
     }
     return(
         <Box boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'} id={props.id}>
-            {/* {props.image != null &&
-                <Box h={'190px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-                <Link key={titleURL} as={titleURL} href={titleURL}>
-                    <a>
-                    <Image
-                    src={ipfsContect.ipfsURL+props?.image}
-                    layout={'fill'}
-                    objectFit="cover"
-                    alt={props?.title}
-                    />
-                    </a>
-                </Link>
-            </Box>
-            } */}
-            <Box h={'190px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-                <Link key={titleURL} as={titleURL} href={titleURL}>
-                    <a>
-                        {props.image != null ? <Image src={ipfsContect.ipfsURL+props.image} layout={'fill'} objectFit="cover" alt={props?.title}/> : <Image src='/adv_placeholder.jpg' layout={'fill'} objectFit="cover" alt={props?.title}/>}
-                    </a>
-                </Link>
+            <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
+                <iframe width="100%" height="265" src={linkYT}></iframe>
             </Box>
             <HStack mb={3} spacing={1}>
                 {props.tagsOriginal != "" && props.tagsOriginal?.split(",").reverse().slice(-2).map((tag) => (
@@ -76,13 +62,9 @@ const CardComponent: React.FC<ITcard> = props => {
                 ))}
             </HStack>
             <Stack>
-                <Link key={titleURL} as={titleURL} href={titleURL}>
-                    <a>
                     <Heading as='h3' fontSize='xl'>
                         {props?.title}
                     </Heading>
-                    </a>
-                </Link>
                 {<Text>
                     {props?.summary.substring(0,150)}
                 </Text>}
@@ -98,4 +80,4 @@ const CardComponent: React.FC<ITcard> = props => {
   )
 }
 
-export default CardComponent;
+export default CardComponentVideo;

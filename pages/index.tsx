@@ -7,9 +7,10 @@ import Nav from '../components/Nav'
 import {SpotlightHome1, Twitter, TwitterWM} from '../components/Twitter'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
-import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome } from '../components/Space'
+import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome, ShowOtherSpace, ShowDotleap, ShowKusamarin } from '../components/Space'
 import HeadSEO from '../components/HeadSEOPage'
 import { CollectionsTag } from '../components/Alltags'
+import CardComponentVideo, { ITcardVideo } from '../components/CardVideo'
 
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -42,18 +43,39 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `
   })
 
+  const { data:otherPost } = await client.query({
+    query: gql`
+      ${ShowOtherSpace()}
+    `
+  })
+
+  const { data:kusamarin } = await client.query({
+    query: gql`
+      ${ShowKusamarin()}
+    `
+  })
+  
+  const { data:dotleap } = await client.query({
+    query: gql`
+      ${ShowDotleap()}
+    `
+  })
+
   return {
     props: {
       wmitalia: wmitalia.posts,
       onlyPersonal: onlyPersonal.posts,
       wagMedia: wagmedia.posts,
-      highPostHome: highPost.postById
+      highPostHome: highPost.postById,
+      otherPost: otherPost.posts,
+      kusamarin: kusamarin.posts,
+      dotleap: dotleap.posts
     }
   }
 }
 
 
-function Home({wmitalia, onlyPersonal, wagMedia, highPostHome}: InferGetStaticPropsType<typeof getServerSideProps>) {
+function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusamarin, dotleap}: InferGetStaticPropsType<typeof getServerSideProps>) {
   let router = useRouter()
 
     if (router.isFallback) {
@@ -168,6 +190,55 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome}: InferGetStaticPr
           <GridItem colSpan={{base: 12, md: 3}} borderTop='1px' borderColor='gray.200' pt={6} display={{base: 'none', md: 'inline-block' }}>
             <Heading as='h2' fontSize='l' pb={6}>From WagMedia</Heading>
             <TwitterWM />
+          </GridItem>
+        </Grid>
+        
+        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+          <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
+          <Box mb={6}>
+            <Heading as='h2' mb={6}>Video from Kusamarin</Heading>
+            <Text>Officle Kusamarin videos: The story of Polkadot/Kusama. Order in the Chaos</Text>
+            <Box pt={6}>
+                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                      {(kusamarin as ITcardVideo[]).slice(0, 3).map((post) => 
+                        <CardComponentVideo {...post} key={post.id}/>                       
+                      )}
+                  </SimpleGrid>
+              </Box>
+          </Box>
+          </GridItem>
+        </Grid>
+
+        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+          <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
+          <Box mb={6}>
+            <Heading as='h2' mb={6}>The last Dotleap</Heading>
+            <Text>A fortnightly-ish newsletter about all things Web 3.0 from the Polkadot side</Text>
+            <Box pt={6}>
+                  <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
+                      {(dotleap as ITcard[]).slice(0, 3).map((post) => 
+                        <CardComponent {...post} key={post.id}/>                       
+                      )}
+                  </SimpleGrid>
+              </Box>
+          </Box>
+          </GridItem>
+        </Grid>
+
+        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+          <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
+          <Box mb={6}>
+            <Heading as='h2' mb={6}>From the officle Paraverce</Heading>
+            <Text>Officle projects channel on Paraverse</Text>
+            <Box pt={6}>
+                  <SimpleGrid columns={{base: 1, md: 4}} spacing={6}>
+                      {(otherPost as ITcard[]).slice(0, 12).map((post) => 
+                        <CardComponent {...post} key={post.id}/>                       
+                      )}
+                  </SimpleGrid>
+              </Box>
+          </Box>
+
           </GridItem>
         </Grid>
       </main>

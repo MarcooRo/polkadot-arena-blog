@@ -43,8 +43,8 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
           </SimpleGrid>
           <Grid templateColumns='repeat(12, 1fr)' gap={20} p={30}>
             <GridItem colSpan={{base: 12, md: 8}} borderTop='1px' borderColor='gray.200' p={6}>
-            <article>
-              <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
+              <Box>
+                <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
                   <Text>
                     Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo. 
                   </Text>
@@ -85,19 +85,18 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                     Il nostro invito è verso: tutte queste persone attive, membri del team e ambassador. 
                     <br />
                     Siete i ben venuti! 
-                  </Text>          
-            </article>
-
+                  </Text> 
+              </Box>         
             </GridItem>
             <GridItem colSpan={{base: 12, md: 4}} borderTop='1px' borderColor='gray.200' p={6}>
-              <article>
-              <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
-              <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a>, progetto della parachain di Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>.</Text>
-              <br />
-              <Text>Quello che facciamo, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
-              <br />
-              <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul <b>Web3</b>. Di questo andiamo particolarmente fieri!</Text>
-              </article>
+              <Box>
+                <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
+                <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a>, progetto della parachain di Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>.</Text>
+                <br />
+                <Text>Quello che facciamo, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
+                <br />
+                <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul <b>Web3</b>. Di questo andiamo particolarmente fieri!</Text>
+              </Box>
             </GridItem>
           </Grid>
 
