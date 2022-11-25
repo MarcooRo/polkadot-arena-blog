@@ -96,11 +96,6 @@ export function SiteMap(){
   )
 }
 
-export function AllSapces() {
-    return(
-        '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7218", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324"}}}}}}}}'
-    )
-}
 export function OnlyPersonal() {
     return(
         '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324"}}}}}}}'
@@ -116,7 +111,7 @@ export function WagMedia() {
       '{id_eq: "6111"}'
   )
 }
-export function Kusamarin() {
+export function Kusamarian() {
   return(
       '{id_eq: "4809"}'
   )
@@ -131,13 +126,16 @@ export function HighPost1(){
     'id: "36310"'
   )
 }
-
 export function OtherSpace() {
   return(
     '{id_eq: "2425", OR: {id_eq: "5598", OR: {id_eq: "6302", OR: {id_eq: "1013", OR: {id_eq: "1162", OR: {id_eq: "5874", OR: {id_eq: "4864", OR: {id_eq: "4306", OR: {id_eq: "1141"}}}}}}}}}'
   )
 }
-
+export function AllSapces() {
+  return(
+      '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7218", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324", OR: '+OtherSpace()+'}}}}}}}}'
+  )
+}
 export function TeamList(){
   return(
     '{id_eq: "3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d", OR: {id_eq: "3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ", OR: {id_eq: "3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F", OR: {id_eq: "3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj", OR: {id_eq: "3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK", OR: {id_eq: "3sUX9vztg4gf9mnyppFnw5JvsLt8Qp6b41HUNaCcijx5Vry6", OR: {id_eq: "3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs", OR: {id_eq: "3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq"}}}}}}}}, orderBy: id_ASC'
@@ -173,10 +171,10 @@ export function ShowWagMedia(){
     }`
   )
 }
-export function ShowKusamarin(){
+export function ShowKusamarian(){
   return(
     `query MyQuery {
-      posts(where: {space: ${Kusamarin()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+      posts(where: {space: ${Kusamarian()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
         ${SpaceData()}
       }
     }`

@@ -42,9 +42,9 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
             </Box>
           </SimpleGrid>
           <Grid templateColumns='repeat(12, 1fr)' gap={20} p={30}>
-            <GridItem colSpan={{base: 12, md: 8}} borderTop='1px' borderColor='gray.200' p={6}>
+            <GridItem colSpan={{base: 12, md: 7}} borderTop='1px' borderColor='gray.200' py={6} px={3}>
               <Box>
-                <Heading as='h2' fontSize='xl' pb={6}>Manifesto provisorio</Heading>
+                <Heading as='h2' fontSize='xl' pb={6}>La nostra mission</Heading>
                   <Text>
                     Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo. 
                   </Text>
@@ -88,7 +88,7 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                   </Text> 
               </Box>         
             </GridItem>
-            <GridItem colSpan={{base: 12, md: 4}} borderTop='1px' borderColor='gray.200' p={6}>
+            <GridItem colSpan={{base: 12, md: 5}} borderTop='1px' borderColor='gray.200' p={6}>
               <Box>
                 <Heading as='h2' fontSize='xl' pb={6}>Come è costruito il blog</Heading>
                 <Text>Ogni articolo presente sul blog, e tutto il suo contenuto, è registrato sul protocollo <b>IPFS</b> tramite il sistema di <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a>, progetto della parachain di Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial</a>.</Text>
@@ -96,13 +96,25 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                 <Text>Quello che facciamo, è leggere i dati grazie alle chiamate <b>GraphQl di <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid è un progetto che si occupa di connettore il mondo blockchain e la renderizzazione onscreen di dati.</Text>
                 <br />
                 <Text>Grazie a queste due innovative tecnologie abbiamo creato un blog che vede quasi tutti i suoi contenuti sul <b>Web3</b>. Di questo andiamo particolarmente fieri!</Text>
+                <br/>
+                <Text>Il Blog è alla sua prima versione, un Blog V1, ha il suo focus nel garantire una buona SEO e recuperare articoli rigorosamente on-chain. In una prossima versione sarà integrato un backoffice con il quale si potrà registrare articoli su protocollo IPFS direttamente dal blog</Text>
+              </Box>
+              <Box mt={6}>
+                <Heading as='h2' fontSize='xl' pb={6}>How the blog is built</Heading>
+                <Text>Every article on the blog, and all its content, is recorded on the <b>IPFS</b> protocol through the <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a> system, a project of Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer">Subsocial&apos;s</a> parachain.</Text>
+                <br />
+                <Text>What we do, is read the data through <b>GraphQl calls from <a href='https://subsquid.io/' target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid is a project that help the blockchain projects to rendering of data onscreen.</Text>
+                <br />
+                <Text>Thanks to these two innovative technologies, we have created a blog that sees almost all of its content on the <b>Web3</b>. We are particularly proud of this!</Text>
+                <br />
+                <Text>The blog is in its first version, a blog V1, has its focus on ensuring good SEO and retrieving strictly on-chain articles. In a forthcoming version, a backoffice will be integrated with which we will be able to register articles on IPFS protocol directly from the blog</Text>
               </Box>
             </GridItem>
           </Grid>
 
           <Box borderTop='1px' borderColor='gray.200' p={30}>
             <Heading as='h2' fontSize='xl' pb={6}>Il team</Heading>
-            <SimpleGrid columns={{base: 1, md: 5}}>
+            <SimpleGrid columns={{base: 1, md: 4}}>
               {accounts &&
               (accounts as ITteam[]).map((profile) => 
                 <CardTeam {...profile} key={profile.profileSpace?.id}/>                       

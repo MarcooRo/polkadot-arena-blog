@@ -7,7 +7,7 @@ import Nav from '../components/Nav'
 import {SpotlightHome1, Twitter, TwitterWM} from '../components/Twitter'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/CardNews'
-import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome, ShowOtherSpace, ShowDotleap, ShowKusamarin } from '../components/Space'
+import { ShowWMitalia, ShowOnlyPersonal, ShowWagMedia, HighPostHome, ShowOtherSpace, ShowDotleap, ShowKusamarian } from '../components/Space'
 import HeadSEO from '../components/HeadSEOPage'
 import { CollectionsTag } from '../components/Alltags'
 import CardComponentVideo, { ITcardVideo } from '../components/CardVideo'
@@ -49,9 +49,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     `
   })
 
-  const { data:kusamarin } = await client.query({
+  const { data:kusamarian } = await client.query({
     query: gql`
-      ${ShowKusamarin()}
+      ${ShowKusamarian()}
     `
   })
   
@@ -68,14 +68,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       wagMedia: wagmedia.posts,
       highPostHome: highPost.postById,
       otherPost: otherPost.posts,
-      kusamarin: kusamarin.posts,
+      kusamarian: kusamarian.posts,
       dotleap: dotleap.posts
     }
   }
 }
 
 
-function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusamarin, dotleap}: InferGetStaticPropsType<typeof getServerSideProps>) {
+function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusamarian, dotleap}: InferGetStaticPropsType<typeof getServerSideProps>) {
   let router = useRouter()
 
     if (router.isFallback) {
@@ -101,7 +101,7 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusama
           <Box>
             <Heading as='h1' size={{base: '2xl', md: '4xl'}}>Benvenuto in<br />Polkadot Arena</Heading>
               <Box pt={3}>
-                <Text>Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni</Text>
+                <Text>Dal mondo Polkadot e Kusama un blog in italiano e inglese con news, aggiornamenti, alpha, rumors, video e traduzioni</Text>
               </Box>
           </Box>
         </SimpleGrid>
@@ -148,7 +148,7 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusama
 
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 9}} borderTop='1px' borderColor='gray.200' pt={6}>
-            <Heading as='h2' fontSize='l' pb={6}>Dall&apos;ecosistema Dotsama</Heading>
+            <Heading as='h2' fontSize='l' pb={6}>I progetti dell&apos;ecosistema Polkadot e Kusama dal team Polkadot Arena</Heading>
               <Box>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
                     {(onlyPersonal as ITcard[]).slice(0, 6).map((post) => 
@@ -196,11 +196,11 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusama
         <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Box mb={6}>
-            <Heading as='h2' mb={6}>Video from Kusamarin</Heading>
-            <Text>Officle Kusamarin videos: The story of Polkadot/Kusama. Order in the Chaos</Text>
+            <Heading as='h2' mb={6}>Video from Kusamarian</Heading>
+            <Text>Kusamarian videos: The story of Polkadot/Kusama. Order in the Chaos</Text>
             <Box pt={6}>
                   <SimpleGrid columns={{base: 1, md: 3}} spacing={6}>
-                      {(kusamarin as ITcardVideo[]).slice(0, 3).map((post) => 
+                      {(kusamarian as ITcardVideo[]).slice(0, 3).map((post) => 
                         <CardComponentVideo {...post} key={post.id}/>                       
                       )}
                   </SimpleGrid>

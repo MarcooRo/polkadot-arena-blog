@@ -28,7 +28,7 @@ export interface ITteam {
 const CardTeam:React.FC<ITteam> = props => {
     return(
       <>
-       <Box maxW={'280px'} w={'full'} boxShadow={'2xl'} rounded={'lg'} p={6} textAlign={'center'}>
+       <Box maxW={'340px'} w={'full'} boxShadow={'2xl'} rounded={'lg'} p={6} textAlign={'center'}>
           <Avatar
             size={'xl'}
             src={ipfsContect.ipfsURL+props.profileSpace?.image}
@@ -44,7 +44,7 @@ const CardTeam:React.FC<ITteam> = props => {
             px={3} py={3}>
             {props.profileSpace?.about}
           </Text>
-          <List fontWeight={600} color={'gray.500'} mb={4}>
+          <List fontWeight={600} color={'gray.500'} px={3} py={3} textAlign={'left'}>
           {props.profileSpace?.linksOriginal?.split(",").map(tag =>
               <ListItem key={props.profileSpace?.id}>
                 <Link href={tag}>

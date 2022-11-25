@@ -11,7 +11,7 @@ export default function Footer(){
                     <GridItem colSpan={{base: 12, md: 6}} p={6}>
                         <GridItem>
                             <Heading as='h3' fontSize='xl' mb={3}>Polkadot Arena</Heading>
-                            <Text>Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.</Text>
+                            <Text>Polkadot Arena è un progetto in lingua italiana di divulgazione sull&apos;ecosistema Polkadot, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.</Text>
                             <br />
                             <Text>Il progetto è stato lanciato dei membri italiani di WM, rendendoci conto di produrre una notevole quantità di contenuti abbiamo pensato che unendo le forze e parlando con una unica voce avremmo potuto dare più risalto e poter portare un&apos;informazione più completa alla community italiana.
                     L&apos;obbiettivo è diventare il canale d&apos;informazione più popolare in italiano. Attraverso il merito dei propri contenuti.</Text>

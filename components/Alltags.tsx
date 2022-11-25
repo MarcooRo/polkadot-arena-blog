@@ -38,7 +38,7 @@ export function ParachainKusama() {
 }
 
 const projects = ['RMRK', 'Acala', 'Karura', 'Bifrost', 'Subsocial', 
-'Subsquid', 'Mangata X', 'Zeitgeist', 'Robonomics', 'Parallel', 'Moonbeam', 'Moonriver']
+'Bifrost', 'Mangata X', 'Zeitgeist', 'Parallel', 'Moonbeam', 'Moonriver', 'Unique Network', 'Neon Crisis']
 
 export function Projects() {
     return (
