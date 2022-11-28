@@ -5,7 +5,6 @@ import HeadSEO from '../components/HeadSEOPage';
 import Nav from "../components/Nav";
 import { TeamToShow } from '../components/Space';
 import CardTeam, { ITteam } from '../components/Team';
-import { Twitter } from '../components/Twitter';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = new ApolloClient({
@@ -35,15 +34,14 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
           summaryPage={'Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.'} 
         />
         <Nav />
-        <main>
           <SimpleGrid px={30} py={20}>
             <Box>
               <Heading as='h1' size='4xl'>Polkadot Arena</Heading>
             </Box>
           </SimpleGrid>
-          <Grid templateColumns='repeat(12, 1fr)' gap={20} p={30}>
+
+          <Grid templateColumns='repeat(12, 1fr)' p={30}>
             <GridItem colSpan={{base: 12, md: 7}} borderTop='1px' borderColor='gray.200' py={6} px={3}>
-              <Box>
                 <Heading as='h2' fontSize='xl' pb={6}>La nostra mission</Heading>
                   <Text>
                     Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo. 
@@ -86,7 +84,6 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
                     <br />
                     Siete i ben venuti! 
                   </Text> 
-              </Box>         
             </GridItem>
             <GridItem colSpan={{base: 12, md: 5}} borderTop='1px' borderColor='gray.200' p={6}>
               <Box>
@@ -121,7 +118,6 @@ function About({ accounts }: InferGetStaticPropsType<typeof getServerSideProps>)
               )}
             </SimpleGrid>
           </Box>
-        </main>
       </>
     )
 }
