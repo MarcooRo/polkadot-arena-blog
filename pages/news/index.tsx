@@ -4,7 +4,7 @@ import { Box, Grid, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react
 import Sidebar from '../../components/Sidebar';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../../components/CardNews'
-import { ShowAllSapces, HighPostHome} from '../../components/Space';
+import { ShowAllnewsITA, HighPostHome} from '../../components/Space';
 import HeadSEO from '../../components/HeadSEOPage';
 import { CollectionsTag } from '../../components/Alltags';
 import { Twitter } from '../../components/Twitter';
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const { data:spaces } = await client.query({
     query: gql`
-      ${ShowAllSapces()}   
+      ${ShowAllnewsITA()}   
     `
   });
 
@@ -77,7 +77,7 @@ function AllPost({spaces, highPostHome}: InferGetStaticPropsType<typeof getServe
               <Box borderTop='1px' borderColor='gray.200' pt={6} pb={6}>
                 <Heading as='h2' fontSize='l' pb={6}>In evidenza</Heading> 
                 <CardComponent {...highPostHome as ITcard} key={(highPostHome as ITcard).id}/>
-            </Box>
+              </Box>
             <Sidebar />
             <Twitter />
           </GridItem>

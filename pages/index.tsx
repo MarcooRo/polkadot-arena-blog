@@ -225,7 +225,7 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusama
           </GridItem>
         </Grid>
 
-        <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+        {/* <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
           <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
           <Box mb={6}>
             <Heading as='h2' mb={6}>From the officle Paraverce</Heading>
@@ -240,7 +240,7 @@ function Home({wmitalia, onlyPersonal, wagMedia, highPostHome, otherPost, kusama
           </Box>
 
           </GridItem>
-        </Grid>
+        </Grid> */}
       </main>
     </>
   )

@@ -37,6 +37,8 @@ bitcountry
 Kusamarin 4809 
 dotleap 1040
 crane 5874
+donkey 5876
+everything blockchain 4473
 */
 
 
@@ -97,9 +99,14 @@ export function SiteMap(){
 }
 
 export function OnlyPersonal() {
-    return(
-        '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324"}}}}}}}'
-    )
+  return(
+    '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324"}}}}}}}'
+  )
+}
+export function AllnewsITA() {
+  return(
+    '{id_eq: "6943", OR: {id_eq: "7183", OR: {id_eq: "10173", OR: {id_eq: "7218", OR: {id_eq: "7222", OR: {id_eq: "7250", OR: {id_eq: "8488", OR: {id_eq: "10324"}}}}}}}}'
+  )
 }
 export function WMitalia() {
     return(
@@ -128,7 +135,7 @@ export function HighPost1(){
 }
 export function OtherSpace() {
   return(
-    '{id_eq: "2425", OR: {id_eq: "5598", OR: {id_eq: "6302", OR: {id_eq: "1013", OR: {id_eq: "1162", OR: {id_eq: "5874", OR: {id_eq: "4864", OR: {id_eq: "4306", OR: {id_eq: "1141"}}}}}}}}}'
+    '{id_eq: "2425", OR: {id_eq: "5598", OR: {id_eq: "6302", OR: {id_eq: "1013", OR: {id_eq: "1162", OR: {id_eq: "5874", OR: {id_eq: "4864", OR: {id_eq: "4306", OR: {id_eq: "1141", OR: {id_eq: "1", OR: {id_eq: "5876", OR: {id_eq:"4473", OR: {id_eq:"10111"}}}}}}}}}}}}}'
   )
 }
 export function AllSapces() {
@@ -157,6 +164,15 @@ export function ShowAllSapces(){
   return(
     `query MyQuery {
       posts(where: {space: ${AllSapces()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
+        ${SpaceData()}
+      }
+    }`
+  )
+}
+export function ShowAllnewsITA(){
+  return(
+    `query MyQuery {
+      posts(where: {space: ${AllnewsITA()}, kind_eq: RegularPost, hidden_eq: false}, orderBy: createdAtTime_DESC) {
         ${SpaceData()}
       }
     }`

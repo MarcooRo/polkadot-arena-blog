@@ -47,9 +47,9 @@ function Post({ posts }: InferGetStaticPropsType<typeof getServerSideProps>) {
   return (
     <>
       <HeadSEO 
-        titlePage={'Tutte le news su'} 
+        titlePage={'Tutte le news su '+NameH1?.replace("%20", " ")} 
         imagePage={'orizzontale.png'} 
-        summaryPage={'Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni'} 
+        summaryPage={'Dal mondo Polkadot e Kusama news su uno specifico topic '+NameH1?.replace("%20", " ")} 
       />
       <Nav />
       <main>
