@@ -44,7 +44,9 @@ const HeadSEO: React.FC<SeoTag> = props => {
             <meta property="og:image" content={sito+props.posts?.image} />
             <meta property="og:url" content={sito+router.asPath} />
 
-            <meta name="google-site-verification" content="#" />
+            <meta name="twitter:card" content={props.posts?.summary} />
+            <meta name="twitter:site" content="@PolkadotArena" />
+            <meta name="twitter:creator" content="@PolkadotArena" />
 
             {/* Schema Org */}
             <script type="application/ld+json">
