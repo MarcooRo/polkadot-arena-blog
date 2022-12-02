@@ -29,10 +29,10 @@ const HeadSEO: React.FC<SeoTag> = props => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
             {/*General tags */}
-            <title>{props.posts?.title}</title>
+            <title>{props.title}</title>
             <link rel='shortcut icon' type='image/ico' href={favicon}/>
             <meta name="author" content="Polkadot Arena" />
-            <meta name="description" content={props.posts?.summary} />
+            <meta name="description" content={props.summary} />
             <meta name="robots" content="index, follow" />
             <meta name='medium' content='blog' />
 
@@ -40,11 +40,11 @@ const HeadSEO: React.FC<SeoTag> = props => {
             <meta property="og:locale" content="it_IT" />
             <meta property="og:site_name" content="Polkadot Arena" />
             <meta property="og:type" content="website" />
-            <meta property="og:description" content={props.posts?.summary} />
-            <meta property="og:image" content={sito+props.posts?.image} />
+            <meta property="og:description" content={props.summary} />
+            <meta property="og:image" content={ipfsContect.ipfsURL+props.image} />
             <meta property="og:url" content={sito+router.asPath} />
 
-            <meta name="twitter:card" content={props.posts?.summary} />
+            <meta name="twitter:card" content={props.summary} />
             <meta name="twitter:site" content="@PolkadotArena" />
             <meta name="twitter:creator" content="@PolkadotArena" />
 
@@ -59,10 +59,10 @@ const HeadSEO: React.FC<SeoTag> = props => {
                     "name":"Polkadot Arena",
                     "logo":"${logo}"
                 },
-                "headline": "${props.posts?.title}",
+                "headline": "${props.title}",
                 "mainEntityOfPage": "${sito+router.asPath}",
-                "image":"${ipfsContect.ipfsURL+props.posts?.image}",
-                "datePublished":"${props.posts?.createdAtTime}"
+                "image":"${ipfsContect.ipfsURL+props.image}",
+                "datePublished":"${props.createdAtTime}"
                 `}
             </script>
         </Head>
