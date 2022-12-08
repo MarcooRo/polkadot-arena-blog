@@ -89,16 +89,14 @@ function Home({
    let router = useRouter()
 
    if (router.isFallback) {
-      return (
-         <div>
-            <Box p={4}>
-               <SimpleGrid columns={2} spacing={6}>
-                  <Text>Loding...</Text>
-               </SimpleGrid>
-            </Box>
-         </div>
-      )
-   }
+      ;<div>
+         <Box p={4}>
+            <SimpleGrid columns={2} spacing={6}>
+               <Text>Loding...</Text>
+            </SimpleGrid>
+         </Box>
+      </div>
+   
 
    return (
       <>
