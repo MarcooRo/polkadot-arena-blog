@@ -58,7 +58,7 @@ function About({
                </Heading>
                <Text>
                   Polkadot Arena è un progetto in lingua italiana di
-                  divulgazione su Dotsama, attraverso l&apos;aggregazione in un
+                  divulgazione sul'ecosistema di Polkadot and Kusama, attraverso l&apos;aggregazione in un
                   unico canale di tutti i contenuti realizzati dai membri del
                   collettivo.
                </Text>

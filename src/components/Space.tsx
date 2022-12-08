@@ -145,7 +145,7 @@ export function AllSapces() {
 }
 export function TeamList(){
   return(
-    '{id_eq: "3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d", OR: {id_eq: "3pdqZubSeuK3HfcyaHVRgJBEwmanV75wyNiektGNi4sgHFYJ", OR: {id_eq: "3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F", OR: {id_eq: "3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj", OR: {id_eq: "3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK", OR: {id_eq: "3sUX9vztg4gf9mnyppFnw5JvsLt8Qp6b41HUNaCcijx5Vry6", OR: {id_eq: "3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs", OR: {id_eq: "3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq"}}}}}}}}, orderBy: id_ASC'
+    '{id_eq: "3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d", OR: {id_eq: "3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F", OR: {id_eq: "3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj", OR: {id_eq: "3pb5BqcoZCn4rNxW2aeX9kdmnGUVzL8M4Q1vdgiPqbupa1MK", OR: {id_eq: "3sUX9vztg4gf9mnyppFnw5JvsLt8Qp6b41HUNaCcijx5Vry6", OR: {id_eq: "3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs", OR: {id_eq: "3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq"}}}}}}}, orderBy: id_ASC'
     )
 }
 

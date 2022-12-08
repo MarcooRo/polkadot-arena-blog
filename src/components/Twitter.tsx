@@ -74,10 +74,10 @@ export function TWInEvidenza(){
 export function SpotlightHome1(){
     return(
         <Tweet 
-        tweetId="1585522557876330499" 
+        tweetId="1597594751066591237" 
         options={{
             theme: 'dark',
-            height: '450',        
+            height: '400',        
         }}
         />
     )

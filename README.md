@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome in Polkadot Arena Blog V1#
+Polkadot Arena is an Italian-language dissemination project on the Polkadot and Kusama ecosystem.
+
+Every article on the blog, and all its content, is recorded on the <b>IPFS</b> protocol, in this V1, through the <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a> system, this is a project of Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer"> Subsocial&apos;s </a> parachain.
+
+What we do, is read the data through <b>GraphQl calls from <a href="https://subsquid.io/" target="_blank" rel="noopener noreferrer">Subsquid</a></b>. Subsquid is a data index project on Substrate and also EVM.
+
+What we want build is a full WEB3 blog. We are on the way.
+
 
 ## Getting Started
 
+This is a [Next.js](https://nextjs.org/) project write in typescript.
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
+
+then
+
+npm install
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Components
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+There are many useful components for the creation of a blog.
+List: TDB
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Referenze
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Subsocial info: <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer"> here</a>
+- Polkavers, where the articles come from: <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">here</a>
+- Subsquid, to read and rendering data: <a href="https://subsquid.io/" target="_blank" rel="noopener noreferrer">here</a>
+- Subsquid GraphQl template for Polkavers: <a href="https://squid.subsquid.io/subsocial/graphql" target="_blank" rel="noopener noreferrer">here</a>
+- Subsocial SDk, in this v1 is not used but sure we will add in the next version: <a href="https://github.com/dappforce" target="_blank" rel="noopener noreferrer">here</a>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### V2 
+The blog is in its first version, a blog V1, has its focus on ensuring good SEO and retrieving strictly on-chain articles. In a forthcoming version, a backoffice will be integrated with which we will be able to register articles on IPFS protocol directly from the blog, and many many other implementation.
