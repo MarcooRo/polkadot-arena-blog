@@ -89,260 +89,251 @@ function Home({
    let router = useRouter()
 
    if (router.isFallback) {
-      return (
-         <div>
-            <Box p={4}>
-               <SimpleGrid columns={2} spacing={6}>
-                  <Text>Loding...</Text>
-               </SimpleGrid>
-            </Box>
-         </div>
-      )
-   } else {
-      return (
-         <>
-            <HeadSEO
-               titlePage={'Polkadot Arena, benvenuti!'}
-               imagePage={'poster.png'}
-               summaryPage={
-                  'Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni'
-               }
-            />
-            <Nav />
-            <main>
-               <SimpleGrid px={30} py={20}>
-                  <Box>
-                     <Heading as="h1" size={{ base: '2xl', md: '4xl' }}>
-                        Benvenuto in
-                        <br />
-                        Polkadot Arena
-                     </Heading>
-                     <Box pt={3}>
-                        <Text>
-                           Dal mondo Polkadot e Kusama un blog in italiano e
-                           inglese con news, aggiornamenti, alpha, rumors, video
-                           e traduzioni
-                        </Text>
-                     </Box>
+      ;<div>
+         <Box p={4}>
+            <SimpleGrid columns={2} spacing={6}>
+               <Text>Loding...</Text>
+            </SimpleGrid>
+         </Box>
+      </div>
+   }
+   return (
+      <>
+         <HeadSEO
+            titlePage={'Polkadot Arena, benvenuti!'}
+            imagePage={'poster.png'}
+            summaryPage={
+               'Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors e traduzioni'
+            }
+         />
+         <Nav />
+         <main>
+            <SimpleGrid px={30} py={20}>
+               <Box>
+                  <Heading as="h1" size={{ base: '2xl', md: '4xl' }}>
+                     Benvenuto in
+                     <br />
+                     Polkadot Arena
+                  </Heading>
+                  <Box pt={3}>
+                     <Text>
+                        Dal mondo Polkadot e Kusama un blog in italiano e
+                        inglese con news, aggiornamenti, alpha, rumors, video e
+                        traduzioni
+                     </Text>
                   </Box>
-               </SimpleGrid>
+               </Box>
+            </SimpleGrid>
 
-               <Grid
-                  templateColumns="repeat(12, 1fr)"
-                  gap={{ base: 3, md: 4, lg: 6 }}
-                  p={30}
+            <Grid
+               templateColumns="repeat(12, 1fr)"
+               gap={{ base: 3, md: 4, lg: 6 }}
+               p={30}
+            >
+               <GridItem
+                  colSpan={{ base: 12, md: 3 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+                  display={{ base: 'none', md: 'inline-block' }}
                >
-                  <GridItem
-                     colSpan={{ base: 12, md: 3 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                     display={{ base: 'none', md: 'inline-block' }}
-                  >
-                     <Heading as="h2" fontSize="l" pb={6}>
-                        Da Twitter
-                     </Heading>
-                     <Box rounded={'md'}>
-                        <Twitter />
-                     </Box>
-                  </GridItem>
+                  <Heading as="h2" fontSize="l" pb={6}>
+                     Da Twitter
+                  </Heading>
+                  <Box rounded={'md'}>
+                     <Twitter />
+                  </Box>
+               </GridItem>
 
-                  <GridItem
-                     colSpan={{ base: 12, md: 6 }}
+               <GridItem
+                  colSpan={{ base: 12, md: 6 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Heading as="h2" fontSize="l" pb={6}>
+                     Le news di Polkadot in italiano
+                  </Heading>
+                  <Box>
+                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                        {(wmitalia as ITcard[]).slice(0, 6).map((post) => (
+                           <CardComponent {...post} key={post.id} />
+                        ))}
+                     </SimpleGrid>
+                  </Box>
+                  <Center py={6}>
+                     <Button colorScheme="teal" variant="solid">
+                        <Link href="/news">
+                           <a>Tutti gli articoli</a>
+                        </Link>
+                     </Button>
+                  </Center>
+               </GridItem>
+
+               <GridItem
+                  colSpan={{ base: 12, md: 3 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Box pb={6}>
+                     <CollectionsTag />
+                  </Box>
+                  <Box
                      borderTop="1px"
                      borderColor="gray.200"
-                     pt={6}
+                     p={6}
+                     bg={useColorModeValue('gray.100', 'gray.900')}
                   >
                      <Heading as="h2" fontSize="l" pb={6}>
-                        Le news di Polkadot in italiano
+                        In evidenza
                      </Heading>
-                     <Box>
-                        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-                           {(wmitalia as ITcard[]).slice(0, 6).map((post) => (
+                     <CardComponent
+                        {...(highPostHome as ITcard)}
+                        key={(highPostHome as ITcard).id}
+                     />
+                  </Box>
+                  <Sidebar />
+               </GridItem>
+            </Grid>
+
+            <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
+               <GridItem
+                  colSpan={{ base: 12, md: 9 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Heading as="h2" fontSize="l" pb={6}>
+                     I progetti dell&apos;ecosistema Polkadot e Kusama dal team
+                     Polkadot Arena
+                  </Heading>
+                  <Box>
+                     <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+                        {(onlyPersonal as ITcard[]).slice(0, 6).map((post) => (
+                           <CardComponent {...post} key={post.id} />
+                        ))}
+                     </SimpleGrid>
+                  </Box>
+                  <Center py={6}>
+                     <Button colorScheme="teal" variant="solid">
+                        <Link href="/news">
+                           <a>Tutti gli articoli del blog</a>
+                        </Link>
+                     </Button>
+                  </Center>
+               </GridItem>
+               <GridItem
+                  colSpan={{ base: 12, md: 3 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Heading as="h2" fontSize="l" pb={6}>
+                     Spotlight on
+                  </Heading>
+                  {SpotlightHome1()}
+               </GridItem>
+            </Grid>
+
+            <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
+               <GridItem
+                  colSpan={{ base: 12, md: 9 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Box mb={6}>
+                     <Heading as="h2" mb={6}>
+                        English content
+                     </Heading>
+                     <Heading as="h3" fontSize="xl" mb={3}>
+                        WagMedia Weekly News
+                     </Heading>
+                     <Text>
+                        News you need to know to stay on top of significant
+                        DotSama developments. Courtesy of WagMedia and Polka
+                        Häus
+                     </Text>
+                     <Box pt={6}>
+                        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+                           {(wagMedia as ITcard[]).slice(0, 6).map((post) => (
                               <CardComponent {...post} key={post.id} />
                            ))}
                         </SimpleGrid>
                      </Box>
-                     <Center py={6}>
-                        <Button colorScheme="teal" variant="solid">
-                           <Link href="/news">
-                              <a>Tutti gli articoli</a>
-                           </Link>
-                        </Button>
-                     </Center>
-                  </GridItem>
+                  </Box>
+               </GridItem>
 
-                  <GridItem
-                     colSpan={{ base: 12, md: 3 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Box pb={6}>
-                        <CollectionsTag />
-                     </Box>
-                     <Box
-                        borderTop="1px"
-                        borderColor="gray.200"
-                        p={6}
-                        bg={useColorModeValue('gray.100', 'gray.900')}
-                     >
-                        <Heading as="h2" fontSize="l" pb={6}>
-                           In evidenza
-                        </Heading>
-                        <CardComponent
-                           {...(highPostHome as ITcard)}
-                           key={(highPostHome as ITcard).id}
-                        />
-                     </Box>
-                     <Sidebar />
-                  </GridItem>
-               </Grid>
+               <GridItem
+                  colSpan={{ base: 12, md: 3 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+                  display={{ base: 'none', md: 'inline-block' }}
+               >
+                  <Heading as="h2" fontSize="l" pb={6}>
+                     From WagMedia
+                  </Heading>
+                  <TwitterWM />
+               </GridItem>
+            </Grid>
 
-               <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
-                  <GridItem
-                     colSpan={{ base: 12, md: 9 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Heading as="h2" fontSize="l" pb={6}>
-                        I progetti dell&apos;ecosistema Polkadot e Kusama dal
-                        team Polkadot Arena
+            <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
+               <GridItem
+                  colSpan={{ base: 12, md: 12 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Box mb={6}>
+                     <Heading as="h2" mb={6}>
+                        Video from Kusamarian
                      </Heading>
-                     <Box>
+                     <Text>
+                        Kusamarian videos: The story of Polkadot/Kusama. Order
+                        in the Chaos
+                     </Text>
+                     <Box pt={6}>
                         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                           {(onlyPersonal as ITcard[])
-                              .slice(0, 6)
+                           {(kusamarian as ITcardVideo[])
+                              .slice(0, 3)
                               .map((post) => (
-                                 <CardComponent {...post} key={post.id} />
+                                 <CardComponentVideo {...post} key={post.id} />
                               ))}
                         </SimpleGrid>
                      </Box>
-                     <Center py={6}>
-                        <Button colorScheme="teal" variant="solid">
-                           <Link href="/news">
-                              <a>Tutti gli articoli del blog</a>
-                           </Link>
-                        </Button>
-                     </Center>
-                  </GridItem>
-                  <GridItem
-                     colSpan={{ base: 12, md: 3 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Heading as="h2" fontSize="l" pb={6}>
-                        Spotlight on
+                  </Box>
+               </GridItem>
+            </Grid>
+
+            <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
+               <GridItem
+                  colSpan={{ base: 12, md: 12 }}
+                  borderTop="1px"
+                  borderColor="gray.200"
+                  pt={6}
+               >
+                  <Box mb={6}>
+                     <Heading as="h2" mb={6}>
+                        The last Dotleap
                      </Heading>
-                     {SpotlightHome1()}
-                  </GridItem>
-               </Grid>
-
-               <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
-                  <GridItem
-                     colSpan={{ base: 12, md: 9 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Box mb={6}>
-                        <Heading as="h2" mb={6}>
-                           English content
-                        </Heading>
-                        <Heading as="h3" fontSize="xl" mb={3}>
-                           WagMedia Weekly News
-                        </Heading>
-                        <Text>
-                           News you need to know to stay on top of significant
-                           DotSama developments. Courtesy of WagMedia and Polka
-                           Häus
-                        </Text>
-                        <Box pt={6}>
-                           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                              {(wagMedia as ITcard[])
-                                 .slice(0, 6)
-                                 .map((post) => (
-                                    <CardComponent {...post} key={post.id} />
-                                 ))}
-                           </SimpleGrid>
-                        </Box>
+                     <Text>
+                        A fortnightly-ish newsletter about all things Web 3.0
+                        from the Polkadot side
+                     </Text>
+                     <Box pt={6}>
+                        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+                           {(dotleap as ITcard[]).slice(0, 3).map((post) => (
+                              <CardComponent {...post} key={post.id} />
+                           ))}
+                        </SimpleGrid>
                      </Box>
-                  </GridItem>
+                  </Box>
+               </GridItem>
+            </Grid>
 
-                  <GridItem
-                     colSpan={{ base: 12, md: 3 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                     display={{ base: 'none', md: 'inline-block' }}
-                  >
-                     <Heading as="h2" fontSize="l" pb={6}>
-                        From WagMedia
-                     </Heading>
-                     <TwitterWM />
-                  </GridItem>
-               </Grid>
-
-               <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
-                  <GridItem
-                     colSpan={{ base: 12, md: 12 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Box mb={6}>
-                        <Heading as="h2" mb={6}>
-                           Video from Kusamarian
-                        </Heading>
-                        <Text>
-                           Kusamarian videos: The story of Polkadot/Kusama.
-                           Order in the Chaos
-                        </Text>
-                        <Box pt={6}>
-                           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                              {(kusamarian as ITcardVideo[])
-                                 .slice(0, 3)
-                                 .map((post) => (
-                                    <CardComponentVideo
-                                       {...post}
-                                       key={post.id}
-                                    />
-                                 ))}
-                           </SimpleGrid>
-                        </Box>
-                     </Box>
-                  </GridItem>
-               </Grid>
-
-               <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
-                  <GridItem
-                     colSpan={{ base: 12, md: 12 }}
-                     borderTop="1px"
-                     borderColor="gray.200"
-                     pt={6}
-                  >
-                     <Box mb={6}>
-                        <Heading as="h2" mb={6}>
-                           The last Dotleap
-                        </Heading>
-                        <Text>
-                           A fortnightly-ish newsletter about all things Web 3.0
-                           from the Polkadot side
-                        </Text>
-                        <Box pt={6}>
-                           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                              {(dotleap as ITcard[]).slice(0, 3).map((post) => (
-                                 <CardComponent {...post} key={post.id} />
-                              ))}
-                           </SimpleGrid>
-                        </Box>
-                     </Box>
-                  </GridItem>
-               </Grid>
-
-               {/* <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
+            {/* <Grid templateColumns='repeat(12, 1fr)' gap={4} p={30}>
              <GridItem colSpan={{base: 12, md: 12}} borderTop='1px' borderColor='gray.200' pt={6}>
              <Box mb={6}>
                <Heading as='h2' mb={6}>From the officle Paraverce</Heading>
@@ -358,10 +349,9 @@ function Home({
    
              </GridItem>
            </Grid> */}
-            </main>
-         </>
-      )
-   }
+         </main>
+      </>
+   )
 }
 
 export default Home
