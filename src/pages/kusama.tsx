@@ -11,7 +11,7 @@ import {
    ListItem,
    UnorderedList,
 } from '@chakra-ui/react'
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
+import { gql } from '@apollo/client'
 import CardComponent, { ITcard } from '../components/CardNews'
 import { useRouter } from 'next/router'
 import { ShowKusamaFeed } from '../components/Space'

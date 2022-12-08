@@ -13,7 +13,6 @@ import {
 import CardComponent, { ITcard } from '../components/CardNews'
 import { useRouter } from 'next/router'
 import HeadSEO from '../components/HeadSEOPage'
-import { GraphqlConnect } from '../graphql/GraphqlConnect'
 import { defiPageQuery } from '../graphql/query/defi'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
