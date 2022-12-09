@@ -1,5 +1,5 @@
 # Welcome in Polkadot Arena Blog V1#
-Polkadot Arena is an Italian-language dissemination project on the Polkadot and Kusama ecosystem.
+Polkadot Arena is an Italian-language divulgation project on the Polkadot and Kusama ecosystem.
 
 Every article on the blog, and all its content, is recorded on the <b>IPFS</b> protocol, in this V1, through the <a href="https://polkaverse.com/" target="_blank" rel="noopener noreferrer">Polkaverse</a> system, this is a project of Kusama <a href="https://subsocial.network/" target="_blank" rel="noopener noreferrer"> Subsocial&apos;s </a> parachain.
 

@@ -33,7 +33,7 @@ function About({
             imagePage={'poster.png'}
             titlePage={'Polkadot Arena'}
             summaryPage={
-               'Polkadot Arena è un progetto in lingua italiana di divulgazione su Dotsama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.'
+               'Polkadot Arena è un progetto in lingua italiana di divulgazione sull&aposecosistema Polkadot e Kusama, attraverso l&apos;aggregazione in un unico canale di tutti i contenuti realizzati dai membri del collettivo.'
             }
          />
          <Nav />
@@ -58,8 +58,8 @@ function About({
                </Heading>
                <Text>
                   Polkadot Arena è un progetto in lingua italiana di
-                  divulgazione sul&apos;ecosistema di Polkadot and Kusama,
-                  attraverso l&apos;aggregazione in un unico canale di tutti i
+                  divulgazione sul&apos;ecosistema di Polkadot and Kusama.
+                  Attraverso l&apos;aggregazione in un unico canale di tutti i
                   contenuti realizzati dai membri del collettivo.
                </Text>
                <br />
