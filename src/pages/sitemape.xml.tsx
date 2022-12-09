@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 function SiteMap({
    posts,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
-   return `<?xml version="1.0" encoding="UTF-8"?>
+   return `<xml version="1.0" encoding="UTF-8">
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <!--We manually set the two URLs we know already-->
         <url><loc>https://polkadotarena.blog</loc></url>
@@ -32,15 +32,13 @@ function SiteMap({
            (post) =>
               `
             <url>
-                <loc>https://polkadotarena.blog/news/${post.title?.replaceAll(
-                   ' ',
-                   '-'
-                )}?id=${post.id}</loc>
+                <loc>https://polkadotarena.blog/news/${post.title?.replaceAll(' ', '-')}?id=${post.id}</loc>
                 <lastmod>${post.createdAtTime}</lastmod>
             </url>
           `
         )}
-    </urlset>`
+    </urlset>
+    </xml>`
 }
 
 export default SiteMap
