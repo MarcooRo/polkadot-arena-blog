@@ -1,10 +1,8 @@
 import {
    ApolloClient,
    InMemoryCache,
-   gql,
    NormalizedCacheObject,
 } from '@apollo/client'
-import { createContext, ReactNode, useContext, useState } from 'react'
 
 export class GraphqlConnect {
    private static instance: GraphqlConnect | null = null

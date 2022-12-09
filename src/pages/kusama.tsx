@@ -1,5 +1,5 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Nav from '../components/Nav'
+import Nav from '../components/navigation/Nav'
 import {
    SimpleGrid,
    Heading,
@@ -11,22 +11,14 @@ import {
    ListItem,
    UnorderedList,
 } from '@chakra-ui/react'
-import { gql } from '@apollo/client'
-import CardComponent, { ITcard } from '../components/CardNews'
+import CardComponent, { ITcard } from '../components/cards/CardNews'
 import { useRouter } from 'next/router'
-import { ShowKusamaFeed } from '../components/Space'
-import { TwitterKusama } from '../components/Twitter'
-import HeadSEO from '../components/HeadSEOPage'
-import { GraphqlConnect } from '../graphql/GraphqlConnect'
+import { TwitterKusama } from '../components/socials/Twitter'
+import HeadSEO from '../components/seo/HeadSEOPage'
+import { kusamaPageQuery } from '../graphql/query/kusama'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-   const client = GraphqlConnect.getInstance().getSubsocialGraphql()
-
-   const { data } = await client.query({
-      query: gql`
-         ${ShowKusamaFeed()}
-      `,
-   })
+   const { data } = await kusamaPageQuery()
 
    return {
       props: {

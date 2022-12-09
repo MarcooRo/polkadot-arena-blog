@@ -9,9 +9,9 @@ import {
    GridItem,
 } from '@chakra-ui/react'
 import { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import HeadSEO from '../components/HeadSEOPage'
-import Nav from '../components/Nav'
-import CardTeam, { ITteam } from '../components/Team'
+import HeadSEO from '../components/seo/HeadSEOPage'
+import Nav from '../components/navigation/Nav'
+import CardTeam, { ITteam } from '../components/info/Team'
 import { aboutPageQuery } from '../graphql/query/about'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -58,9 +58,9 @@ function About({
                </Heading>
                <Text>
                   Polkadot Arena è un progetto in lingua italiana di
-                  divulgazione sul&apos;ecosistema di Polkadot and Kusama, attraverso l&apos;aggregazione in un
-                  unico canale di tutti i contenuti realizzati dai membri del
-                  collettivo.
+                  divulgazione sul&apos;ecosistema di Polkadot and Kusama,
+                  attraverso l&apos;aggregazione in un unico canale di tutti i
+                  contenuti realizzati dai membri del collettivo.
                </Text>
                <br />
                <Heading as="h3" fontSize="l" pb={6}>

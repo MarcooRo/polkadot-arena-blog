@@ -1,7 +1,5 @@
-import { gql } from '@apollo/client'
 import { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import { ShowSitemap } from '../components/Space'
-import { GraphqlConnect } from '../graphql/GraphqlConnect'
+import { siteMapQuery } from '../graphql/query/sitemap'
 
 export interface ITmap {
    id: string
@@ -10,13 +8,7 @@ export interface ITmap {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-   const client = GraphqlConnect.getInstance().getSubsocialGraphql()
-
-   const { data } = await client.query({
-      query: gql`
-         ${ShowSitemap()}
-      `,
-   })
+   const { data } = await siteMapQuery()
 
    return {
       props: {

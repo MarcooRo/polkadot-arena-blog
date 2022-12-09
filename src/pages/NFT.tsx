@@ -1,5 +1,5 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Nav from '../components/Nav'
+import Nav from '../components/navigation/Nav'
 import {
    SimpleGrid,
    Heading,
@@ -9,25 +9,13 @@ import {
    GridItem,
    Image,
 } from '@chakra-ui/react'
-import { gql } from '@apollo/client'
-import CardComponent, { ITcard } from '../components/CardNews'
+import CardComponent, { ITcard } from '../components/cards/CardNews'
 import { useRouter } from 'next/router'
-import { AllSapces, SpaceData } from '../components/Space'
-import HeadSEO from '../components/HeadSEOPage'
-import { GraphqlConnect } from '../graphql/GraphqlConnect'
+import HeadSEO from '../components/seo/HeadSEOPage'
+import { nftPageQuery } from '../graphql/query/nft'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-   const client = GraphqlConnect.getInstance().getSubsocialGraphql()
-
-   const { data } = await client.query({
-      query: gql`
-      query MyQuery {
-        posts(where: {tagsOriginal_contains: "NFT", AND: {space: ${AllSapces()}}, hidden_eq: false}) {
-          ${SpaceData()}    
-        }
-      }
-    `,
-   })
+   const { data } = await nftPageQuery()
 
    return {
       props: {

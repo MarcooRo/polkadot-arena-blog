@@ -1,5 +1,5 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Nav from '../components/Nav'
+import Nav from '../components/navigation/Nav'
 import {
    SimpleGrid,
    Heading,
@@ -10,9 +10,9 @@ import {
    Image,
    Divider,
 } from '@chakra-ui/react'
-import CardComponent, { ITcard } from '../components/CardNews'
+import CardComponent, { ITcard } from '../components/cards/CardNews'
 import { useRouter } from 'next/router'
-import HeadSEO from '../components/HeadSEOPage'
+import HeadSEO from '../components/seo/HeadSEOPage'
 import { defiPageQuery } from '../graphql/query/defi'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

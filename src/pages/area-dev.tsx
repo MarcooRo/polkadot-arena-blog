@@ -1,5 +1,5 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
-import Nav from '../components/Nav'
+import Nav from '../components/navigation/Nav'
 import {
    SimpleGrid,
    Heading,
@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 
 import { useRouter } from 'next/router'
-import HeadSEO from '../components/HeadSEOPage'
+import HeadSEO from '../components/seo/HeadSEOPage'
 import { devPageQuery } from '../graphql/query/area-dev'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

@@ -1,7 +1,6 @@
 import type { GetServerSideProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { gql } from '@apollo/client'
 import {
    Box,
    Button,
@@ -13,56 +12,36 @@ import {
    Text,
    useColorModeValue,
 } from '@chakra-ui/react'
-import Nav from '../components/Nav'
-import { SpotlightHome1, Twitter, TwitterWM } from '../components/Twitter'
+import Nav from '../components/navigation/Nav'
+import {
+   SpotlightHome1,
+   Twitter,
+   TwitterWM,
+} from '../components/socials/Twitter'
 import Sidebar from '../components/Sidebar'
-import CardComponent, { ITcard } from '../components/CardNews'
+import CardComponent, { ITcard } from '../components/cards/CardNews'
+import HeadSEO from '../components/seo/HeadSEOPage'
+import CardComponentVideo, { ITcardVideo } from '../components/cards/CardVideo'
 import {
-   HighPostHome,
-   ShowOtherSpace,
-   ShowDotleap,
-   ShowKusamarian,
-} from '../components/Space'
-import HeadSEO from '../components/HeadSEOPage'
-import { CollectionsTag } from '../components/Alltags'
-import CardComponentVideo, { ITcardVideo } from '../components/CardVideo'
-import { graphqlQuery } from '../graphql/query/query'
-import {
+   dotLeapQuery,
+   highPostQuery,
+   kusamarianQuery,
+   otherPostQuery,
    personalQuery,
    wagMediaItalyQuery,
    wagMediaQuery,
 } from '../graphql/query/main'
+import { Tags } from '../components/tags'
+import { collectionsTag } from '../components/tags/tags'
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
    const { data: wmitalia } = await wagMediaItalyQuery()
-
    const { data: onlyPersonal } = await personalQuery()
-
    const { data: wagmedia } = await wagMediaQuery()
-
-   const { data: highPost } = await graphqlQuery({
-      query: gql`
-         ${HighPostHome()}
-      `,
-   })
-
-   const { data: otherPost } = await graphqlQuery({
-      query: gql`
-         ${ShowOtherSpace()}
-      `,
-   })
-
-   const { data: kusamarian } = await graphqlQuery({
-      query: gql`
-         ${ShowKusamarian()}
-      `,
-   })
-
-   const { data: dotleap } = await graphqlQuery({
-      query: gql`
-         ${ShowDotleap()}
-      `,
-   })
+   const { data: highPost } = await highPostQuery()
+   const { data: otherPost } = await otherPostQuery()
+   const { data: kusamarian } = await kusamarianQuery()
+   const { data: dotleap } = await dotLeapQuery()
 
    return {
       props: {
@@ -88,14 +67,18 @@ function Home({
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
    let router = useRouter()
 
+   const backgroundBox = useColorModeValue('gray.100', 'gray.900')
+
    if (router.isFallback) {
-      ;<div>
-         <Box p={4}>
-            <SimpleGrid columns={2} spacing={6}>
-               <Text>Loding...</Text>
-            </SimpleGrid>
-         </Box>
-      </div>
+      return (
+         <div>
+            <Box p={4}>
+               <SimpleGrid columns={2} spacing={6}>
+                  <Text>Loding...</Text>
+               </SimpleGrid>
+            </Box>
+         </div>
+      )
    }
    return (
       <>
@@ -177,13 +160,16 @@ function Home({
                   pt={6}
                >
                   <Box pb={6}>
-                     <CollectionsTag />
+                     <Tags
+                        text={'Raccolte di articoli'}
+                        projects={collectionsTag}
+                     />
                   </Box>
                   <Box
                      borderTop="1px"
                      borderColor="gray.200"
                      p={6}
-                     bg={useColorModeValue('gray.100', 'gray.900')}
+                     bg={backgroundBox}
                   >
                      <Heading as="h2" fontSize="l" pb={6}>
                         In evidenza
