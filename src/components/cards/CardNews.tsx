@@ -121,7 +121,7 @@ const CardComponent: React.FC<ITcard> = (props) => {
                   </Heading>
                </a>
             </Link>
-            {<Text>{props?.summary.substring(0, 150)}</Text>}
+            {<Text>{props.summary?.substring(0, 150)}</Text>}
          </Stack>
          <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
             {props.space.id == '7218' ? (

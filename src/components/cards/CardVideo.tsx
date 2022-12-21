@@ -81,7 +81,7 @@ const CardComponentVideo: React.FC<ITcardVideo> = (props) => {
             <Heading as="h3" fontSize="xl">
                {props?.title}
             </Heading>
-            {<Text>{props?.summary.substring(0, 150)}</Text>}
+            {<Text>{props.summary?.substring(0, 150)}</Text>}
          </Stack>
          <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
             {props.space.id == '7218' ? (
