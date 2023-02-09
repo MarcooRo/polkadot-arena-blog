@@ -15,21 +15,6 @@ export function Twitter() {
    )
 }
 
-export function TwitterWM() {
-   return (
-      <Timeline
-         dataSource={{
-            sourceType: 'profile',
-            screenName: 'thatMediaWag',
-         }}
-         options={{
-            height: '1200',
-            theme: 'dark',
-         }}
-      />
-   )
-}
-
 export function TwitterPolkadot() {
    return (
       <Timeline
@@ -62,7 +47,7 @@ export function TwitterKusama() {
 export function TWInEvidenza() {
    return (
       <Tweet
-         tweetId="1587383243610914816"
+         tweetId="1623312277188362242"
          options={{
             theme: 'dark',
             height: '350',
@@ -73,7 +58,7 @@ export function TWInEvidenza() {
 export function SpotlightHome1() {
    return (
       <Tweet
-         tweetId="1597594751066591237"
+         tweetId="1623312277188362242"
          options={{
             theme: 'dark',
             height: '400',

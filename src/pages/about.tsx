@@ -72,7 +72,7 @@ function About({
                   contenuti abbiamo pensato che unendo le forze e parlando con
                   una unica voce avremmo potuto dare più risalto e poter portare
                   un&apos;informazione più completa alla community italiana.
-                  L&apos;obbiettivo è diventare il canale d&apos;informazione
+                  L&apos;iettivo è diventare il canale d&apos;informazione
                   più popolare in italiano. Attraverso il merito dei propri
                   contenuti.
                </Text>
@@ -131,7 +131,7 @@ function About({
                   Tutti invitati
                </Heading>
                <Text>
-                  Per raggiungere i nostri obbiettivi il collettivo, si amplierà
+                  Per raggiungere i nostri obiettivi il collettivo, si amplierà
                   con lo scopo di portare più know how possibile.
                   L&apos;ecosistema Dotsama è molto vasto, ma ci sono moti
                   utenti attivi che per passione o lavoro seguono i vari

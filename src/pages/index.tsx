@@ -16,7 +16,6 @@ import Nav from '../components/navigation/Nav'
 import {
    SpotlightHome1,
    Twitter,
-   TwitterWM,
 } from '../components/socials/Twitter'
 import Sidebar from '../components/Sidebar'
 import CardComponent, { ITcard } from '../components/cards/CardNews'
@@ -26,10 +25,8 @@ import {
    dotLeapQuery,
    highPostQuery,
    kusamarianQuery,
-   otherPostQuery,
    personalQuery,
    wagMediaItalyQuery,
-   wagMediaQuery,
 } from '../graphql/query/main'
 import { Tags } from '../components/tags'
 import { collectionsTag } from '../components/tags/tags'
@@ -37,9 +34,7 @@ import { collectionsTag } from '../components/tags/tags'
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
    const { data: wmitalia } = await wagMediaItalyQuery()
    const { data: onlyPersonal } = await personalQuery()
-   const { data: wagmedia } = await wagMediaQuery()
    const { data: highPost } = await highPostQuery()
-   const { data: otherPost } = await otherPostQuery()
    const { data: kusamarian } = await kusamarianQuery()
    const { data: dotleap } = await dotLeapQuery()
 
@@ -47,9 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
          wmitalia: wmitalia.posts,
          onlyPersonal: onlyPersonal.posts,
-         wagMedia: wagmedia.posts,
          highPostHome: highPost.postById,
-         otherPost: otherPost.posts,
          kusamarian: kusamarian.posts,
          dotleap: dotleap.posts,
       },
@@ -59,9 +52,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 function Home({
    wmitalia,
    onlyPersonal,
-   wagMedia,
    highPostHome,
-   otherPost,
    kusamarian,
    dotleap,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
@@ -224,44 +215,27 @@ function Home({
 
             <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
                <GridItem
-                  colSpan={{ base: 12, md: 9 }}
+                  colSpan={{ base: 12, md: 12 }}
                   borderTop="1px"
                   borderColor="gray.200"
                   pt={6}
                >
                   <Box mb={6}>
                      <Heading as="h2" mb={6}>
-                        English content
-                     </Heading>
-                     <Heading as="h3" fontSize="xl" mb={3}>
-                        WagMedia Weekly News
+                        The last Dotleap
                      </Heading>
                      <Text>
-                        News you need to know to stay on top of significant
-                        DotSama developments. Courtesy of WagMedia and Polka
-                        Häus
+                        A fortnightly-ish newsletter about all things Web 3.0
+                        from the Polkadot side
                      </Text>
                      <Box pt={6}>
                         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                           {(wagMedia as ITcard[]).slice(0, 6).map((post) => (
+                           {(dotleap as ITcard[]).slice(0, 3).map((post) => (
                               <CardComponent {...post} key={post.id} />
                            ))}
                         </SimpleGrid>
                      </Box>
                   </Box>
-               </GridItem>
-
-               <GridItem
-                  colSpan={{ base: 12, md: 3 }}
-                  borderTop="1px"
-                  borderColor="gray.200"
-                  pt={6}
-                  display={{ base: 'none', md: 'inline-block' }}
-               >
-                  <Heading as="h2" fontSize="l" pb={6}>
-                     From WagMedia
-                  </Heading>
-                  <TwitterWM />
                </GridItem>
             </Grid>
 
@@ -287,32 +261,6 @@ function Home({
                               .map((post) => (
                                  <CardComponentVideo {...post} key={post.id} />
                               ))}
-                        </SimpleGrid>
-                     </Box>
-                  </Box>
-               </GridItem>
-            </Grid>
-
-            <Grid templateColumns="repeat(12, 1fr)" gap={4} p={30}>
-               <GridItem
-                  colSpan={{ base: 12, md: 12 }}
-                  borderTop="1px"
-                  borderColor="gray.200"
-                  pt={6}
-               >
-                  <Box mb={6}>
-                     <Heading as="h2" mb={6}>
-                        The last Dotleap
-                     </Heading>
-                     <Text>
-                        A fortnightly-ish newsletter about all things Web 3.0
-                        from the Polkadot side
-                     </Text>
-                     <Box pt={6}>
-                        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                           {(dotleap as ITcard[]).slice(0, 3).map((post) => (
-                              <CardComponent {...post} key={post.id} />
-                           ))}
                         </SimpleGrid>
                      </Box>
                   </Box>
