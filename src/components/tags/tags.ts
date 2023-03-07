@@ -13,6 +13,7 @@ export const collectionsTag = [
    'DEX',
    'Parachain',
    'Parity',
+   'Ethereum',
 ]
 
 export const parachainsPolkadot = [
@@ -36,8 +37,7 @@ export const parachainsKusama = [
 ]
 
 export const projects = [
-   'Acala',
-   'Karura',
+   'Astar',
    'Bifrost',
    'Subsocial',
    'KodaDot',
@@ -53,4 +53,6 @@ export const projects = [
    'Unique Network',
    'Neon Crisis',
    'donkeygang',
+   'Acala',
+   'Karura',
 ]

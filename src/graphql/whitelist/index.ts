@@ -9,6 +9,7 @@ const wmWeekly = '6111'
 const kusamarian = '4809'
 const dotleap = '1040'
 const alex = '10324'
+const astraIta = '11056'
 
 const addressMarco = '3op9AadRgrf15XEPBRVVGheg2hfmSfQYhFyruyhNbJk5bL7d'
 const addressYamne = '3ohANRnQ84YYHfMwpETL7YkXRnJ5cwCWfcXjshmc953epBAs'
@@ -17,6 +18,7 @@ const addressPaul = '3p9btWd5bCCc1Yk5RD2uWrwCgD5CsvzSRdzgamk9kJ2rbkCj'
 const addressMark889 = '3t7rPt8LK5iLLDG4BanW2ToTzpdkMLZRVea85PPkPjRC8C2F'
 const addressCapgallico = '3r3bDxv8gjiuJqLFfHLnk53VQYSMECeyuCmT5wNYA3h48Kuq'
 const addressAlex = '3sUX9vztg4gf9mnyppFnw5JvsLt8Qp6b41HUNaCcijx5Vry6'
+
 
 export const teamAddresses = [
    addressMarco,
@@ -36,6 +38,7 @@ export const personalSpaces = [
    capgallico,
    mark889,
    alex,
+   //astraIta,
 ]
 export const newsItaSpaces = personalSpaces.concat([wmItalia])
 export const wmItalySpace = [wmItalia]

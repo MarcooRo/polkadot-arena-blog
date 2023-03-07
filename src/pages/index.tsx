@@ -91,9 +91,7 @@ function Home({
                   </Heading>
                   <Box pt={3}>
                      <Text>
-                        Dal mondo Polkadot e Kusama un blog in italiano e
-                        inglese con news, aggiornamenti, alpha, rumors, video e
-                        traduzioni
+                        Dal mondo Polkadot e Kusama un blog in italiano con news, aggiornamenti, alpha, rumors, video e traduzioni
                      </Text>
                   </Box>
                </Box>

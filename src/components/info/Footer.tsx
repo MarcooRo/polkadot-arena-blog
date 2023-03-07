@@ -28,21 +28,11 @@ export default function Footer() {
                         Polkadot Arena
                      </Heading>
                      <Text>
-                        Polkadot Arena è un progetto in lingua italiana di
-                        divulgazione sull&apos;ecosistema Polkadot, attraverso
-                        l&apos;aggregazione in un unico canale di tutti i
-                        contenuti realizzati dai membri del collettivo.
+                        Polkadot Arena è parte del progetto Italian Polkadot Ecosystem Hub, si occupa di divulgazione sull&apos;ecosistema di Polkadot e Kusama in lingua italiana e basato su una piattaforma di blogging decentralizzata.
                      </Text>
                      <br />
                      <Text>
-                        Il progetto è stato lanciato dei membri italiani di WM,
-                        rendendoci conto di produrre una notevole quantità di
-                        contenuti abbiamo pensato che unendo le forze e parlando
-                        con una unica voce avremmo potuto dare più risalto e
-                        poter portare un&apos;informazione più completa alla
-                        community italiana. L&apos;obbiettivo è diventare il
-                        canale d&apos;informazione più popolare in italiano.
-                        Attraverso il merito dei propri contenuti.
+                        Polkadot Arena nasce dalla volontà di alcuni membri italiani della comunità Polkadot di porre rimedio alla frammentazione dei canali di informazione italiana riguardo all&apos;ecosistema. Creando un canale unico, l&apos;idea è quella di rendere Polkadot più avvicinabile per l&apos;utente medio e attrarre più partecipanti al network.
                      </Text>
                      <Box display={{ base: 'none', md: 'flex' }} mt={6}>
                         <HStack as={'nav'} spacing={0}>
@@ -71,9 +61,7 @@ export default function Footer() {
                      </Heading>
                      <Text>
                         Polkadot Arena non è un progetto a scopo di lucro, tutti
-                        i creatori di contenuti e i dev lavorano per passione
-                        raccogliendo qualche tips di tanto in tanto. Se volete
-                        sostenere il nostro lavoro ve ne saremo grati!
+                        i creatori di contenuti e i dev lavorano per passione raccogliendo qualche tips di tanto in tanto. Se volete sostenere il nostro lavoro ve ne saremo grati!
                      </Text>
                      <br />
                      <code>

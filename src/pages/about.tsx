@@ -54,30 +54,29 @@ function About({
                px={3}
             >
                <Heading as="h2" fontSize="xl" pb={6}>
-                  La nostra mission
+                  La nostra missione
                </Heading>
                <Text>
-                  Polkadot Arena è un progetto in lingua italiana di
-                  divulgazione sul&apos;ecosistema di Polkadot and Kusama.
-                  Attraverso l&apos;aggregazione in un unico canale di tutti i
-                  contenuti realizzati dai membri del collettivo.
+                  Polkadot Arena è un progetto che fa parte dell&apos;Italian Polkadot Ecosystem Hub, si occupa di divulgazione sull&apos;ecosistema di Polkadot e Kusama in lingua italiana e basato su una piattaforma di blogging decentralizzata.
+                  Vogliamo diventare il punto di riferimento italiano per tutto ciò che riguarda Polkadot e Kusama
                </Text>
                <br />
-               <Heading as="h3" fontSize="l" pb={6}>
-                  L&apos;unione fa la forza!
+               <Text>
+                  A tal fine, Polkadot Arena aggrega in un unico blog articoli originali, guide, tutorial e le traduzioni dei contenuti più importanti dell&apos;ecosistema.
+               </Text>
+               <br />
+               <Heading as="h2" fontSize="xl" pb={6}>
+                  Una base solida
                </Heading>
                <Text>
-                  Il progetto è stato lanciato dei membri italiani di WM,
-                  rendendoci conto di produrre una notevole quantità di
-                  contenuti abbiamo pensato che unendo le forze e parlando con
-                  una unica voce avremmo potuto dare più risalto e poter portare
-                  un&apos;informazione più completa alla community italiana.
-                  L&apos;iettivo è diventare il canale d&apos;informazione
-                  più popolare in italiano. Attraverso il merito dei propri
-                  contenuti.
+                  Polkadot Arena nasce dalla volontà di alcuni membri italiani della comunità Polkadot di porre rimedio alla frammentazione dei canali di informazione italiana riguardo all&apos;ecosistema. Creando un canale unico, l&apos;idea è quella di rendere Polkadot più avvicinabile per l&apos;utente medio e attrarre più partecipanti al network.
                </Text>
                <br />
-               <Text>Al momento il collettivo gestisce:</Text>
+               <Text>
+                  Il team fondatore di Polkadot Arena è formato da esperti in vari campi, dallo sviluppo informatico, alle traduzioni, al marketing. Questa natura eterogenea ci permette di produrre contenuti utili e piacevoli da fruire.
+               </Text>
+               <br />
+               <Text>Al momento puoi seguire Polkadot Arena su:</Text>
                <UnorderedList>
                   <ListItem>
                      Canale Twitter:{' '}
@@ -93,52 +92,15 @@ function About({
                </UnorderedList>
                <br />
 
-               <Text>
-                  Ci piacerebbe aggiungere anche Instagram e youtube, ma al
-                  memento non siamo in grado di garantire un continuo flusso di
-                  contenuti. Il nostro feed sarà composto prevalentemente da
-                  contenuti originali in italiano e traduzioni di altri blog. Ma
-                  verrà dato spazio anche ampio spazio a contenuti in inglese.
-                  Non poniamo nessun tipo di vincolo al tipo di contenuto che
-                  veicoleremo, solo la maggioranza dovrà essere fatta in
-                  italiano.
-               </Text>
-               <br />
-               <Heading as="h3" fontSize="l" pb={6}>
-                  Dare spazio a tutti
+               <Heading as="h2" fontSize="xl" pb={6}>
+                  Partecipare a Polkadot Arena
                </Heading>
                <Text>
-                  Siamo un collettivo e ci esprimiamo attraverso un brand, ma
-                  questo non vuol dire che le nostre singolarità spariranno.
-                  Anzi, daremo spazio alle individualità attraverso la
-                  pubblicazioni dei contenuti firmati dai loro autori. Nello
-                  specifico tutti i contenuti in inglese verranno solo
-                  riproposti sui canali di Polkadot Arena dai canali dei singoli
-                  autori. Questi contenuti potranno essere tradotti e veicolati
-                  successivamente come Polkado Arena. I contenti in italiano
-                  verranno in grande parte proposti come Polkadot Arena, ma
-                  possono essere riproposti dai canali personali.
-                  <br />
-                  <br />
-                  Non vogliamo porre una regola precisa, ogni persona del
-                  collettivo può fare come preferisce, basta che contribuisca,
-                  come può e con il tempo che ha, a far crescere il canale e il
-                  brand, al fine di far conoscere l’ecosistema Polkadot e
-                  Kusama.
+                  In questo momento il modo migliore per sostenere Polkadot Arena è seguirci su Twitter e retwittare i nostri thread.
                </Text>
                <br />
-               <Heading as="h3" fontSize="l" pb={6}>
-                  Tutti invitati
-               </Heading>
                <Text>
-                  Per raggiungere i nostri obiettivi il collettivo, si amplierà
-                  con lo scopo di portare più know how possibile.
-                  L&apos;ecosistema Dotsama è molto vasto, ma ci sono moti
-                  utenti attivi che per passione o lavoro seguono i vari
-                  progetti. Il nostro invito è verso: tutte queste persone
-                  attive, membri del team e ambassador.
-                  <br />
-                  Siete i ben venuti!
+                  Chiunque può inviare un articolo originale o una traduzione perché venga pubblicata a discrezione della redazione. Al momento non possiamo garantire alcun tipo di retribuzione, poiché il progetto è alle battute iniziali. Prossimamente abbiamo in programma di proporre dei Tip su Polkadot e Kusama per contenuti di valore provenienti da fuori redazione e in futuro potremmo indire un bounty on-chain.
                </Text>
             </GridItem>
             <GridItem
@@ -152,9 +114,9 @@ function About({
                      Come è costruito il blog
                   </Heading>
                   <Text>
-                     Ogni articolo presente sul blog, e tutto il suo contenuto,
-                     è registrato sul protocollo <b>IPFS</b> tramite il sistema
-                     di{' '}
+                  A Polkadot Arena passiamo dalle parole ai fatti. Il nostro blog è costruito su tecnologie web3 e stiamo lavorando alla creazione di una piattaforma di blogging decentralizzata.
+                  Ogni articolo è registrato sul protocollo <b>IPFS</b> tramite il sistema
+                  di{' '}
                      <a
                         href="https://polkaverse.com/"
                         target="_blank"
@@ -162,7 +124,7 @@ function About({
                      >
                         Polkaverse
                      </a>
-                     , progetto della parachain di Kusama{' '}
+                     ,un progetto di Subsocial su parachain di Polkadot{' '}
                      <a
                         href="https://subsocial.network/"
                         target="_blank"
@@ -174,7 +136,8 @@ function About({
                   </Text>
                   <br />
                   <Text>
-                     Quello che facciamo, è leggere i dati grazie alle chiamate{' '}
+                     Per leggere i dati usiamo le chiamate GraphQl di Subsquid, un altro progetto decentralizzato che si occupa di connettere il mondo blockchain e la renderizzazione di dati on-screen.
+                     Per leggere i dati usiamo le chiamate{' '}
                      <b>
                         GraphQl di{' '}
                         <a
@@ -185,79 +148,14 @@ function About({
                            Subsquid
                         </a>
                      </b>
-                     . Subsquid è un progetto che si occupa di connettore il
-                     mondo blockchain e la renderizzazione onscreen di dati.
+                     , un altro progetto decentralizzato che si occupa di connettere il mondo blockchain e la renderizzazione di dati on-screen.
                   </Text>
                   <br />
                   <Text>
-                     Grazie a queste due innovative tecnologie abbiamo creato un
-                     blog che vede quasi tutti i suoi contenuti sul <b>Web3</b>.
-                     Di questo andiamo particolarmente fieri!
-                  </Text>
-                  <br />
-                  <Text>
-                     Il Blog è alla sua prima versione, un Blog V1, ha il suo
-                     focus nel garantire una buona SEO e recuperare articoli
-                     rigorosamente on-chain. In una prossima versione sarà
-                     integrato un backoffice con il quale si potrà registrare
-                     articoli su protocollo IPFS direttamente dal blog
+                     Il blog è alla sua prima versione e vuole garantire una buona SEO e il corretto recuperaro di articoli conservati on-chain. In questo momento stiamo lavorato alla v2.0, che prevede un backoffice con il quale si potrà registrare articoli su protocollo IPFS direttamente dal blog e ulteriori miglioramenti di performance e SEO.
                   </Text>
                </Box>
-               <Box mt={6}>
-                  <Heading as="h2" fontSize="xl" pb={6}>
-                     How the blog is built
-                  </Heading>
-                  <Text>
-                     Every article on the blog, and all its content, is recorded
-                     on the <b>IPFS</b> protocol through the{' '}
-                     <a
-                        href="https://polkaverse.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                     >
-                        Polkaverse
-                     </a>{' '}
-                     system, a project of Kusama{' '}
-                     <a
-                        href="https://subsocial.network/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                     >
-                        Subsocial&apos;s
-                     </a>{' '}
-                     parachain.
-                  </Text>
-                  <br />
-                  <Text>
-                     What we do, is read the data through{' '}
-                     <b>
-                        GraphQl calls from{' '}
-                        <a
-                           href="https://subsquid.io/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                        >
-                           Subsquid
-                        </a>
-                     </b>
-                     . Subsquid is a project that help the blockchain projects
-                     to rendering of data onscreen.
-                  </Text>
-                  <br />
-                  <Text>
-                     Thanks to these two innovative technologies, we have
-                     created a blog that sees almost all of its content on the{' '}
-                     <b>Web3</b>. We are particularly proud of this!
-                  </Text>
-                  <br />
-                  <Text>
-                     The blog is in its first version, a blog V1, has its focus
-                     on ensuring good SEO and retrieving strictly on-chain
-                     articles. In a forthcoming version, a backoffice will be
-                     integrated with which we will be able to register articles
-                     on IPFS protocol directly from the blog
-                  </Text>
-               </Box>
+               
             </GridItem>
          </Grid>
 
