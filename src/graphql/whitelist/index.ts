@@ -30,7 +30,7 @@ export const teamAddresses = [
    addressMark889,
    addressCapgallico,
    addressAlex,
-   addressVasa,
+   //addressVasa,
 ]
 
 export const personalSpaces = [
@@ -41,7 +41,7 @@ export const personalSpaces = [
    capgallico,
    mark889,
    alex,
-   vasak,
+   //vasak,
    //astraIta,
 ]
 export const newsItaSpaces = personalSpaces.concat([wmItalia])
