@@ -142,7 +142,7 @@ const CardComponent: React.FC<ITcard> = (props) => {
                      {props.ownedByAccount.profileSpace?.name}
                   </Text>
                )}
-               <Text color={'gray.500'}>{date.toLocaleDateString()}</Text>
+               {/* <Text color={'gray.500'}>{date.toLocaleDateString()}</Text> */}
             </Stack>
          </Stack>
       </Box>

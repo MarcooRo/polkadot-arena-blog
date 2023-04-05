@@ -2,8 +2,10 @@
   margin-bottom: 3rem;
 }
 .article p{
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 15px;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
 }
 .article section a{
   text-decoration: underline;
