@@ -4,6 +4,7 @@ import {
    NormalizedCacheObject,
 } from '@apollo/client'
 
+
 export class GraphqlConnect {
    private static instance: GraphqlConnect | null = null
    private client: ApolloClient<NormalizedCacheObject> | null = null
