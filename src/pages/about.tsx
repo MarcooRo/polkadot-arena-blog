@@ -159,7 +159,7 @@ function About({
             </GridItem>
          </Grid>
 
-         <Box borderTop="1px" borderColor="gray.200" p={30}>
+         {/* <Box borderTop="1px" borderColor="gray.200" p={30}>
             <Heading as="h2" fontSize="xl" pb={6}>
                Il team
             </Heading>
@@ -169,7 +169,7 @@ function About({
                      <CardTeam {...profile} key={profile.profileSpace?.id} />
                   ))}
             </SimpleGrid>
-         </Box>
+         </Box> */}
       </>
    )
 }

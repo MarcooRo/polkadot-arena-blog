@@ -102,7 +102,7 @@ function Home({
                gap={{ base: 3, md: 4, lg: 6 }}
                p={30}
             >
-               <GridItem
+               {/* <GridItem
                   colSpan={{ base: 12, md: 3 }}
                   borderTop="1px"
                   borderColor="gray.200"
@@ -115,10 +115,10 @@ function Home({
                   <Box rounded={'md'}>
                      <Twitter />
                   </Box>
-               </GridItem>
+               </GridItem> */}
 
                <GridItem
-                  colSpan={{ base: 12, md: 6 }}
+                  colSpan={{ base: 12, md: 9 }}
                   borderTop="1px"
                   borderColor="gray.200"
                   pt={6}
@@ -127,8 +127,8 @@ function Home({
                      Le news di Polkadot in italiano
                   </Heading>
                   <Box>
-                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-                        {(wmitalia as ITcard[]).slice(0, 6).map((post) => (
+                     <SimpleGrid columns={{ base: 2, md: 3 }} spacing={6}>
+                        {(wmitalia as ITcard[]).slice(0, 9).map((post) => (
                            <CardComponent {...post} key={post.id} />
                         ))}
                      </SimpleGrid>
@@ -185,7 +185,7 @@ function Home({
                   </Heading>
                   <Box>
                      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                        {(onlyPersonal as ITcard[]).slice(0, 6).map((post) => (
+                        {(onlyPersonal as ITcard[]).slice(0, 9).map((post) => (
                            <CardComponent {...post} key={post.id} />
                         ))}
                      </SimpleGrid>
@@ -205,9 +205,9 @@ function Home({
                   pt={6}
                >
                   <Heading as="h2" fontSize="l" pb={6}>
-                     Spotlight on
+                     Seguici su Twitter
                   </Heading>
-                  {SpotlightHome1()}
+                  <Twitter />
                </GridItem>
             </Grid>
 
